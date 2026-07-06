@@ -12,7 +12,6 @@ import json
 import os
 import re
 from pathlib import Path
-from typing import Literal
 
 import anthropic
 import numpy as np
@@ -32,6 +31,7 @@ load_dotenv(ROOT / ".env")
 RECORDS_PATH = DATA / "records.json"
 CHUNKS_PATH = DATA / "chunks.json"
 CHUNK_EMB_PATH = DATA / "chunk_embeddings.npy"
+CENSUS_PATH = DATA / "census_lookup.json"
 
 for p in (RECORDS_PATH, CHUNKS_PATH, CHUNK_EMB_PATH):
     if not p.exists():
@@ -44,6 +44,11 @@ chunks = json.loads(CHUNKS_PATH.read_text(encoding="utf-8"))
 chunk_embeddings = np.load(CHUNK_EMB_PATH)
 norm_embeddings = chunk_embeddings / np.linalg.norm(chunk_embeddings, axis=1, keepdims=True)
 
+# Load census data if available
+census_data = None
+if CENSUS_PATH.exists():
+    census_data = json.loads(CENSUS_PATH.read_text(encoding="utf-8"))
+
 voyage = voyageai.Client(api_key=os.environ["VOYAGE_API_KEY"])
 claude = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
@@ -51,31 +56,21 @@ MODEL = "claude-haiku-4-5"
 TOP_K = 6
 OVER_K = 40
 
-SYSTEM_PROMPT = """You are a warm, concise guide to the Korean American Story (KAS) Legacy Project — a video archive of oral-history interviews with Korean Americans.
+SYSTEM_PROMPT = """You are a guide to the Korean American Story (KAS) Legacy Project — a video archive of oral-history interviews with Korean Americans, plus census data on Korean American demographics.
 
-Your job is to point visitors to the right interviews, not retell the stories yourself.
+Guidelines:
+- Be warm but professional — no effusive phrases like "Great question!" or "I love that!"
+- Keep responses SHORT: 2-4 sentences max. Brevity is essential.
+- Cite interviews as [1], [2], etc. Don't describe every citation — just mention 2-3 highlights and let visitors explore.
+- If interviews don't match well, briefly suggest related topics or ask what they're looking for.
+- For greetings, respond in one short sentence and offer to help.
+- When census data is provided, use those exact numbers. Mention the census year when citing statistics.
 
-Format every answer like this:
-- ONE short sentence directly answering the question (plain, friendly, not a summary).
-- ONE short sentence previewing what the interviews cover, with inline citations [1][2][3].
-
-Hard rules:
-- Maximum 2 sentences total. Never 3.
-- Do NOT summarize what the interviewees say. Let their videos speak for themselves.
-- The retrieved list is a search result from a large archive — it is NOT the whole archive. If the retrieval doesn't match the question well, just say the search didn't surface a strong match and invite the visitor to rephrase. Never apologize for earlier answers and never claim something "isn't in the archive" — you can only see this search's results.
-- Cite as [1], [2], etc., matching the numbered list in THIS turn's retrieved interviews. The numbers reset every turn — do NOT reuse citation numbers from any earlier turn.
-- Only claim facts about interviews that appear in THIS turn's numbered list. Never make factual claims about interviews mentioned only in a prior turn.
-- You MAY use the prior turn to interpret short follow-ups (pronouns like "her", phrases like "tell me more", "anything else like that"). If the new question is unrelated to the prior turn, ignore the prior turn and treat it as a fresh search."""
-
-
-class HistoryTurn(BaseModel):
-    role: Literal["user", "assistant"]
-    content: str = Field(min_length=1, max_length=4000)
+Tone: A knowledgeable museum guide — warm, professional, concise."""
 
 
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=2000)
-    history: list[HistoryTurn] = Field(default_factory=list, max_length=2)
 
 
 VERSION_TAG_RE = re.compile(r"\s*\((full|edited|short|trailer)\)\s*", re.I)
@@ -103,31 +98,254 @@ for r in records:
     if bt not in PREFERRED_RID_BY_BASE or is_edited(r["title"]):
         PREFERRED_RID_BY_BASE[bt] = r["id"]
 
-CHUNK_IDX_BY_RID: dict[int, int] = {c["record_id"]: i for i, c in enumerate(chunks)}
+# Build index of chunk indices by record ID (may have multiple chunks per record now)
+CHUNK_INDICES_BY_RID: dict[int, list[int]] = {}
+for i, c in enumerate(chunks):
+    rid = c["record_id"]
+    if rid not in CHUNK_INDICES_BY_RID:
+        CHUNK_INDICES_BY_RID[rid] = []
+    CHUNK_INDICES_BY_RID[rid].append(i)
+
+
+# --- Census data lookup ---
+
+STATE_NAMES = {
+    "alabama": "AL", "alaska": "AK", "arizona": "AZ", "arkansas": "AR",
+    "california": "CA", "colorado": "CO", "connecticut": "CT", "delaware": "DE",
+    "florida": "FL", "georgia": "GA", "hawaii": "HI", "idaho": "ID",
+    "illinois": "IL", "indiana": "IN", "iowa": "IA", "kansas": "KS",
+    "kentucky": "KY", "louisiana": "LA", "maine": "ME", "maryland": "MD",
+    "massachusetts": "MA", "michigan": "MI", "minnesota": "MN", "mississippi": "MS",
+    "missouri": "MO", "montana": "MT", "nebraska": "NE", "nevada": "NV",
+    "new hampshire": "NH", "new jersey": "NJ", "new mexico": "NM", "new york": "NY",
+    "north carolina": "NC", "north dakota": "ND", "ohio": "OH", "oklahoma": "OK",
+    "oregon": "OR", "pennsylvania": "PA", "rhode island": "RI", "south carolina": "SC",
+    "south dakota": "SD", "tennessee": "TN", "texas": "TX", "utah": "UT",
+    "vermont": "VT", "virginia": "VA", "washington": "WA", "west virginia": "WV",
+    "wisconsin": "WI", "wyoming": "WY", "district of columbia": "DC", "d.c.": "DC",
+    "puerto rico": "PR",
+}
+
+CENSUS_PATTERNS = [
+    r'\b(population|how many|census|number of)\b.*\b(korean)\b',
+    r'\b(korean)\b.*\b(population|how many|number|census)\b',
+    r'\b(19[0-9]{2}|20[0-2][0-9])\b.*\b(korean|population)\b',
+    r'\b(korean)\b.*\b(19[0-9]{2}|20[0-2][0-9])\b',
+]
+
+# Patterns for meta questions about census data availability
+META_CENSUS_PATTERNS = [
+    r'\b(what|which|tell me about)\b.*(census|demographic|population)\s*(data|information|stats)',
+    r'\b(census|demographic|population)\s*(data|information|stats).*(have|available|contain)',
+    r'\bwhat.*(data|information).*(have|available)\b.*\b(census|demographic|population)\b',
+    r'\b(do you have|is there).*(census|demographic|population)',
+]
+
+CENSUS_SUMMARY = """The archive includes U.S. Census data on Korean American population from 1910 to 2020:
+
+- **National totals** for each decade from 1910-2020
+- **State-level data** for all 50 states + DC across census years
+- **County-level data** for 2020 (over 1,500 counties)
+
+Example questions you can ask:
+- "How many Korean Americans were in California in 1990?"
+- "What was the Korean American population in 2020?"
+- "How has the Korean population in Texas changed over time?"
+- "How many Korean Americans lived in Los Angeles County in 2020?"
+"""
+
+
+def is_meta_census_query(query: str) -> bool:
+    """Detect if query is asking about what census data is available."""
+    query_lower = query.lower()
+    return any(re.search(p, query_lower) for p in META_CENSUS_PATTERNS)
+
+
+def is_census_query(query: str) -> bool:
+    """Detect if query is asking about census/population data."""
+    if not census_data:
+        return False
+    query_lower = query.lower()
+    return any(re.search(p, query_lower) for p in CENSUS_PATTERNS)
+
+
+def parse_year_from_query(query: str) -> str | None:
+    """Extract a year or decade from query."""
+    query_lower = query.lower()
+
+    # Handle decades like "1990s" -> 1990
+    decade_match = re.search(r'\b(19[0-9]0|20[0-2]0)s\b', query_lower)
+    if decade_match:
+        return decade_match.group(1)
+
+    # Handle specific years
+    year_match = re.search(r'\b(19[0-9]{2}|20[0-2][0-9])\b', query_lower)
+    if year_match:
+        year = year_match.group(1)
+        # Round to nearest census year (decades)
+        year_int = int(year)
+        census_year = (year_int // 10) * 10
+        return str(census_year)
+
+    return None
+
+
+def parse_location_from_query(query: str) -> tuple[str | None, str | None]:
+    """Extract state and optionally county from query. Returns (state_abbrev, county_name)."""
+    query_lower = query.lower()
+
+    # Check for state names
+    state_abbrev = None
+    for state_name, abbrev in STATE_NAMES.items():
+        if state_name in query_lower:
+            state_abbrev = abbrev
+            break
+
+    # Also check for abbreviations
+    if not state_abbrev:
+        for abbrev in STATE_NAMES.values():
+            if re.search(rf'\b{abbrev.lower()}\b', query_lower):
+                state_abbrev = abbrev
+                break
+
+    # Check for common cities/counties (map to state + county)
+    # Use word boundaries to avoid false matches like "la" in "population"
+    city_mappings = [
+        (r"\blos angeles\b", "CA", "Los Angeles"),
+        (r"\bl\.?a\.?\b", "CA", "Los Angeles"),  # LA or L.A.
+        (r"\bnew york city\b", "NY", "New York"),
+        (r"\bnyc\b", "NY", "New York"),
+        (r"\bchicago\b", "IL", "Cook"),
+        (r"\bsan francisco\b", "CA", "San Francisco"),
+        (r"\bseattle\b", "WA", "King"),
+        (r"\bhouston\b", "TX", "Harris"),
+        (r"\bdallas\b", "TX", "Dallas"),
+        (r"\batlanta\b", "GA", "Fulton"),
+    ]
+
+    for pattern, state, county in city_mappings:
+        if re.search(pattern, query_lower):
+            return (state, county)
+
+    # Check for nationwide/national/us - but NOT "Korean Americans" which contains "america"
+    national_patterns = [r"\bnationwide\b", r"\bnational\b", r"\bunited states\b", r"\bu\.s\.\b", r"\bthe country\b", r"\bin america\b"]
+    if any(re.search(p, query_lower) for p in national_patterns):
+        return ("US", None)
+
+    return (state_abbrev, None)
+
+
+def lookup_census(query: str) -> str | None:
+    """Look up census data based on query. Returns formatted string or None."""
+    if not census_data:
+        return None
+
+    year = parse_year_from_query(query)
+    state_abbrev, county = parse_location_from_query(query)
+
+    results = []
+
+    # If asking about a specific county
+    if county and state_abbrev and state_abbrev != "US":
+        county_data = census_data.get("county", {}).get(state_abbrev, {}).get(county, {})
+        if county_data:
+            for yr, data in county_data.items():
+                if year and yr != year:
+                    continue
+                pop = data.get("korean_combined") or data.get("korean_alone")
+                if pop:
+                    results.append(f"In {yr}, there were {pop:,} Korean Americans in {county} County, {state_abbrev}.")
+
+    # If asking about a state
+    elif state_abbrev and state_abbrev != "US":
+        state_info = census_data.get("state", {}).get(state_abbrev, {})
+        if state_info:
+            if year and year in state_info:
+                pop = state_info[year].get("korean_alone")
+                if pop:
+                    results.append(f"According to the {year} census, there were {pop:,} Korean Americans in {state_abbrev}.")
+            elif not year:
+                # Show most recent data
+                years = sorted(state_info.keys(), reverse=True)
+                if years:
+                    latest = years[0]
+                    pop = state_info[latest].get("korean_alone")
+                    if pop:
+                        results.append(f"According to the {latest} census, there were {pop:,} Korean Americans in {state_abbrev}.")
+
+    # If asking about national data
+    elif state_abbrev == "US" or not state_abbrev:
+        national = census_data.get("national", {})
+        if year and year in national:
+            pop = national[year].get("korean_alone")
+            if pop:
+                results.append(f"According to the {year} census, there were {pop:,} Korean Americans in the United States.")
+        elif not year and national:
+            # Show most recent
+            years = sorted(national.keys(), reverse=True)
+            if years:
+                latest = years[0]
+                pop = national[latest].get("korean_alone")
+                if pop:
+                    results.append(f"According to the {latest} census, there were {pop:,} Korean Americans in the United States.")
+
+    return " ".join(results) if results else None
 
 
 def retrieve(query: str, k: int = TOP_K):
-    """Chunk-level retrieval, deduped to one card per interview (Edited preferred)."""
+    """Chunk-level retrieval, deduped to one card per interview (Edited preferred).
+
+    With transcripts, each interview may have multiple chunks. We keep the best
+    (highest-scoring) chunk per interview for context, while still deduping
+    across Full/Edited versions.
+    """
     result = voyage.embed([query], model="voyage-3-large", input_type="query")
     q = np.array(result.embeddings[0], dtype=np.float32)
     q /= np.linalg.norm(q)
     scores = norm_embeddings @ q
     top_idx = np.argsort(-scores)[:OVER_K]
 
-    best_score_by_base: dict[str, float] = {}
+    # Track best chunk index and score per base title
+    best_chunk_by_base: dict[str, tuple[int, float]] = {}
     for idx in top_idx:
         idx = int(idx)
-        bt = base_title(records[chunks[idx]["record_id"]]["title"])
-        if bt not in best_score_by_base:
-            best_score_by_base[bt] = float(scores[idx])
+        chunk = chunks[idx]
+        bt = base_title(records[chunk["record_id"]]["title"])
+        score = float(scores[idx])
+        if bt not in best_chunk_by_base or score > best_chunk_by_base[bt][1]:
+            best_chunk_by_base[bt] = (idx, score)
 
-    ranked = sorted(best_score_by_base.items(), key=lambda kv: -kv[1])[:k]
+    # Rank by score and take top k
+    ranked = sorted(best_chunk_by_base.items(), key=lambda kv: -kv[1][1])[:k]
+
     out = []
-    for bt, _ in ranked:
+    for bt, (best_chunk_idx, _) in ranked:
+        # Use preferred record (Edited version if available)
         rid = PREFERRED_RID_BY_BASE[bt]
-        cidx = CHUNK_IDX_BY_RID[rid]
-        out.append((records[rid], chunks[cidx]))
+        best_chunk = chunks[best_chunk_idx]
+
+        # If the best chunk belongs to a different version (Full vs Edited),
+        # find the equivalent chunk in the preferred record, or use the best one
+        if best_chunk["record_id"] != rid:
+            # Try to find a chunk at similar timestamp in preferred record
+            preferred_chunks = CHUNK_INDICES_BY_RID.get(rid, [])
+            if preferred_chunks:
+                # Use first chunk of preferred record as fallback
+                best_chunk = chunks[preferred_chunks[0]]
+            # else: keep the best_chunk from the other version
+
+        out.append((records[rid], best_chunk))
     return out
+
+
+def format_timestamp(seconds: int) -> str:
+    """Format seconds as HH:MM:SS or MM:SS."""
+    h = seconds // 3600
+    m = (seconds % 3600) // 60
+    s = seconds % 60
+    if h > 0:
+        return f"{h}:{m:02d}:{s:02d}"
+    return f"{m}:{s:02d}"
 
 
 def build_context(hits):
@@ -140,7 +358,15 @@ def build_context(hits):
             meta.append(f"Recorded: {record['date_recorded']}")
         header = f"[{i}] {display_title(record['title'])}"
         if chunk["has_transcript"]:
-            body = f"Relevant transcript excerpt: \"{chunk['text'][:600]}\""
+            # Show transcript excerpt with timestamp
+            timestamp = format_timestamp(chunk["start_seconds"])
+            # Extract just the transcript text (skip the header we added)
+            text = chunk["text"]
+            # The chunk text format is: "Title\nInterviewee: ...\n\nactual transcript"
+            # Extract the actual transcript part after the double newline
+            if "\n\n" in text:
+                text = text.split("\n\n", 1)[1]
+            body = f"[{timestamp}] \"{text[:600]}\""
         else:
             body = f"Description: {record['description'][:400]}"
         lines.append(header + "\n" + "\n".join(meta) + "\n" + body)
@@ -191,22 +417,27 @@ app.add_middleware(
 
 @app.post("/api/chat")
 def chat(req: ChatRequest):
+    # Check for meta census query first (asking about what data is available)
+    census_context = None
+    if is_meta_census_query(req.message):
+        census_context = CENSUS_SUMMARY
+    elif is_census_query(req.message):
+        census_context = lookup_census(req.message)
+
     hits = retrieve(req.message)
+
+    # Build context with census data if available
+    context_parts = []
+    if census_context:
+        context_parts.append(f"Census Data:\n{census_context}")
+    context_parts.append(f"Retrieved interviews:\n\n{build_context(hits)}")
+
     user_turn = (
-        f"Retrieved interviews:\n\n{build_context(hits)}\n\n"
+        "\n\n".join(context_parts) + "\n\n"
         f"---\nVisitor's question: {req.message}"
     )
 
-    # Prepend the prior turn (at most one user + one assistant message).
-    # Strip [N] citation markers from the prior assistant text so stale
-    # numbers can't bleed into this turn's answer.
-    messages: list[dict] = []
-    for turn in req.history[-2:]:
-        content = turn.content
-        if turn.role == "assistant":
-            content = re.sub(r"\s*\[\d+\]", "", content).strip()
-        messages.append({"role": turn.role, "content": content})
-    messages.append({"role": "user", "content": user_turn})
+    messages = [{"role": "user", "content": user_turn}]
 
     try:
         resp = claude.messages.create(

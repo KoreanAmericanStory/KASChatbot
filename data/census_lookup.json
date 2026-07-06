@@ -1,0 +1,9470 @@
+{
+  "national": {
+    "1910": {
+      "korean_alone": 5008
+    },
+    "1920": {
+      "korean_alone": 6184
+    },
+    "1930": {
+      "korean_alone": 1871
+    },
+    "1940": {
+      "korean_alone": 8570
+    },
+    "1950": {
+      "korean_alone": 7030
+    },
+    "1970": {
+      "korean_alone": 69130
+    },
+    "1980": {
+      "korean_alone": 354593
+    },
+    "1990": {
+      "korean_alone": 798849
+    },
+    "2000": {
+      "korean_alone": 1228427
+    },
+    "2010": {
+      "korean_alone": 1706822
+    },
+    "2020": {
+      "korean_alone": 1989522
+    }
+  },
+  "state": {
+    "AL": {
+      "1970": {
+        "korean_alone": 400
+      },
+      "1980": {
+        "korean_alone": 1795
+      },
+      "1990": {
+        "korean_alone": 3454
+      },
+      "2000": {
+        "korean_alone": 5401
+      },
+      "2010": {
+        "korean_alone": 10624
+      },
+      "2020": {
+        "korean_alone": 17135
+      }
+    },
+    "AK": {
+      "1910": {
+        "korean_alone": 13
+      },
+      "1920": {
+        "korean_alone": 10
+      },
+      "1930": {
+        "korean_alone": 11
+      },
+      "1940": {
+        "korean_alone": 8
+      },
+      "1980": {
+        "korean_alone": 1536
+      },
+      "1990": {
+        "korean_alone": 4163
+      },
+      "2000": {
+        "korean_alone": 5687
+      },
+      "2010": {
+        "korean_alone": 6542
+      },
+      "2020": {
+        "korean_alone": 7022
+      }
+    },
+    "AZ": {
+      "1920": {
+        "korean_alone": 12
+      },
+      "1930": {
+        "korean_alone": 23
+      },
+      "1940": {
+        "korean_alone": 13
+      },
+      "1970": {
+        "korean_alone": 488
+      },
+      "1980": {
+        "korean_alone": 2449
+      },
+      "1990": {
+        "korean_alone": 5863
+      },
+      "2000": {
+        "korean_alone": 11936
+      },
+      "2010": {
+        "korean_alone": 21125
+      },
+      "2020": {
+        "korean_alone": 27579
+      }
+    },
+    "AR": {
+      "1910": {
+        "korean_alone": 1
+      },
+      "1920": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 16
+      },
+      "1970": {
+        "korean_alone": 161
+      },
+      "1980": {
+        "korean_alone": 583
+      },
+      "1990": {
+        "korean_alone": 1037
+      },
+      "2000": {
+        "korean_alone": 2113
+      },
+      "2010": {
+        "korean_alone": 3247
+      },
+      "2020": {
+        "korean_alone": 4485
+      }
+    },
+    "CA": {
+      "1910": {
+        "korean_alone": 304
+      },
+      "1920": {
+        "korean_alone": 772
+      },
+      "1930": {
+        "korean_alone": 1097
+      },
+      "1940": {
+        "korean_alone": 1088
+      },
+      "1970": {
+        "korean_alone": 15756
+      },
+      "1980": {
+        "korean_alone": 103845
+      },
+      "1990": {
+        "korean_alone": 259941
+      },
+      "2000": {
+        "korean_alone": 375571
+      },
+      "2010": {
+        "korean_alone": 505225
+      },
+      "2020": {
+        "korean_alone": 564015
+      }
+    },
+    "CO": {
+      "1920": {
+        "korean_alone": 16
+      },
+      "1930": {
+        "korean_alone": 50
+      },
+      "1940": {
+        "korean_alone": 24
+      },
+      "1970": {
+        "korean_alone": 760
+      },
+      "1980": {
+        "korean_alone": 5316
+      },
+      "1990": {
+        "korean_alone": 11339
+      },
+      "2000": {
+        "korean_alone": 20304
+      },
+      "2010": {
+        "korean_alone": 28177
+      },
+      "2020": {
+        "korean_alone": 35756
+      }
+    },
+    "CT": {
+      "1920": {
+        "korean_alone": 3
+      },
+      "1930": {
+        "korean_alone": 3
+      },
+      "1940": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 656
+      },
+      "1980": {
+        "korean_alone": 2116
+      },
+      "1990": {
+        "korean_alone": 5126
+      },
+      "2000": {
+        "korean_alone": 8110
+      },
+      "2010": {
+        "korean_alone": 11760
+      },
+      "2020": {
+        "korean_alone": 13792
+      }
+    },
+    "DE": {
+      "1970": {
+        "korean_alone": 144
+      },
+      "1980": {
+        "korean_alone": 490
+      },
+      "1990": {
+        "korean_alone": 1229
+      },
+      "2000": {
+        "korean_alone": 2286
+      },
+      "2010": {
+        "korean_alone": 3099
+      },
+      "2020": {
+        "korean_alone": 3542
+      }
+    },
+    "DC": {
+      "1920": {
+        "korean_alone": 5
+      },
+      "1930": {
+        "korean_alone": 1
+      },
+      "1940": {
+        "korean_alone": 3
+      },
+      "1970": {
+        "korean_alone": 391
+      },
+      "1980": {
+        "korean_alone": 338
+      },
+      "1990": {
+        "korean_alone": 814
+      },
+      "2000": {
+        "korean_alone": 1273
+      },
+      "2010": {
+        "korean_alone": 2990
+      },
+      "2020": {
+        "korean_alone": 4885
+      }
+    },
+    "FL": {
+      "1920": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 2
+      },
+      "1970": {
+        "korean_alone": 1147
+      },
+      "1980": {
+        "korean_alone": 4671
+      },
+      "1990": {
+        "korean_alone": 12404
+      },
+      "2000": {
+        "korean_alone": 23790
+      },
+      "2010": {
+        "korean_alone": 35629
+      },
+      "2020": {
+        "korean_alone": 44755
+      }
+    },
+    "GA": {
+      "1940": {
+        "korean_alone": 3
+      },
+      "1970": {
+        "korean_alone": 921
+      },
+      "1980": {
+        "korean_alone": 5968
+      },
+      "1990": {
+        "korean_alone": 15275
+      },
+      "2000": {
+        "korean_alone": 32660
+      },
+      "2010": {
+        "korean_alone": 60836
+      },
+      "2020": {
+        "korean_alone": 77467
+      }
+    },
+    "HI": {
+      "1910": {
+        "korean_alone": 4533
+      },
+      "1920": {
+        "korean_alone": 4950
+      },
+      "1940": {
+        "korean_alone": 6851
+      },
+      "1950": {
+        "korean_alone": 7030
+      },
+      "1970": {
+        "korean_alone": 8656
+      },
+      "1980": {
+        "korean_alone": 17962
+      },
+      "1990": {
+        "korean_alone": 24454
+      },
+      "2000": {
+        "korean_alone": 41352
+      },
+      "2010": {
+        "korean_alone": 48699
+      },
+      "2020": {
+        "korean_alone": 52696
+      }
+    },
+    "ID": {
+      "1910": {
+        "korean_alone": 12
+      },
+      "1920": {
+        "korean_alone": 16
+      },
+      "1930": {
+        "korean_alone": 21
+      },
+      "1940": {
+        "korean_alone": 20
+      },
+      "1970": {
+        "korean_alone": 133
+      },
+      "1980": {
+        "korean_alone": 610
+      },
+      "1990": {
+        "korean_alone": 935
+      },
+      "2000": {
+        "korean_alone": 1841
+      },
+      "2010": {
+        "korean_alone": 2806
+      },
+      "2020": {
+        "korean_alone": 4235
+      }
+    },
+    "IL": {
+      "1920": {
+        "korean_alone": 32
+      },
+      "1930": {
+        "korean_alone": 76
+      },
+      "1940": {
+        "korean_alone": 54
+      },
+      "1970": {
+        "korean_alone": 3673
+      },
+      "1980": {
+        "korean_alone": 23989
+      },
+      "1990": {
+        "korean_alone": 41506
+      },
+      "2000": {
+        "korean_alone": 56021
+      },
+      "2010": {
+        "korean_alone": 70263
+      },
+      "2020": {
+        "korean_alone": 72970
+      }
+    },
+    "IN": {
+      "1920": {
+        "korean_alone": 12
+      },
+      "1930": {
+        "korean_alone": 12
+      },
+      "1940": {
+        "korean_alone": 6
+      },
+      "1970": {
+        "korean_alone": 857
+      },
+      "1980": {
+        "korean_alone": 3295
+      },
+      "1990": {
+        "korean_alone": 5475
+      },
+      "2000": {
+        "korean_alone": 9315
+      },
+      "2010": {
+        "korean_alone": 13685
+      },
+      "2020": {
+        "korean_alone": 15055
+      }
+    },
+    "IA": {
+      "1920": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 4
+      },
+      "1940": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 667
+      },
+      "1980": {
+        "korean_alone": 2259
+      },
+      "1990": {
+        "korean_alone": 4618
+      },
+      "2000": {
+        "korean_alone": 6013
+      },
+      "2010": {
+        "korean_alone": 7375
+      },
+      "2020": {
+        "korean_alone": 8230
+      }
+    },
+    "KS": {
+      "1920": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 510
+      },
+      "1980": {
+        "korean_alone": 2627
+      },
+      "1990": {
+        "korean_alone": 4016
+      },
+      "2000": {
+        "korean_alone": 5887
+      },
+      "2010": {
+        "korean_alone": 7756
+      },
+      "2020": {
+        "korean_alone": 9163
+      }
+    },
+    "KY": {
+      "1920": {
+        "korean_alone": 2
+      },
+      "1940": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 431
+      },
+      "1980": {
+        "korean_alone": 2102
+      },
+      "1990": {
+        "korean_alone": 2972
+      },
+      "2000": {
+        "korean_alone": 5003
+      },
+      "2010": {
+        "korean_alone": 7264
+      },
+      "2020": {
+        "korean_alone": 8839
+      }
+    },
+    "LA": {
+      "1940": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 337
+      },
+      "1980": {
+        "korean_alone": 1729
+      },
+      "1990": {
+        "korean_alone": 2750
+      },
+      "2000": {
+        "korean_alone": 3628
+      },
+      "2010": {
+        "korean_alone": 4752
+      },
+      "2020": {
+        "korean_alone": 5596
+      }
+    },
+    "ME": {
+      "1970": {
+        "korean_alone": 134
+      },
+      "1980": {
+        "korean_alone": 481
+      },
+      "1990": {
+        "korean_alone": 858
+      },
+      "2000": {
+        "korean_alone": 1184
+      },
+      "2010": {
+        "korean_alone": 1741
+      },
+      "2020": {
+        "korean_alone": 2234
+      }
+    },
+    "MD": {
+      "1920": {
+        "korean_alone": 1
+      },
+      "1940": {
+        "korean_alone": 2
+      },
+      "1970": {
+        "korean_alone": 2139
+      },
+      "1980": {
+        "korean_alone": 15089
+      },
+      "1990": {
+        "korean_alone": 30320
+      },
+      "2000": {
+        "korean_alone": 42335
+      },
+      "2010": {
+        "korean_alone": 55051
+      },
+      "2020": {
+        "korean_alone": 61637
+      }
+    },
+    "MA": {
+      "1920": {
+        "korean_alone": 4
+      },
+      "1930": {
+        "korean_alone": 6
+      },
+      "1940": {
+        "korean_alone": 12
+      },
+      "1970": {
+        "korean_alone": 1318
+      },
+      "1980": {
+        "korean_alone": 4655
+      },
+      "1990": {
+        "korean_alone": 11744
+      },
+      "2000": {
+        "korean_alone": 19469
+      },
+      "2010": {
+        "korean_alone": 28904
+      },
+      "2020": {
+        "korean_alone": 35206
+      }
+    },
+    "MI": {
+      "1920": {
+        "korean_alone": 30
+      },
+      "1930": {
+        "korean_alone": 53
+      },
+      "1940": {
+        "korean_alone": 70
+      },
+      "1970": {
+        "korean_alone": 2125
+      },
+      "1980": {
+        "korean_alone": 8714
+      },
+      "1990": {
+        "korean_alone": 16316
+      },
+      "2000": {
+        "korean_alone": 24255
+      },
+      "2010": {
+        "korean_alone": 30292
+      },
+      "2020": {
+        "korean_alone": 35756
+      }
+    },
+    "MN": {
+      "1940": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 956
+      },
+      "1980": {
+        "korean_alone": 6319
+      },
+      "1990": {
+        "korean_alone": 11576
+      },
+      "2000": {
+        "korean_alone": 15255
+      },
+      "2010": {
+        "korean_alone": 20995
+      },
+      "2020": {
+        "korean_alone": 26112
+      }
+    },
+    "MS": {
+      "1970": {
+        "korean_alone": 184
+      },
+      "1980": {
+        "korean_alone": 576
+      },
+      "1990": {
+        "korean_alone": 1123
+      },
+      "2000": {
+        "korean_alone": 1796
+      },
+      "2010": {
+        "korean_alone": 2301
+      },
+      "2020": {
+        "korean_alone": 2877
+      }
+    },
+    "MO": {
+      "1920": {
+        "korean_alone": 4
+      },
+      "1930": {
+        "korean_alone": 10
+      },
+      "1940": {
+        "korean_alone": 16
+      },
+      "1970": {
+        "korean_alone": 970
+      },
+      "1980": {
+        "korean_alone": 3519
+      },
+      "1990": {
+        "korean_alone": 5731
+      },
+      "2000": {
+        "korean_alone": 8568
+      },
+      "2010": {
+        "korean_alone": 12689
+      },
+      "2020": {
+        "korean_alone": 15276
+      }
+    },
+    "MT": {
+      "1910": {
+        "korean_alone": 13
+      },
+      "1920": {
+        "korean_alone": 18
+      },
+      "1930": {
+        "korean_alone": 115
+      },
+      "1940": {
+        "korean_alone": 99
+      },
+      "1970": {
+        "korean_alone": 116
+      },
+      "1980": {
+        "korean_alone": 301
+      },
+      "1990": {
+        "korean_alone": 668
+      },
+      "2000": {
+        "korean_alone": 1109
+      },
+      "2010": {
+        "korean_alone": 1369
+      },
+      "2020": {
+        "korean_alone": 1910
+      }
+    },
+    "NE": {
+      "1910": {
+        "korean_alone": 23
+      },
+      "1920": {
+        "korean_alone": 13
+      },
+      "1930": {
+        "korean_alone": 5
+      },
+      "1940": {
+        "korean_alone": 2
+      },
+      "1970": {
+        "korean_alone": 243
+      },
+      "1980": {
+        "korean_alone": 993
+      },
+      "1990": {
+        "korean_alone": 1943
+      },
+      "2000": {
+        "korean_alone": 3066
+      },
+      "2010": {
+        "korean_alone": 3815
+      },
+      "2020": {
+        "korean_alone": 4860
+      }
+    },
+    "NV": {
+      "1910": {
+        "korean_alone": 3
+      },
+      "1920": {
+        "korean_alone": 4
+      },
+      "1930": {
+        "korean_alone": 2
+      },
+      "1940": {
+        "korean_alone": 7
+      },
+      "1970": {
+        "korean_alone": 230
+      },
+      "1980": {
+        "korean_alone": 2057
+      },
+      "1990": {
+        "korean_alone": 4315
+      },
+      "2000": {
+        "korean_alone": 9608
+      },
+      "2010": {
+        "korean_alone": 18518
+      },
+      "2020": {
+        "korean_alone": 24491
+      }
+    },
+    "NH": {
+      "1970": {
+        "korean_alone": 138
+      },
+      "1980": {
+        "korean_alone": 515
+      },
+      "1990": {
+        "korean_alone": 1501
+      },
+      "2000": {
+        "korean_alone": 2238
+      },
+      "2010": {
+        "korean_alone": 3021
+      },
+      "2020": {
+        "korean_alone": 3611
+      }
+    },
+    "NJ": {
+      "1920": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 12
+      },
+      "1940": {
+        "korean_alone": 12
+      },
+      "1970": {
+        "korean_alone": 2349
+      },
+      "1980": {
+        "korean_alone": 12845
+      },
+      "1990": {
+        "korean_alone": 38540
+      },
+      "2000": {
+        "korean_alone": 68990
+      },
+      "2010": {
+        "korean_alone": 100334
+      },
+      "2020": {
+        "korean_alone": 109965
+      }
+    },
+    "NM": {
+      "1920": {
+        "korean_alone": 3
+      },
+      "1930": {
+        "korean_alone": 2
+      },
+      "1970": {
+        "korean_alone": 179
+      },
+      "1980": {
+        "korean_alone": 706
+      },
+      "1990": {
+        "korean_alone": 1464
+      },
+      "2000": {
+        "korean_alone": 2525
+      },
+      "2010": {
+        "korean_alone": 3760
+      },
+      "2020": {
+        "korean_alone": 4542
+      }
+    },
+    "NY": {
+      "1910": {
+        "korean_alone": 4
+      },
+      "1920": {
+        "korean_alone": 30
+      },
+      "1930": {
+        "korean_alone": 105
+      },
+      "1940": {
+        "korean_alone": 114
+      },
+      "1970": {
+        "korean_alone": 6607
+      },
+      "1980": {
+        "korean_alone": 34157
+      },
+      "1990": {
+        "korean_alone": 95648
+      },
+      "2000": {
+        "korean_alone": 127068
+      },
+      "2010": {
+        "korean_alone": 153609
+      },
+      "2020": {
+        "korean_alone": 160603
+      }
+    },
+    "NC": {
+      "1930": {
+        "korean_alone": 1
+      },
+      "1940": {
+        "korean_alone": 2
+      },
+      "1970": {
+        "korean_alone": 883
+      },
+      "1980": {
+        "korean_alone": 3581
+      },
+      "1990": {
+        "korean_alone": 7267
+      },
+      "2000": {
+        "korean_alone": 15438
+      },
+      "2010": {
+        "korean_alone": 25420
+      },
+      "2020": {
+        "korean_alone": 32567
+      }
+    },
+    "ND": {
+      "1930": {
+        "korean_alone": 6
+      },
+      "1970": {
+        "korean_alone": 136
+      },
+      "1980": {
+        "korean_alone": 342
+      },
+      "1990": {
+        "korean_alone": 526
+      },
+      "2000": {
+        "korean_alone": 614
+      },
+      "2010": {
+        "korean_alone": 933
+      },
+      "2020": {
+        "korean_alone": 1470
+      }
+    },
+    "OH": {
+      "1920": {
+        "korean_alone": 17
+      },
+      "1930": {
+        "korean_alone": 28
+      },
+      "1940": {
+        "korean_alone": 33
+      },
+      "1970": {
+        "korean_alone": 2070
+      },
+      "1980": {
+        "korean_alone": 7257
+      },
+      "1990": {
+        "korean_alone": 11237
+      },
+      "2000": {
+        "korean_alone": 16709
+      },
+      "2010": {
+        "korean_alone": 21207
+      },
+      "2020": {
+        "korean_alone": 25849
+      }
+    },
+    "OK": {
+      "1920": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 2
+      },
+      "1940": {
+        "korean_alone": 12
+      },
+      "1970": {
+        "korean_alone": 475
+      },
+      "1980": {
+        "korean_alone": 2698
+      },
+      "1990": {
+        "korean_alone": 4717
+      },
+      "2000": {
+        "korean_alone": 6882
+      },
+      "2010": {
+        "korean_alone": 9072
+      },
+      "2020": {
+        "korean_alone": 10762
+      }
+    },
+    "OR": {
+      "1910": {
+        "korean_alone": 6
+      },
+      "1920": {
+        "korean_alone": 31
+      },
+      "1930": {
+        "korean_alone": 26
+      },
+      "1940": {
+        "korean_alone": 24
+      },
+      "1970": {
+        "korean_alone": 1085
+      },
+      "1980": {
+        "korean_alone": 4428
+      },
+      "1990": {
+        "korean_alone": 8668
+      },
+      "2000": {
+        "korean_alone": 14900
+      },
+      "2010": {
+        "korean_alone": 20395
+      },
+      "2020": {
+        "korean_alone": 26202
+      }
+    },
+    "PA": {
+      "1920": {
+        "korean_alone": 9
+      },
+      "1930": {
+        "korean_alone": 9
+      },
+      "1940": {
+        "korean_alone": 23
+      },
+      "1970": {
+        "korean_alone": 2454
+      },
+      "1980": {
+        "korean_alone": 12502
+      },
+      "1990": {
+        "korean_alone": 26787
+      },
+      "2000": {
+        "korean_alone": 34984
+      },
+      "2010": {
+        "korean_alone": 47429
+      },
+      "2020": {
+        "korean_alone": 50982
+      }
+    },
+    "RI": {
+      "1940": {
+        "korean_alone": 2
+      },
+      "1970": {
+        "korean_alone": 195
+      },
+      "1980": {
+        "korean_alone": 592
+      },
+      "1990": {
+        "korean_alone": 1294
+      },
+      "2000": {
+        "korean_alone": 1821
+      },
+      "2010": {
+        "korean_alone": 2658
+      },
+      "2020": {
+        "korean_alone": 2861
+      }
+    },
+    "SC": {
+      "1970": {
+        "korean_alone": 285
+      },
+      "1980": {
+        "korean_alone": 1390
+      },
+      "1990": {
+        "korean_alone": 2577
+      },
+      "2000": {
+        "korean_alone": 4808
+      },
+      "2010": {
+        "korean_alone": 7162
+      },
+      "2020": {
+        "korean_alone": 10334
+      }
+    },
+    "SD": {
+      "1930": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 93
+      },
+      "1980": {
+        "korean_alone": 258
+      },
+      "1990": {
+        "korean_alone": 525
+      },
+      "2000": {
+        "korean_alone": 787
+      },
+      "2010": {
+        "korean_alone": 1179
+      },
+      "2020": {
+        "korean_alone": 1570
+      }
+    },
+    "TN": {
+      "1910": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 6
+      },
+      "1940": {
+        "korean_alone": 8
+      },
+      "1970": {
+        "korean_alone": 563
+      },
+      "1980": {
+        "korean_alone": 2237
+      },
+      "1990": {
+        "korean_alone": 4508
+      },
+      "2000": {
+        "korean_alone": 9166
+      },
+      "2010": {
+        "korean_alone": 13245
+      },
+      "2020": {
+        "korean_alone": 17387
+      }
+    },
+    "TX": {
+      "1920": {
+        "korean_alone": 4
+      },
+      "1930": {
+        "korean_alone": 17
+      },
+      "1940": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 2090
+      },
+      "1980": {
+        "korean_alone": 13997
+      },
+      "1990": {
+        "korean_alone": 31775
+      },
+      "2000": {
+        "korean_alone": 54300
+      },
+      "2010": {
+        "korean_alone": 85332
+      },
+      "2020": {
+        "korean_alone": 116998
+      }
+    },
+    "UT": {
+      "1910": {
+        "korean_alone": 12
+      },
+      "1920": {
+        "korean_alone": 13
+      },
+      "1930": {
+        "korean_alone": 87
+      },
+      "1940": {
+        "korean_alone": 15
+      },
+      "1970": {
+        "korean_alone": 236
+      },
+      "1980": {
+        "korean_alone": 1319
+      },
+      "1990": {
+        "korean_alone": 2629
+      },
+      "2000": {
+        "korean_alone": 4609
+      },
+      "2010": {
+        "korean_alone": 7888
+      },
+      "2020": {
+        "korean_alone": 10986
+      }
+    },
+    "VT": {
+      "1970": {
+        "korean_alone": 57
+      },
+      "1980": {
+        "korean_alone": 288
+      },
+      "1990": {
+        "korean_alone": 563
+      },
+      "2000": {
+        "korean_alone": 874
+      },
+      "2010": {
+        "korean_alone": 1271
+      },
+      "2020": {
+        "korean_alone": 1562
+      }
+    },
+    "VA": {
+      "1930": {
+        "korean_alone": 4
+      },
+      "1940": {
+        "korean_alone": 1
+      },
+      "1970": {
+        "korean_alone": 1777
+      },
+      "1980": {
+        "korean_alone": 12550
+      },
+      "1990": {
+        "korean_alone": 30164
+      },
+      "2000": {
+        "korean_alone": 50468
+      },
+      "2010": {
+        "korean_alone": 82006
+      },
+      "2020": {
+        "korean_alone": 95782
+      }
+    },
+    "WA": {
+      "1910": {
+        "korean_alone": 8
+      },
+      "1920": {
+        "korean_alone": 98
+      },
+      "1930": {
+        "korean_alone": 25
+      },
+      "1940": {
+        "korean_alone": 12
+      },
+      "1970": {
+        "korean_alone": 1738
+      },
+      "1980": {
+        "korean_alone": 13083
+      },
+      "1990": {
+        "korean_alone": 29697
+      },
+      "2000": {
+        "korean_alone": 56438
+      },
+      "2010": {
+        "korean_alone": 80049
+      },
+      "2020": {
+        "korean_alone": 101338
+      }
+    },
+    "WV": {
+      "1920": {
+        "korean_alone": 6
+      },
+      "1930": {
+        "korean_alone": 1
+      },
+      "1940": {
+        "korean_alone": 6
+      },
+      "1970": {
+        "korean_alone": 266
+      },
+      "1980": {
+        "korean_alone": 587
+      },
+      "1990": {
+        "korean_alone": 777
+      },
+      "2000": {
+        "korean_alone": 1108
+      },
+      "2010": {
+        "korean_alone": 1571
+      },
+      "2020": {
+        "korean_alone": 2081
+      }
+    },
+    "WI": {
+      "1910": {
+        "korean_alone": 3
+      },
+      "1920": {
+        "korean_alone": 1
+      },
+      "1930": {
+        "korean_alone": 7
+      },
+      "1940": {
+        "korean_alone": 3
+      },
+      "1970": {
+        "korean_alone": 872
+      },
+      "1980": {
+        "korean_alone": 2642
+      },
+      "1990": {
+        "korean_alone": 5618
+      },
+      "2000": {
+        "korean_alone": 8316
+      },
+      "2010": {
+        "korean_alone": 10949
+      },
+      "2020": {
+        "korean_alone": 13467
+      }
+    },
+    "WY": {
+      "1910": {
+        "korean_alone": 72
+      },
+      "1920": {
+        "korean_alone": 62
+      },
+      "1930": {
+        "korean_alone": 24
+      },
+      "1940": {
+        "korean_alone": 19
+      },
+      "1970": {
+        "korean_alone": 79
+      },
+      "1980": {
+        "korean_alone": 235
+      },
+      "1990": {
+        "korean_alone": 402
+      },
+      "2000": {
+        "korean_alone": 548
+      },
+      "2010": {
+        "korean_alone": 803
+      },
+      "2020": {
+        "korean_alone": 1027
+      }
+    }
+  },
+  "county": {
+    "AL": {
+      "Autauga": {
+        "2020": {
+          "korean_combined": 375
+        }
+      },
+      "Baldwin": {
+        "2020": {
+          "korean_combined": 331
+        }
+      },
+      "Barbour": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Blount": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Butler": {
+        "2020": {
+          "korean_combined": 78
+        }
+      },
+      "Calhoun": {
+        "2020": {
+          "korean_combined": 378
+        }
+      },
+      "Chambers": {
+        "2020": {
+          "korean_combined": 275
+        }
+      },
+      "Chilton": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Cleburne": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Coffee": {
+        "2020": {
+          "korean_combined": 500
+        }
+      },
+      "Colbert": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Covington": {
+        "2020": {
+          "korean_combined": 73
+        }
+      },
+      "Crenshaw": {
+        "2020": {
+          "korean_combined": 57
+        }
+      },
+      "Cullman": {
+        "2020": {
+          "korean_combined": 72
+        }
+      },
+      "Dale": {
+        "2020": {
+          "korean_combined": 298
+        }
+      },
+      "DeKalb": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Elmore": {
+        "2020": {
+          "korean_combined": 102
+        }
+      },
+      "Etowah": {
+        "2020": {
+          "korean_combined": 90
+        }
+      },
+      "Houston": {
+        "2020": {
+          "korean_combined": 198
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 1397
+        }
+      },
+      "Lauderdale": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Lee": {
+        "2020": {
+          "korean_combined": 3391
+        }
+      },
+      "Limestone": {
+        "2020": {
+          "korean_combined": 538
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 2736
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Marshall": {
+        "2020": {
+          "korean_combined": 81
+        }
+      },
+      "Mobile": {
+        "2020": {
+          "korean_combined": 414
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 3508
+        }
+      },
+      "Morgan": {
+        "2020": {
+          "korean_combined": 131
+        }
+      },
+      "Pike": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Russell": {
+        "2020": {
+          "korean_combined": 174
+        }
+      },
+      "St. Clair": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Shelby": {
+        "2020": {
+          "korean_combined": 698
+        }
+      },
+      "Talladega": {
+        "2020": {
+          "korean_combined": 46
+        }
+      },
+      "Tallapoosa": {
+        "2020": {
+          "korean_combined": 113
+        }
+      },
+      "Tuscaloosa": {
+        "2020": {
+          "korean_combined": 463
+        }
+      },
+      "Walker": {
+        "2020": {
+          "korean_combined": 69
+        }
+      }
+    },
+    "AK": {
+      "Anchorage Municipality": {
+        "2020": {
+          "korean_combined": 4805
+        }
+      },
+      "Bethel Census Area": {
+        "2020": {
+          "korean_combined": 145
+        }
+      },
+      "Fairbanks North Star Borough": {
+        "2020": {
+          "korean_combined": 922
+        }
+      },
+      "Juneau City and Borough": {
+        "2020": {
+          "korean_combined": 161
+        }
+      },
+      "Kenai Peninsula Borough": {
+        "2020": {
+          "korean_combined": 190
+        }
+      },
+      "Ketchikan Gateway Borough": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Kodiak Island Borough": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Matanuska-Susitna Borough": {
+        "2020": {
+          "korean_combined": 471
+        }
+      },
+      "Nome Census Area": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "North Slope Borough": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Northwest Arctic Borough": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Sitka City and Borough": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Southeast Fairbanks Census Area": {
+        "2020": {
+          "korean_combined": 26
+        }
+      }
+    },
+    "AZ": {
+      "Apache": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Cochise": {
+        "2020": {
+          "korean_combined": 1021
+        }
+      },
+      "Coconino": {
+        "2020": {
+          "korean_combined": 392
+        }
+      },
+      "Gila": {
+        "2020": {
+          "korean_combined": 71
+        }
+      },
+      "Graham": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Maricopa": {
+        "2020": {
+          "korean_combined": 19656
+        }
+      },
+      "Mohave": {
+        "2020": {
+          "korean_combined": 279
+        }
+      },
+      "Navajo": {
+        "2020": {
+          "korean_combined": 101
+        }
+      },
+      "Pima": {
+        "2020": {
+          "korean_combined": 4275
+        }
+      },
+      "Pinal": {
+        "2020": {
+          "korean_combined": 800
+        }
+      },
+      "Santa Cruz": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Yavapai": {
+        "2020": {
+          "korean_combined": 471
+        }
+      },
+      "Yuma": {
+        "2020": {
+          "korean_combined": 352
+        }
+      }
+    },
+    "AR": {
+      "Arkansas": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Baxter": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Benton": {
+        "2020": {
+          "korean_combined": 721
+        }
+      },
+      "Boone": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Carroll": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Columbia": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Craighead": {
+        "2020": {
+          "korean_combined": 192
+        }
+      },
+      "Crawford": {
+        "2020": {
+          "korean_combined": 80
+        }
+      },
+      "Crittenden": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Faulkner": {
+        "2020": {
+          "korean_combined": 177
+        }
+      },
+      "Garland": {
+        "2020": {
+          "korean_combined": 98
+        }
+      },
+      "Greene": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Hot Spring": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Independence": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Johnson": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Lonoke": {
+        "2020": {
+          "korean_combined": 174
+        }
+      },
+      "Miller": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Mississippi": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Pope": {
+        "2020": {
+          "korean_combined": 56
+        }
+      },
+      "Pulaski": {
+        "2020": {
+          "korean_combined": 1174
+        }
+      },
+      "Saline": {
+        "2020": {
+          "korean_combined": 222
+        }
+      },
+      "Sebastian": {
+        "2020": {
+          "korean_combined": 204
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 583
+        }
+      },
+      "White": {
+        "2020": {
+          "korean_combined": 94
+        }
+      }
+    },
+    "CA": {
+      "Alameda": {
+        "2020": {
+          "korean_combined": 24619
+        }
+      },
+      "Amador": {
+        "2020": {
+          "korean_combined": 70
+        }
+      },
+      "Butte": {
+        "2020": {
+          "korean_combined": 474
+        }
+      },
+      "Calaveras": {
+        "2020": {
+          "korean_combined": 69
+        }
+      },
+      "Contra Costa": {
+        "2020": {
+          "korean_combined": 12744
+        }
+      },
+      "Del Norte": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "El Dorado": {
+        "2020": {
+          "korean_combined": 986
+        }
+      },
+      "Fresno": {
+        "2020": {
+          "korean_combined": 2562
+        }
+      },
+      "Glenn": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Humboldt": {
+        "2020": {
+          "korean_combined": 339
+        }
+      },
+      "Imperial": {
+        "2020": {
+          "korean_combined": 321
+        }
+      },
+      "Inyo": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Kern": {
+        "2020": {
+          "korean_combined": 2532
+        }
+      },
+      "Kings": {
+        "2020": {
+          "korean_combined": 237
+        }
+      },
+      "Lake": {
+        "2020": {
+          "korean_combined": 135
+        }
+      },
+      "Lassen": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Los Angeles": {
+        "2020": {
+          "korean_combined": 230009
+        }
+      },
+      "Madera": {
+        "2020": {
+          "korean_combined": 189
+        }
+      },
+      "Marin": {
+        "2020": {
+          "korean_combined": 2027
+        }
+      },
+      "Mariposa": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Mendocino": {
+        "2020": {
+          "korean_combined": 139
+        }
+      },
+      "Merced": {
+        "2020": {
+          "korean_combined": 550
+        }
+      },
+      "Mono": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Monterey": {
+        "2020": {
+          "korean_combined": 3529
+        }
+      },
+      "Napa": {
+        "2020": {
+          "korean_combined": 492
+        }
+      },
+      "Nevada": {
+        "2020": {
+          "korean_combined": 197
+        }
+      },
+      "Orange": {
+        "2020": {
+          "korean_combined": 116534
+        }
+      },
+      "Placer": {
+        "2020": {
+          "korean_combined": 2812
+        }
+      },
+      "Plumas": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Riverside": {
+        "2020": {
+          "korean_combined": 15110
+        }
+      },
+      "Sacramento": {
+        "2020": {
+          "korean_combined": 10332
+        }
+      },
+      "San Benito": {
+        "2020": {
+          "korean_combined": 170
+        }
+      },
+      "San Bernardino": {
+        "2020": {
+          "korean_combined": 18257
+        }
+      },
+      "San Diego": {
+        "2020": {
+          "korean_combined": 30091
+        }
+      },
+      "San Francisco": {
+        "2020": {
+          "korean_combined": 14684
+        }
+      },
+      "San Joaquin": {
+        "2020": {
+          "korean_combined": 2361
+        }
+      },
+      "San Luis Obispo": {
+        "2020": {
+          "korean_combined": 1293
+        }
+      },
+      "San Mateo": {
+        "2020": {
+          "korean_combined": 10455
+        }
+      },
+      "Santa Barbara": {
+        "2020": {
+          "korean_combined": 2580
+        }
+      },
+      "Santa Clara": {
+        "2020": {
+          "korean_combined": 40379
+        }
+      },
+      "Santa Cruz": {
+        "2020": {
+          "korean_combined": 1256
+        }
+      },
+      "Shasta": {
+        "2020": {
+          "korean_combined": 450
+        }
+      },
+      "Siskiyou": {
+        "2020": {
+          "korean_combined": 59
+        }
+      },
+      "Solano": {
+        "2020": {
+          "korean_combined": 2434
+        }
+      },
+      "Sonoma": {
+        "2020": {
+          "korean_combined": 1729
+        }
+      },
+      "Stanislaus": {
+        "2020": {
+          "korean_combined": 1023
+        }
+      },
+      "Sutter": {
+        "2020": {
+          "korean_combined": 219
+        }
+      },
+      "Tehama": {
+        "2020": {
+          "korean_combined": 84
+        }
+      },
+      "Tulare": {
+        "2020": {
+          "korean_combined": 624
+        }
+      },
+      "Tuolumne": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Ventura": {
+        "2020": {
+          "korean_combined": 5794
+        }
+      },
+      "Yolo": {
+        "2020": {
+          "korean_combined": 2225
+        }
+      },
+      "Yuba": {
+        "2020": {
+          "korean_combined": 292
+        }
+      }
+    },
+    "CO": {
+      "Adams": {
+        "2020": {
+          "korean_combined": 2087
+        }
+      },
+      "Alamosa": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Arapahoe": {
+        "2020": {
+          "korean_combined": 8738
+        }
+      },
+      "Boulder": {
+        "2020": {
+          "korean_combined": 1871
+        }
+      },
+      "Broomfield": {
+        "2020": {
+          "korean_combined": 602
+        }
+      },
+      "Chaffee": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Clear Creek": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Delta": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Denver": {
+        "2020": {
+          "korean_combined": 3776
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 3338
+        }
+      },
+      "Eagle": {
+        "2020": {
+          "korean_combined": 95
+        }
+      },
+      "Elbert": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "El Paso": {
+        "2020": {
+          "korean_combined": 8351
+        }
+      },
+      "Fremont": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Garfield": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Gunnison": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 2689
+        }
+      },
+      "La Plata": {
+        "2020": {
+          "korean_combined": 108
+        }
+      },
+      "Larimer": {
+        "2020": {
+          "korean_combined": 1630
+        }
+      },
+      "Logan": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Mesa": {
+        "2020": {
+          "korean_combined": 294
+        }
+      },
+      "Montrose": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Morgan": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Park": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Pitkin": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Pueblo": {
+        "2020": {
+          "korean_combined": 362
+        }
+      },
+      "Routt": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Summit": {
+        "2020": {
+          "korean_combined": 57
+        }
+      },
+      "Teller": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Weld": {
+        "2020": {
+          "korean_combined": 792
+        }
+      }
+    },
+    "CT": {
+      "Fairfield": {
+        "2020": {
+          "korean_combined": 4481
+        }
+      },
+      "Hartford": {
+        "2020": {
+          "korean_combined": 3296
+        }
+      },
+      "Litchfield": {
+        "2020": {
+          "korean_combined": 463
+        }
+      },
+      "Middlesex": {
+        "2020": {
+          "korean_combined": 493
+        }
+      },
+      "New Haven": {
+        "2020": {
+          "korean_combined": 3567
+        }
+      },
+      "New London": {
+        "2020": {
+          "korean_combined": 723
+        }
+      },
+      "Tolland": {
+        "2020": {
+          "korean_combined": 660
+        }
+      },
+      "Windham": {
+        "2020": {
+          "korean_combined": 172
+        }
+      }
+    },
+    "DE": {
+      "Kent": {
+        "2020": {
+          "korean_combined": 670
+        }
+      },
+      "New Castle": {
+        "2020": {
+          "korean_combined": 2455
+        }
+      },
+      "Sussex": {
+        "2020": {
+          "korean_combined": 434
+        }
+      }
+    },
+    "DC": {
+      "District of Columbia, District of Columbia": {
+        "2020": {
+          "korean_combined": 4885
+        }
+      }
+    },
+    "FL": {
+      "Alachua": {
+        "2020": {
+          "korean_combined": 1559
+        }
+      },
+      "Baker": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Bay": {
+        "2020": {
+          "korean_combined": 685
+        }
+      },
+      "Bradford": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Brevard": {
+        "2020": {
+          "korean_combined": 1743
+        }
+      },
+      "Broward": {
+        "2020": {
+          "korean_combined": 3528
+        }
+      },
+      "Charlotte": {
+        "2020": {
+          "korean_combined": 215
+        }
+      },
+      "Citrus": {
+        "2020": {
+          "korean_combined": 279
+        }
+      },
+      "Clay": {
+        "2020": {
+          "korean_combined": 553
+        }
+      },
+      "Collier": {
+        "2020": {
+          "korean_combined": 490
+        }
+      },
+      "Columbia": {
+        "2020": {
+          "korean_combined": 83
+        }
+      },
+      "Duval": {
+        "2020": {
+          "korean_combined": 2370
+        }
+      },
+      "Escambia": {
+        "2020": {
+          "korean_combined": 902
+        }
+      },
+      "Flagler": {
+        "2020": {
+          "korean_combined": 148
+        }
+      },
+      "Gulf": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Hernando": {
+        "2020": {
+          "korean_combined": 221
+        }
+      },
+      "Highlands": {
+        "2020": {
+          "korean_combined": 72
+        }
+      },
+      "Hillsborough": {
+        "2020": {
+          "korean_combined": 5142
+        }
+      },
+      "Indian River": {
+        "2020": {
+          "korean_combined": 218
+        }
+      },
+      "Lake": {
+        "2020": {
+          "korean_combined": 588
+        }
+      },
+      "Lee": {
+        "2020": {
+          "korean_combined": 989
+        }
+      },
+      "Leon": {
+        "2020": {
+          "korean_combined": 1124
+        }
+      },
+      "Manatee": {
+        "2020": {
+          "korean_combined": 558
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 541
+        }
+      },
+      "Martin": {
+        "2020": {
+          "korean_combined": 146
+        }
+      },
+      "Miami-Dade": {
+        "2020": {
+          "korean_combined": 2181
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Nassau": {
+        "2020": {
+          "korean_combined": 181
+        }
+      },
+      "Okaloosa": {
+        "2020": {
+          "korean_combined": 1648
+        }
+      },
+      "Orange": {
+        "2020": {
+          "korean_combined": 4749
+        }
+      },
+      "Osceola": {
+        "2020": {
+          "korean_combined": 481
+        }
+      },
+      "Palm Beach": {
+        "2020": {
+          "korean_combined": 2333
+        }
+      },
+      "Pasco": {
+        "2020": {
+          "korean_combined": 1510
+        }
+      },
+      "Pinellas": {
+        "2020": {
+          "korean_combined": 2019
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 889
+        }
+      },
+      "Putnam": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "St. Johns": {
+        "2020": {
+          "korean_combined": 877
+        }
+      },
+      "St. Lucie": {
+        "2020": {
+          "korean_combined": 409
+        }
+      },
+      "Santa Rosa": {
+        "2020": {
+          "korean_combined": 682
+        }
+      },
+      "Sarasota": {
+        "2020": {
+          "korean_combined": 750
+        }
+      },
+      "Seminole": {
+        "2020": {
+          "korean_combined": 2101
+        }
+      },
+      "Sumter": {
+        "2020": {
+          "korean_combined": 120
+        }
+      },
+      "Suwannee": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Volusia": {
+        "2020": {
+          "korean_combined": 1057
+        }
+      },
+      "Walton": {
+        "2020": {
+          "korean_combined": 170
+        }
+      }
+    },
+    "GA": {
+      "Baldwin": {
+        "2020": {
+          "korean_combined": 81
+        }
+      },
+      "Barrow": {
+        "2020": {
+          "korean_combined": 277
+        }
+      },
+      "Bartow": {
+        "2020": {
+          "korean_combined": 144
+        }
+      },
+      "Bibb": {
+        "2020": {
+          "korean_combined": 427
+        }
+      },
+      "Bryan": {
+        "2020": {
+          "korean_combined": 336
+        }
+      },
+      "Bulloch": {
+        "2020": {
+          "korean_combined": 225
+        }
+      },
+      "Burke": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Camden": {
+        "2020": {
+          "korean_combined": 109
+        }
+      },
+      "Carroll": {
+        "2020": {
+          "korean_combined": 134
+        }
+      },
+      "Catoosa": {
+        "2020": {
+          "korean_combined": 261
+        }
+      },
+      "Chatham": {
+        "2020": {
+          "korean_combined": 1124
+        }
+      },
+      "Chattahoochee": {
+        "2020": {
+          "korean_combined": 119
+        }
+      },
+      "Cherokee": {
+        "2020": {
+          "korean_combined": 848
+        }
+      },
+      "Clarke": {
+        "2020": {
+          "korean_combined": 861
+        }
+      },
+      "Clayton": {
+        "2020": {
+          "korean_combined": 394
+        }
+      },
+      "Cobb": {
+        "2020": {
+          "korean_combined": 4796
+        }
+      },
+      "Columbia": {
+        "2020": {
+          "korean_combined": 1953
+        }
+      },
+      "Cook": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Coweta": {
+        "2020": {
+          "korean_combined": 1258
+        }
+      },
+      "Crawford": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Dade": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Dawson": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "DeKalb": {
+        "2020": {
+          "korean_combined": 4575
+        }
+      },
+      "Dougherty": {
+        "2020": {
+          "korean_combined": 73
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 250
+        }
+      },
+      "Effingham": {
+        "2020": {
+          "korean_combined": 98
+        }
+      },
+      "Fayette": {
+        "2020": {
+          "korean_combined": 776
+        }
+      },
+      "Floyd": {
+        "2020": {
+          "korean_combined": 109
+        }
+      },
+      "Forsyth": {
+        "2020": {
+          "korean_combined": 4604
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Fulton": {
+        "2020": {
+          "korean_combined": 10945
+        }
+      },
+      "Glynn": {
+        "2020": {
+          "korean_combined": 128
+        }
+      },
+      "Gordon": {
+        "2020": {
+          "korean_combined": 65
+        }
+      },
+      "Gwinnett": {
+        "2020": {
+          "korean_combined": 31567
+        }
+      },
+      "Habersham": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Hall": {
+        "2020": {
+          "korean_combined": 599
+        }
+      },
+      "Haralson": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Harris": {
+        "2020": {
+          "korean_combined": 218
+        }
+      },
+      "Hart": {
+        "2020": {
+          "korean_combined": 93
+        }
+      },
+      "Henry": {
+        "2020": {
+          "korean_combined": 655
+        }
+      },
+      "Houston": {
+        "2020": {
+          "korean_combined": 986
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 385
+        }
+      },
+      "Jones": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Lamar": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Laurens": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Lee": {
+        "2020": {
+          "korean_combined": 99
+        }
+      },
+      "Liberty": {
+        "2020": {
+          "korean_combined": 568
+        }
+      },
+      "Long": {
+        "2020": {
+          "korean_combined": 99
+        }
+      },
+      "Lowndes": {
+        "2020": {
+          "korean_combined": 314
+        }
+      },
+      "Lumpkin": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "McIntosh": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Muscogee": {
+        "2020": {
+          "korean_combined": 1857
+        }
+      },
+      "Newton": {
+        "2020": {
+          "korean_combined": 121
+        }
+      },
+      "Oconee": {
+        "2020": {
+          "korean_combined": 370
+        }
+      },
+      "Paulding": {
+        "2020": {
+          "korean_combined": 352
+        }
+      },
+      "Peach": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Pickens": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Richmond": {
+        "2020": {
+          "korean_combined": 1324
+        }
+      },
+      "Rockdale": {
+        "2020": {
+          "korean_combined": 136
+        }
+      },
+      "Spalding": {
+        "2020": {
+          "korean_combined": 87
+        }
+      },
+      "Thomas": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Tift": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Troup": {
+        "2020": {
+          "korean_combined": 1022
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Walker": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Walton": {
+        "2020": {
+          "korean_combined": 149
+        }
+      },
+      "Wayne": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "White": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Whitfield": {
+        "2020": {
+          "korean_combined": 132
+        }
+      }
+    },
+    "HI": {
+      "Hawaii": {
+        "2020": {
+          "korean_combined": 3610
+        }
+      },
+      "Honolulu": {
+        "2020": {
+          "korean_combined": 45174
+        }
+      },
+      "Kauai": {
+        "2020": {
+          "korean_combined": 903
+        }
+      },
+      "Maui": {
+        "2020": {
+          "korean_combined": 3075
+        }
+      }
+    },
+    "ID": {
+      "Ada": {
+        "2020": {
+          "korean_combined": 2057
+        }
+      },
+      "Bannock": {
+        "2020": {
+          "korean_combined": 144
+        }
+      },
+      "Bingham": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Blaine": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Bonner": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Bonneville": {
+        "2020": {
+          "korean_combined": 235
+        }
+      },
+      "Boundary": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Canyon": {
+        "2020": {
+          "korean_combined": 438
+        }
+      },
+      "Elmore": {
+        "2020": {
+          "korean_combined": 128
+        }
+      },
+      "Gem": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Jerome": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Kootenai": {
+        "2020": {
+          "korean_combined": 396
+        }
+      },
+      "Latah": {
+        "2020": {
+          "korean_combined": 163
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 116
+        }
+      },
+      "Nez Perce": {
+        "2020": {
+          "korean_combined": 74
+        }
+      },
+      "Twin Falls": {
+        "2020": {
+          "korean_combined": 115
+        }
+      }
+    },
+    "IL": {
+      "Adams": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Boone": {
+        "2020": {
+          "korean_combined": 106
+        }
+      },
+      "Bureau": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Carroll": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Champaign": {
+        "2020": {
+          "korean_combined": 3447
+        }
+      },
+      "Clay": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Coles": {
+        "2020": {
+          "korean_combined": 77
+        }
+      },
+      "Cook": {
+        "2020": {
+          "korean_combined": 43808
+        }
+      },
+      "DeKalb": {
+        "2020": {
+          "korean_combined": 285
+        }
+      },
+      "DuPage": {
+        "2020": {
+          "korean_combined": 5711
+        }
+      },
+      "Fayette": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Grundy": {
+        "2020": {
+          "korean_combined": 78
+        }
+      },
+      "Hancock": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Henry": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Iroquois": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 158
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Kane": {
+        "2020": {
+          "korean_combined": 1437
+        }
+      },
+      "Kankakee": {
+        "2020": {
+          "korean_combined": 156
+        }
+      },
+      "Kendall": {
+        "2020": {
+          "korean_combined": 355
+        }
+      },
+      "Knox": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Lake": {
+        "2020": {
+          "korean_combined": 8066
+        }
+      },
+      "LaSalle": {
+        "2020": {
+          "korean_combined": 130
+        }
+      },
+      "Lee": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Livingston": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "McDonough": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "McHenry": {
+        "2020": {
+          "korean_combined": 916
+        }
+      },
+      "McLean": {
+        "2020": {
+          "korean_combined": 486
+        }
+      },
+      "Macon": {
+        "2020": {
+          "korean_combined": 128
+        }
+      },
+      "Macoupin": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 589
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 56
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Ogle": {
+        "2020": {
+          "korean_combined": 73
+        }
+      },
+      "Peoria": {
+        "2020": {
+          "korean_combined": 493
+        }
+      },
+      "Piatt": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Randolph": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Richland": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Rock Island": {
+        "2020": {
+          "korean_combined": 199
+        }
+      },
+      "St. Clair": {
+        "2020": {
+          "korean_combined": 979
+        }
+      },
+      "Sangamon": {
+        "2020": {
+          "korean_combined": 434
+        }
+      },
+      "Stephenson": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Tazewell": {
+        "2020": {
+          "korean_combined": 233
+        }
+      },
+      "Vermilion": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Whiteside": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Will": {
+        "2020": {
+          "korean_combined": 2479
+        }
+      },
+      "Williamson": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Winnebago": {
+        "2020": {
+          "korean_combined": 648
+        }
+      },
+      "Woodford": {
+        "2020": {
+          "korean_combined": 44
+        }
+      }
+    },
+    "IN": {
+      "Allen": {
+        "2020": {
+          "korean_combined": 858
+        }
+      },
+      "Bartholomew": {
+        "2020": {
+          "korean_combined": 151
+        }
+      },
+      "Boone": {
+        "2020": {
+          "korean_combined": 207
+        }
+      },
+      "Clark": {
+        "2020": {
+          "korean_combined": 230
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Daviess": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Dearborn": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "DeKalb": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Delaware": {
+        "2020": {
+          "korean_combined": 173
+        }
+      },
+      "Elkhart": {
+        "2020": {
+          "korean_combined": 307
+        }
+      },
+      "Floyd": {
+        "2020": {
+          "korean_combined": 152
+        }
+      },
+      "Grant": {
+        "2020": {
+          "korean_combined": 69
+        }
+      },
+      "Hamilton": {
+        "2020": {
+          "korean_combined": 2274
+        }
+      },
+      "Hancock": {
+        "2020": {
+          "korean_combined": 224
+        }
+      },
+      "Harrison": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Hendricks": {
+        "2020": {
+          "korean_combined": 410
+        }
+      },
+      "Henry": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Howard": {
+        "2020": {
+          "korean_combined": 114
+        }
+      },
+      "Huntington": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 46
+        }
+      },
+      "Jasper": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Johnson": {
+        "2020": {
+          "korean_combined": 332
+        }
+      },
+      "Knox": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Kosciusko": {
+        "2020": {
+          "korean_combined": 124
+        }
+      },
+      "Lake": {
+        "2020": {
+          "korean_combined": 866
+        }
+      },
+      "LaPorte": {
+        "2020": {
+          "korean_combined": 106
+        }
+      },
+      "Lawrence": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 135
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 2096
+        }
+      },
+      "Marshall": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Miami": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 1272
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Morgan": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Porter": {
+        "2020": {
+          "korean_combined": 327
+        }
+      },
+      "Posey": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Putnam": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Randolph": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "St. Joseph": {
+        "2020": {
+          "korean_combined": 1031
+        }
+      },
+      "Scott": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Shelby": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Steuben": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Tippecanoe": {
+        "2020": {
+          "korean_combined": 1561
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Vanderburgh": {
+        "2020": {
+          "korean_combined": 323
+        }
+      },
+      "Vigo": {
+        "2020": {
+          "korean_combined": 216
+        }
+      },
+      "Wabash": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Warrick": {
+        "2020": {
+          "korean_combined": 144
+        }
+      },
+      "Wayne": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Wells": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Whitley": {
+        "2020": {
+          "korean_combined": 40
+        }
+      }
+    },
+    "IA": {
+      "Benton": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Black Hawk": {
+        "2020": {
+          "korean_combined": 368
+        }
+      },
+      "Boone": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Bremer": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Buena Vista": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Butler": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Carroll": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Cedar": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Cerro Gordo": {
+        "2020": {
+          "korean_combined": 77
+        }
+      },
+      "Cherokee": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 100
+        }
+      },
+      "Crawford": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Dallas": {
+        "2020": {
+          "korean_combined": 433
+        }
+      },
+      "Decatur": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Des Moines": {
+        "2020": {
+          "korean_combined": 94
+        }
+      },
+      "Dubuque": {
+        "2020": {
+          "korean_combined": 163
+        }
+      },
+      "Fayette": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Floyd": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Hardin": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Harrison": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Henry": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Jasper": {
+        "2020": {
+          "korean_combined": 46
+        }
+      },
+      "Johnson": {
+        "2020": {
+          "korean_combined": 1107
+        }
+      },
+      "Jones": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Lee": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Linn": {
+        "2020": {
+          "korean_combined": 704
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Mahaska": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 75
+        }
+      },
+      "Marshall": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Mills": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Mitchell": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Muscatine": {
+        "2020": {
+          "korean_combined": 81
+        }
+      },
+      "Page": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Plymouth": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 1677
+        }
+      },
+      "Pottawattamie": {
+        "2020": {
+          "korean_combined": 150
+        }
+      },
+      "Poweshiek": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Scott": {
+        "2020": {
+          "korean_combined": 602
+        }
+      },
+      "Sioux": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Story": {
+        "2020": {
+          "korean_combined": 680
+        }
+      },
+      "Tama": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Wapello": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 138
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Webster": {
+        "2020": {
+          "korean_combined": 94
+        }
+      },
+      "Winneshiek": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Woodbury": {
+        "2020": {
+          "korean_combined": 201
+        }
+      },
+      "Wright": {
+        "2020": {
+          "korean_combined": 42
+        }
+      }
+    },
+    "KS": {
+      "Butler": {
+        "2020": {
+          "korean_combined": 133
+        }
+      },
+      "Chautauqua": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Coffey": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Cowley": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Crawford": {
+        "2020": {
+          "korean_combined": 69
+        }
+      },
+      "Dickinson": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 654
+        }
+      },
+      "Ellis": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Finney": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Ford": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Geary": {
+        "2020": {
+          "korean_combined": 699
+        }
+      },
+      "Harvey": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Johnson": {
+        "2020": {
+          "korean_combined": 3504
+        }
+      },
+      "Leavenworth": {
+        "2020": {
+          "korean_combined": 586
+        }
+      },
+      "Lyon": {
+        "2020": {
+          "korean_combined": 74
+        }
+      },
+      "Miami": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Neosho": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Pottawatomie": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Reno": {
+        "2020": {
+          "korean_combined": 86
+        }
+      },
+      "Riley": {
+        "2020": {
+          "korean_combined": 570
+        }
+      },
+      "Saline": {
+        "2020": {
+          "korean_combined": 153
+        }
+      },
+      "Sedgwick": {
+        "2020": {
+          "korean_combined": 1204
+        }
+      },
+      "Shawnee": {
+        "2020": {
+          "korean_combined": 402
+        }
+      },
+      "Wyandotte": {
+        "2020": {
+          "korean_combined": 222
+        }
+      }
+    },
+    "KY": {
+      "Boone": {
+        "2020": {
+          "korean_combined": 298
+        }
+      },
+      "Boyd": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Boyle": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Bullitt": {
+        "2020": {
+          "korean_combined": 126
+        }
+      },
+      "Calloway": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Campbell": {
+        "2020": {
+          "korean_combined": 185
+        }
+      },
+      "Carter": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Christian": {
+        "2020": {
+          "korean_combined": 293
+        }
+      },
+      "Clark": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Daviess": {
+        "2020": {
+          "korean_combined": 125
+        }
+      },
+      "Fayette": {
+        "2020": {
+          "korean_combined": 1274
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Grayson": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Greenup": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Hardin": {
+        "2020": {
+          "korean_combined": 1088
+        }
+      },
+      "Henderson": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Hopkins": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 2483
+        }
+      },
+      "Jessamine": {
+        "2020": {
+          "korean_combined": 158
+        }
+      },
+      "Kenton": {
+        "2020": {
+          "korean_combined": 277
+        }
+      },
+      "Laurel": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "McCracken": {
+        "2020": {
+          "korean_combined": 120
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 124
+        }
+      },
+      "Marshall": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Meade": {
+        "2020": {
+          "korean_combined": 100
+        }
+      },
+      "Nelson": {
+        "2020": {
+          "korean_combined": 67
+        }
+      },
+      "Oldham": {
+        "2020": {
+          "korean_combined": 284
+        }
+      },
+      "Pulaski": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Rowan": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Scott": {
+        "2020": {
+          "korean_combined": 127
+        }
+      },
+      "Shelby": {
+        "2020": {
+          "korean_combined": 77
+        }
+      },
+      "Taylor": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 266
+        }
+      },
+      "Whitley": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Woodford": {
+        "2020": {
+          "korean_combined": 37
+        }
+      }
+    },
+    "LA": {
+      "Ascension Parish": {
+        "2020": {
+          "korean_combined": 93
+        }
+      },
+      "Beauregard Parish": {
+        "2020": {
+          "korean_combined": 84
+        }
+      },
+      "Bossier Parish": {
+        "2020": {
+          "korean_combined": 435
+        }
+      },
+      "Caddo Parish": {
+        "2020": {
+          "korean_combined": 324
+        }
+      },
+      "Calcasieu Parish": {
+        "2020": {
+          "korean_combined": 249
+        }
+      },
+      "East Baton Rouge Parish": {
+        "2020": {
+          "korean_combined": 831
+        }
+      },
+      "Iberia Parish": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Jefferson Parish": {
+        "2020": {
+          "korean_combined": 809
+        }
+      },
+      "Lafayette Parish": {
+        "2020": {
+          "korean_combined": 279
+        }
+      },
+      "Lincoln Parish": {
+        "2020": {
+          "korean_combined": 115
+        }
+      },
+      "Livingston Parish": {
+        "2020": {
+          "korean_combined": 131
+        }
+      },
+      "Orleans Parish": {
+        "2020": {
+          "korean_combined": 612
+        }
+      },
+      "Ouachita Parish": {
+        "2020": {
+          "korean_combined": 124
+        }
+      },
+      "Plaquemines Parish": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Rapides Parish": {
+        "2020": {
+          "korean_combined": 154
+        }
+      },
+      "St. Charles Parish": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "St. John the Baptist Parish": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "St. Landry Parish": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "St. Tammany Parish": {
+        "2020": {
+          "korean_combined": 350
+        }
+      },
+      "Tangipahoa Parish": {
+        "2020": {
+          "korean_combined": 57
+        }
+      },
+      "Terrebonne Parish": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Vernon Parish": {
+        "2020": {
+          "korean_combined": 447
+        }
+      }
+    },
+    "ME": {
+      "Androscoggin": {
+        "2020": {
+          "korean_combined": 123
+        }
+      },
+      "Aroostook": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Cumberland": {
+        "2020": {
+          "korean_combined": 875
+        }
+      },
+      "Hancock": {
+        "2020": {
+          "korean_combined": 111
+        }
+      },
+      "Kennebec": {
+        "2020": {
+          "korean_combined": 165
+        }
+      },
+      "Knox": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Oxford": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Penobscot": {
+        "2020": {
+          "korean_combined": 260
+        }
+      },
+      "Sagadahoc": {
+        "2020": {
+          "korean_combined": 62
+        }
+      },
+      "Somerset": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Waldo": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "York": {
+        "2020": {
+          "korean_combined": 305
+        }
+      }
+    },
+    "MD": {
+      "Allegany": {
+        "2020": {
+          "korean_combined": 102
+        }
+      },
+      "Anne Arundel": {
+        "2020": {
+          "korean_combined": 5925
+        }
+      },
+      "Baltimore": {
+        "2020": {
+          "korean_combined": 5873
+        }
+      },
+      "Calvert": {
+        "2020": {
+          "korean_combined": 271
+        }
+      },
+      "Caroline": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Carroll": {
+        "2020": {
+          "korean_combined": 909
+        }
+      },
+      "Cecil": {
+        "2020": {
+          "korean_combined": 250
+        }
+      },
+      "Charles": {
+        "2020": {
+          "korean_combined": 675
+        }
+      },
+      "Dorchester": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Frederick": {
+        "2020": {
+          "korean_combined": 1885
+        }
+      },
+      "Harford": {
+        "2020": {
+          "korean_combined": 1624
+        }
+      },
+      "Howard": {
+        "2020": {
+          "korean_combined": 15367
+        }
+      },
+      "Kent": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 19746
+        }
+      },
+      "Prince George's": {
+        "2020": {
+          "korean_combined": 3175
+        }
+      },
+      "Queen Anne's": {
+        "2020": {
+          "korean_combined": 154
+        }
+      },
+      "St. Mary's": {
+        "2020": {
+          "korean_combined": 466
+        }
+      },
+      "Somerset": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Talbot": {
+        "2020": {
+          "korean_combined": 93
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 385
+        }
+      },
+      "Wicomico": {
+        "2020": {
+          "korean_combined": 640
+        }
+      },
+      "Worcester": {
+        "2020": {
+          "korean_combined": 124
+        }
+      },
+      "Baltimore city": {
+        "2020": {
+          "korean_combined": 3839
+        }
+      }
+    },
+    "MA": {
+      "Barnstable": {
+        "2020": {
+          "korean_combined": 392
+        }
+      },
+      "Berkshire": {
+        "2020": {
+          "korean_combined": 321
+        }
+      },
+      "Bristol": {
+        "2020": {
+          "korean_combined": 1032
+        }
+      },
+      "Dukes": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Essex": {
+        "2020": {
+          "korean_combined": 2643
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 225
+        }
+      },
+      "Hampden": {
+        "2020": {
+          "korean_combined": 971
+        }
+      },
+      "Hampshire": {
+        "2020": {
+          "korean_combined": 880
+        }
+      },
+      "Middlesex": {
+        "2020": {
+          "korean_combined": 14750
+        }
+      },
+      "Nantucket": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Norfolk": {
+        "2020": {
+          "korean_combined": 4903
+        }
+      },
+      "Plymouth": {
+        "2020": {
+          "korean_combined": 908
+        }
+      },
+      "Suffolk": {
+        "2020": {
+          "korean_combined": 5533
+        }
+      },
+      "Worcester": {
+        "2020": {
+          "korean_combined": 2665
+        }
+      }
+    },
+    "MI": {
+      "Allegan": {
+        "2020": {
+          "korean_combined": 235
+        }
+      },
+      "Alpena": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Barry": {
+        "2020": {
+          "korean_combined": 100
+        }
+      },
+      "Bay": {
+        "2020": {
+          "korean_combined": 160
+        }
+      },
+      "Berrien": {
+        "2020": {
+          "korean_combined": 649
+        }
+      },
+      "Branch": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Calhoun": {
+        "2020": {
+          "korean_combined": 268
+        }
+      },
+      "Cass": {
+        "2020": {
+          "korean_combined": 79
+        }
+      },
+      "Charlevoix": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Cheboygan": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Chippewa": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 259
+        }
+      },
+      "Delta": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "Dickinson": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Eaton": {
+        "2020": {
+          "korean_combined": 283
+        }
+      },
+      "Emmet": {
+        "2020": {
+          "korean_combined": 56
+        }
+      },
+      "Genesee": {
+        "2020": {
+          "korean_combined": 835
+        }
+      },
+      "Grand Traverse": {
+        "2020": {
+          "korean_combined": 182
+        }
+      },
+      "Gratiot": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Hillsdale": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Houghton": {
+        "2020": {
+          "korean_combined": 113
+        }
+      },
+      "Huron": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Ingham": {
+        "2020": {
+          "korean_combined": 1742
+        }
+      },
+      "Ionia": {
+        "2020": {
+          "korean_combined": 86
+        }
+      },
+      "Iosco": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Isabella": {
+        "2020": {
+          "korean_combined": 213
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 282
+        }
+      },
+      "Kalamazoo": {
+        "2020": {
+          "korean_combined": 1046
+        }
+      },
+      "Kent": {
+        "2020": {
+          "korean_combined": 3234
+        }
+      },
+      "Lapeer": {
+        "2020": {
+          "korean_combined": 92
+        }
+      },
+      "Leelanau": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Lenawee": {
+        "2020": {
+          "korean_combined": 165
+        }
+      },
+      "Livingston": {
+        "2020": {
+          "korean_combined": 462
+        }
+      },
+      "Macomb": {
+        "2020": {
+          "korean_combined": 2469
+        }
+      },
+      "Marquette": {
+        "2020": {
+          "korean_combined": 143
+        }
+      },
+      "Mason": {
+        "2020": {
+          "korean_combined": 58
+        }
+      },
+      "Mecosta": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Midland": {
+        "2020": {
+          "korean_combined": 316
+        }
+      },
+      "Missaukee": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 244
+        }
+      },
+      "Montcalm": {
+        "2020": {
+          "korean_combined": 83
+        }
+      },
+      "Muskegon": {
+        "2020": {
+          "korean_combined": 413
+        }
+      },
+      "Newaygo": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Oakland": {
+        "2020": {
+          "korean_combined": 9966
+        }
+      },
+      "Oceana": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Otsego": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Ottawa": {
+        "2020": {
+          "korean_combined": 1397
+        }
+      },
+      "Saginaw": {
+        "2020": {
+          "korean_combined": 238
+        }
+      },
+      "St. Clair": {
+        "2020": {
+          "korean_combined": 166
+        }
+      },
+      "St. Joseph": {
+        "2020": {
+          "korean_combined": 134
+        }
+      },
+      "Shiawassee": {
+        "2020": {
+          "korean_combined": 86
+        }
+      },
+      "Tuscola": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Van Buren": {
+        "2020": {
+          "korean_combined": 120
+        }
+      },
+      "Washtenaw": {
+        "2020": {
+          "korean_combined": 4790
+        }
+      },
+      "Wayne": {
+        "2020": {
+          "korean_combined": 3528
+        }
+      },
+      "Wexford": {
+        "2020": {
+          "korean_combined": 65
+        }
+      }
+    },
+    "MN": {
+      "Anoka": {
+        "2020": {
+          "korean_combined": 1609
+        }
+      },
+      "Becker": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Beltrami": {
+        "2020": {
+          "korean_combined": 108
+        }
+      },
+      "Benton": {
+        "2020": {
+          "korean_combined": 100
+        }
+      },
+      "Blue Earth": {
+        "2020": {
+          "korean_combined": 329
+        }
+      },
+      "Brown": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Carlton": {
+        "2020": {
+          "korean_combined": 67
+        }
+      },
+      "Carver": {
+        "2020": {
+          "korean_combined": 610
+        }
+      },
+      "Cass": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Chisago": {
+        "2020": {
+          "korean_combined": 154
+        }
+      },
+      "Clay": {
+        "2020": {
+          "korean_combined": 152
+        }
+      },
+      "Cook": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Crow Wing": {
+        "2020": {
+          "korean_combined": 138
+        }
+      },
+      "Dakota": {
+        "2020": {
+          "korean_combined": 2637
+        }
+      },
+      "Dodge": {
+        "2020": {
+          "korean_combined": 73
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 99
+        }
+      },
+      "Freeborn": {
+        "2020": {
+          "korean_combined": 62
+        }
+      },
+      "Goodhue": {
+        "2020": {
+          "korean_combined": 127
+        }
+      },
+      "Hennepin": {
+        "2020": {
+          "korean_combined": 9221
+        }
+      },
+      "Houston": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Hubbard": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Isanti": {
+        "2020": {
+          "korean_combined": 87
+        }
+      },
+      "Itasca": {
+        "2020": {
+          "korean_combined": 84
+        }
+      },
+      "Kandiyohi": {
+        "2020": {
+          "korean_combined": 57
+        }
+      },
+      "Lake": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Le Sueur": {
+        "2020": {
+          "korean_combined": 71
+        }
+      },
+      "Lyon": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "McLeod": {
+        "2020": {
+          "korean_combined": 71
+        }
+      },
+      "Martin": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Meeker": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Mille Lacs": {
+        "2020": {
+          "korean_combined": 59
+        }
+      },
+      "Morrison": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Mower": {
+        "2020": {
+          "korean_combined": 75
+        }
+      },
+      "Nicollet": {
+        "2020": {
+          "korean_combined": 82
+        }
+      },
+      "Nobles": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Olmsted": {
+        "2020": {
+          "korean_combined": 978
+        }
+      },
+      "Otter Tail": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Pennington": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Pine": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 67
+        }
+      },
+      "Ramsey": {
+        "2020": {
+          "korean_combined": 3266
+        }
+      },
+      "Redwood": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Renville": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Rice": {
+        "2020": {
+          "korean_combined": 196
+        }
+      },
+      "St. Louis": {
+        "2020": {
+          "korean_combined": 541
+        }
+      },
+      "Scott": {
+        "2020": {
+          "korean_combined": 732
+        }
+      },
+      "Sherburne": {
+        "2020": {
+          "korean_combined": 278
+        }
+      },
+      "Sibley": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Stearns": {
+        "2020": {
+          "korean_combined": 419
+        }
+      },
+      "Steele": {
+        "2020": {
+          "korean_combined": 79
+        }
+      },
+      "Todd": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Waseca": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 1638
+        }
+      },
+      "Winona": {
+        "2020": {
+          "korean_combined": 136
+        }
+      },
+      "Wright": {
+        "2020": {
+          "korean_combined": 549
+        }
+      }
+    },
+    "MS": {
+      "DeSoto": {
+        "2020": {
+          "korean_combined": 325
+        }
+      },
+      "Forrest": {
+        "2020": {
+          "korean_combined": 90
+        }
+      },
+      "George": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Harrison": {
+        "2020": {
+          "korean_combined": 541
+        }
+      },
+      "Hinds": {
+        "2020": {
+          "korean_combined": 141
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 187
+        }
+      },
+      "Jones": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Lafayette": {
+        "2020": {
+          "korean_combined": 185
+        }
+      },
+      "Lamar": {
+        "2020": {
+          "korean_combined": 125
+        }
+      },
+      "Lauderdale": {
+        "2020": {
+          "korean_combined": 46
+        }
+      },
+      "Lee": {
+        "2020": {
+          "korean_combined": 65
+        }
+      },
+      "Lowndes": {
+        "2020": {
+          "korean_combined": 94
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 200
+        }
+      },
+      "Marshall": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Oktibbeha": {
+        "2020": {
+          "korean_combined": 159
+        }
+      },
+      "Pike": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Rankin": {
+        "2020": {
+          "korean_combined": 154
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 33
+        }
+      }
+    },
+    "MO": {
+      "Adair": {
+        "2020": {
+          "korean_combined": 85
+        }
+      },
+      "Boone": {
+        "2020": {
+          "korean_combined": 1146
+        }
+      },
+      "Buchanan": {
+        "2020": {
+          "korean_combined": 128
+        }
+      },
+      "Butler": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Callaway": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Camden": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Cape Girardeau": {
+        "2020": {
+          "korean_combined": 111
+        }
+      },
+      "Cass": {
+        "2020": {
+          "korean_combined": 202
+        }
+      },
+      "Christian": {
+        "2020": {
+          "korean_combined": 184
+        }
+      },
+      "Clay": {
+        "2020": {
+          "korean_combined": 713
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Cole": {
+        "2020": {
+          "korean_combined": 124
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 130
+        }
+      },
+      "Greene": {
+        "2020": {
+          "korean_combined": 1059
+        }
+      },
+      "Howell": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 1925
+        }
+      },
+      "Jasper": {
+        "2020": {
+          "korean_combined": 206
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 249
+        }
+      },
+      "Johnson": {
+        "2020": {
+          "korean_combined": 191
+        }
+      },
+      "Laclede": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Lafayette": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Macon": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Morgan": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Newton": {
+        "2020": {
+          "korean_combined": 65
+        }
+      },
+      "Pettis": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Phelps": {
+        "2020": {
+          "korean_combined": 112
+        }
+      },
+      "Platte": {
+        "2020": {
+          "korean_combined": 465
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Pulaski": {
+        "2020": {
+          "korean_combined": 697
+        }
+      },
+      "Ray": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "St. Charles": {
+        "2020": {
+          "korean_combined": 1311
+        }
+      },
+      "St. Francois": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "St. Louis": {
+        "2020": {
+          "korean_combined": 3916
+        }
+      },
+      "Stone": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Taney": {
+        "2020": {
+          "korean_combined": 84
+        }
+      },
+      "Texas": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Webster": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "St. Louis city": {
+        "2020": {
+          "korean_combined": 1053
+        }
+      }
+    },
+    "MT": {
+      "Cascade": {
+        "2020": {
+          "korean_combined": 199
+        }
+      },
+      "Flathead": {
+        "2020": {
+          "korean_combined": 203
+        }
+      },
+      "Gallatin": {
+        "2020": {
+          "korean_combined": 368
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Lake": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Lewis and Clark": {
+        "2020": {
+          "korean_combined": 159
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Missoula": {
+        "2020": {
+          "korean_combined": 268
+        }
+      },
+      "Ravalli": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Silver Bow": {
+        "2020": {
+          "korean_combined": 46
+        }
+      },
+      "Yellowstone": {
+        "2020": {
+          "korean_combined": 316
+        }
+      }
+    },
+    "NE": {
+      "Adams": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Buffalo": {
+        "2020": {
+          "korean_combined": 79
+        }
+      },
+      "Cass": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Dakota": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Dodge": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 1979
+        }
+      },
+      "Hall": {
+        "2020": {
+          "korean_combined": 96
+        }
+      },
+      "Lancaster": {
+        "2020": {
+          "korean_combined": 1026
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Platte": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Sarpy": {
+        "2020": {
+          "korean_combined": 922
+        }
+      },
+      "Saunders": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Scotts Bluff": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 31
+        }
+      }
+    },
+    "NV": {
+      "Churchill": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Clark": {
+        "2020": {
+          "korean_combined": 21528
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 88
+        }
+      },
+      "Elko": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Humboldt": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Lyon": {
+        "2020": {
+          "korean_combined": 123
+        }
+      },
+      "Nye": {
+        "2020": {
+          "korean_combined": 117
+        }
+      },
+      "Washoe": {
+        "2020": {
+          "korean_combined": 2364
+        }
+      },
+      "Carson City": {
+        "2020": {
+          "korean_combined": 110
+        }
+      }
+    },
+    "NH": {
+      "Belknap": {
+        "2020": {
+          "korean_combined": 101
+        }
+      },
+      "Carroll": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Cheshire": {
+        "2020": {
+          "korean_combined": 151
+        }
+      },
+      "Coos": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Grafton": {
+        "2020": {
+          "korean_combined": 425
+        }
+      },
+      "Hillsborough": {
+        "2020": {
+          "korean_combined": 1224
+        }
+      },
+      "Merrimack": {
+        "2020": {
+          "korean_combined": 332
+        }
+      },
+      "Rockingham": {
+        "2020": {
+          "korean_combined": 877
+        }
+      },
+      "Strafford": {
+        "2020": {
+          "korean_combined": 345
+        }
+      },
+      "Sullivan": {
+        "2020": {
+          "korean_combined": 68
+        }
+      }
+    },
+    "NJ": {
+      "Atlantic": {
+        "2020": {
+          "korean_combined": 881
+        }
+      },
+      "Bergen": {
+        "2020": {
+          "korean_combined": 66119
+        }
+      },
+      "Burlington": {
+        "2020": {
+          "korean_combined": 3342
+        }
+      },
+      "Camden": {
+        "2020": {
+          "korean_combined": 3125
+        }
+      },
+      "Cape May": {
+        "2020": {
+          "korean_combined": 131
+        }
+      },
+      "Cumberland": {
+        "2020": {
+          "korean_combined": 162
+        }
+      },
+      "Essex": {
+        "2020": {
+          "korean_combined": 3541
+        }
+      },
+      "Gloucester": {
+        "2020": {
+          "korean_combined": 857
+        }
+      },
+      "Hudson": {
+        "2020": {
+          "korean_combined": 6120
+        }
+      },
+      "Hunterdon": {
+        "2020": {
+          "korean_combined": 499
+        }
+      },
+      "Mercer": {
+        "2020": {
+          "korean_combined": 2750
+        }
+      },
+      "Middlesex": {
+        "2020": {
+          "korean_combined": 6365
+        }
+      },
+      "Monmouth": {
+        "2020": {
+          "korean_combined": 3096
+        }
+      },
+      "Morris": {
+        "2020": {
+          "korean_combined": 3667
+        }
+      },
+      "Ocean": {
+        "2020": {
+          "korean_combined": 1176
+        }
+      },
+      "Passaic": {
+        "2020": {
+          "korean_combined": 2271
+        }
+      },
+      "Salem": {
+        "2020": {
+          "korean_combined": 131
+        }
+      },
+      "Somerset": {
+        "2020": {
+          "korean_combined": 3078
+        }
+      },
+      "Sussex": {
+        "2020": {
+          "korean_combined": 516
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 1948
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 263
+        }
+      }
+    },
+    "NM": {
+      "Bernalillo": {
+        "2020": {
+          "korean_combined": 2364
+        }
+      },
+      "Chaves": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Curry": {
+        "2020": {
+          "korean_combined": 120
+        }
+      },
+      "DoÃ±a Ana": {
+        "2020": {
+          "korean_combined": 371
+        }
+      },
+      "Eddy": {
+        "2020": {
+          "korean_combined": 76
+        }
+      },
+      "Grant": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Lea": {
+        "2020": {
+          "korean_combined": 62
+        }
+      },
+      "Los Alamos": {
+        "2020": {
+          "korean_combined": 194
+        }
+      },
+      "McKinley": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Otero": {
+        "2020": {
+          "korean_combined": 216
+        }
+      },
+      "Sandoval": {
+        "2020": {
+          "korean_combined": 391
+        }
+      },
+      "San Juan": {
+        "2020": {
+          "korean_combined": 116
+        }
+      },
+      "Santa Fe": {
+        "2020": {
+          "korean_combined": 303
+        }
+      },
+      "Taos": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Valencia": {
+        "2020": {
+          "korean_combined": 90
+        }
+      }
+    },
+    "NY": {
+      "Albany": {
+        "2020": {
+          "korean_combined": 1601
+        }
+      },
+      "Allegany": {
+        "2020": {
+          "korean_combined": 71
+        }
+      },
+      "Bronx": {
+        "2020": {
+          "korean_combined": 2630
+        }
+      },
+      "Broome": {
+        "2020": {
+          "korean_combined": 653
+        }
+      },
+      "Cattaraugus": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "Cayuga": {
+        "2020": {
+          "korean_combined": 92
+        }
+      },
+      "Chautauqua": {
+        "2020": {
+          "korean_combined": 133
+        }
+      },
+      "Chemung": {
+        "2020": {
+          "korean_combined": 195
+        }
+      },
+      "Chenango": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 141
+        }
+      },
+      "Columbia": {
+        "2020": {
+          "korean_combined": 118
+        }
+      },
+      "Cortland": {
+        "2020": {
+          "korean_combined": 146
+        }
+      },
+      "Delaware": {
+        "2020": {
+          "korean_combined": 65
+        }
+      },
+      "Dutchess": {
+        "2020": {
+          "korean_combined": 1053
+        }
+      },
+      "Erie": {
+        "2020": {
+          "korean_combined": 2781
+        }
+      },
+      "Essex": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Fulton": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Genesee": {
+        "2020": {
+          "korean_combined": 75
+        }
+      },
+      "Greene": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Herkimer": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 478
+        }
+      },
+      "Kings": {
+        "2020": {
+          "korean_combined": 13898
+        }
+      },
+      "Livingston": {
+        "2020": {
+          "korean_combined": 132
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 97
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 3210
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 93
+        }
+      },
+      "Nassau": {
+        "2020": {
+          "korean_combined": 16607
+        }
+      },
+      "New York": {
+        "2020": {
+          "korean_combined": 24594
+        }
+      },
+      "Niagara": {
+        "2020": {
+          "korean_combined": 355
+        }
+      },
+      "Oneida": {
+        "2020": {
+          "korean_combined": 397
+        }
+      },
+      "Onondaga": {
+        "2020": {
+          "korean_combined": 1900
+        }
+      },
+      "Ontario": {
+        "2020": {
+          "korean_combined": 308
+        }
+      },
+      "Orange": {
+        "2020": {
+          "korean_combined": 1481
+        }
+      },
+      "Orleans": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Oswego": {
+        "2020": {
+          "korean_combined": 156
+        }
+      },
+      "Otsego": {
+        "2020": {
+          "korean_combined": 121
+        }
+      },
+      "Putnam": {
+        "2020": {
+          "korean_combined": 272
+        }
+      },
+      "Queens": {
+        "2020": {
+          "korean_combined": 61237
+        }
+      },
+      "Rensselaer": {
+        "2020": {
+          "korean_combined": 502
+        }
+      },
+      "Richmond": {
+        "2020": {
+          "korean_combined": 2812
+        }
+      },
+      "Rockland": {
+        "2020": {
+          "korean_combined": 2090
+        }
+      },
+      "St. Lawrence": {
+        "2020": {
+          "korean_combined": 132
+        }
+      },
+      "Saratoga": {
+        "2020": {
+          "korean_combined": 1067
+        }
+      },
+      "Schenectady": {
+        "2020": {
+          "korean_combined": 557
+        }
+      },
+      "Schoharie": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Seneca": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Steuben": {
+        "2020": {
+          "korean_combined": 184
+        }
+      },
+      "Suffolk": {
+        "2020": {
+          "korean_combined": 6963
+        }
+      },
+      "Sullivan": {
+        "2020": {
+          "korean_combined": 259
+        }
+      },
+      "Tioga": {
+        "2020": {
+          "korean_combined": 61
+        }
+      },
+      "Tompkins": {
+        "2020": {
+          "korean_combined": 1334
+        }
+      },
+      "Ulster": {
+        "2020": {
+          "korean_combined": 510
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 145
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 61
+        }
+      },
+      "Wayne": {
+        "2020": {
+          "korean_combined": 127
+        }
+      },
+      "Westchester": {
+        "2020": {
+          "korean_combined": 8019
+        }
+      },
+      "Wyoming": {
+        "2020": {
+          "korean_combined": 41
+        }
+      }
+    },
+    "NC": {
+      "Alamance": {
+        "2020": {
+          "korean_combined": 364
+        }
+      },
+      "Ashe": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Beaufort": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Brunswick": {
+        "2020": {
+          "korean_combined": 149
+        }
+      },
+      "Buncombe": {
+        "2020": {
+          "korean_combined": 665
+        }
+      },
+      "Burke": {
+        "2020": {
+          "korean_combined": 76
+        }
+      },
+      "Cabarrus": {
+        "2020": {
+          "korean_combined": 526
+        }
+      },
+      "Caldwell": {
+        "2020": {
+          "korean_combined": 80
+        }
+      },
+      "Carteret": {
+        "2020": {
+          "korean_combined": 124
+        }
+      },
+      "Catawba": {
+        "2020": {
+          "korean_combined": 177
+        }
+      },
+      "Chatham": {
+        "2020": {
+          "korean_combined": 254
+        }
+      },
+      "Cherokee": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Cleveland": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Craven": {
+        "2020": {
+          "korean_combined": 246
+        }
+      },
+      "Cumberland": {
+        "2020": {
+          "korean_combined": 3469
+        }
+      },
+      "Currituck": {
+        "2020": {
+          "korean_combined": 57
+        }
+      },
+      "Dare": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Davidson": {
+        "2020": {
+          "korean_combined": 184
+        }
+      },
+      "Davie": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Durham": {
+        "2020": {
+          "korean_combined": 1769
+        }
+      },
+      "Forsyth": {
+        "2020": {
+          "korean_combined": 816
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Gaston": {
+        "2020": {
+          "korean_combined": 294
+        }
+      },
+      "Granville": {
+        "2020": {
+          "korean_combined": 69
+        }
+      },
+      "Guilford": {
+        "2020": {
+          "korean_combined": 2181
+        }
+      },
+      "Harnett": {
+        "2020": {
+          "korean_combined": 600
+        }
+      },
+      "Haywood": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Henderson": {
+        "2020": {
+          "korean_combined": 213
+        }
+      },
+      "Hertford": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Hoke": {
+        "2020": {
+          "korean_combined": 308
+        }
+      },
+      "Iredell": {
+        "2020": {
+          "korean_combined": 321
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Johnston": {
+        "2020": {
+          "korean_combined": 349
+        }
+      },
+      "Lee": {
+        "2020": {
+          "korean_combined": 105
+        }
+      },
+      "Lenoir": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 129
+        }
+      },
+      "Macon": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Mecklenburg": {
+        "2020": {
+          "korean_combined": 4588
+        }
+      },
+      "Moore": {
+        "2020": {
+          "korean_combined": 428
+        }
+      },
+      "Nash": {
+        "2020": {
+          "korean_combined": 65
+        }
+      },
+      "New Hanover": {
+        "2020": {
+          "korean_combined": 633
+        }
+      },
+      "Onslow": {
+        "2020": {
+          "korean_combined": 606
+        }
+      },
+      "Orange": {
+        "2020": {
+          "korean_combined": 1535
+        }
+      },
+      "Pasquotank": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Pender": {
+        "2020": {
+          "korean_combined": 81
+        }
+      },
+      "Person": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Pitt": {
+        "2020": {
+          "korean_combined": 447
+        }
+      },
+      "Randolph": {
+        "2020": {
+          "korean_combined": 120
+        }
+      },
+      "Richmond": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Robeson": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Rockingham": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Rowan": {
+        "2020": {
+          "korean_combined": 112
+        }
+      },
+      "Rutherford": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Sampson": {
+        "2020": {
+          "korean_combined": 59
+        }
+      },
+      "Scotland": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Stanly": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Stokes": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Surry": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Transylvania": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 1029
+        }
+      },
+      "Vance": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Wake": {
+        "2020": {
+          "korean_combined": 7409
+        }
+      },
+      "Watauga": {
+        "2020": {
+          "korean_combined": 185
+        }
+      },
+      "Wayne": {
+        "2020": {
+          "korean_combined": 298
+        }
+      },
+      "Wilkes": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Wilson": {
+        "2020": {
+          "korean_combined": 84
+        }
+      },
+      "Yadkin": {
+        "2020": {
+          "korean_combined": 24
+        }
+      }
+    },
+    "ND": {
+      "Burleigh": {
+        "2020": {
+          "korean_combined": 130
+        }
+      },
+      "Cass": {
+        "2020": {
+          "korean_combined": 526
+        }
+      },
+      "Grand Forks": {
+        "2020": {
+          "korean_combined": 284
+        }
+      },
+      "Morton": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Richland": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Stark": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Ward": {
+        "2020": {
+          "korean_combined": 210
+        }
+      },
+      "Williams": {
+        "2020": {
+          "korean_combined": 50
+        }
+      }
+    },
+    "OH": {
+      "Allen": {
+        "2020": {
+          "korean_combined": 119
+        }
+      },
+      "Ashland": {
+        "2020": {
+          "korean_combined": 56
+        }
+      },
+      "Ashtabula": {
+        "2020": {
+          "korean_combined": 71
+        }
+      },
+      "Athens": {
+        "2020": {
+          "korean_combined": 109
+        }
+      },
+      "Auglaize": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Belmont": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Butler": {
+        "2020": {
+          "korean_combined": 994
+        }
+      },
+      "Champaign": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Clark": {
+        "2020": {
+          "korean_combined": 209
+        }
+      },
+      "Clermont": {
+        "2020": {
+          "korean_combined": 308
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Columbiana": {
+        "2020": {
+          "korean_combined": 88
+        }
+      },
+      "Coshocton": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Crawford": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Cuyahoga": {
+        "2020": {
+          "korean_combined": 3383
+        }
+      },
+      "Delaware": {
+        "2020": {
+          "korean_combined": 1067
+        }
+      },
+      "Erie": {
+        "2020": {
+          "korean_combined": 88
+        }
+      },
+      "Fairfield": {
+        "2020": {
+          "korean_combined": 276
+        }
+      },
+      "Fayette": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 5399
+        }
+      },
+      "Fulton": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Geauga": {
+        "2020": {
+          "korean_combined": 118
+        }
+      },
+      "Greene": {
+        "2020": {
+          "korean_combined": 932
+        }
+      },
+      "Hamilton": {
+        "2020": {
+          "korean_combined": 2162
+        }
+      },
+      "Hancock": {
+        "2020": {
+          "korean_combined": 136
+        }
+      },
+      "Hardin": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Henry": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "Huron": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 59
+        }
+      },
+      "Knox": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Lake": {
+        "2020": {
+          "korean_combined": 398
+        }
+      },
+      "Lawrence": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Licking": {
+        "2020": {
+          "korean_combined": 302
+        }
+      },
+      "Logan": {
+        "2020": {
+          "korean_combined": 72
+        }
+      },
+      "Lorain": {
+        "2020": {
+          "korean_combined": 579
+        }
+      },
+      "Lucas": {
+        "2020": {
+          "korean_combined": 874
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Mahoning": {
+        "2020": {
+          "korean_combined": 264
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Medina": {
+        "2020": {
+          "korean_combined": 301
+        }
+      },
+      "Mercer": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Miami": {
+        "2020": {
+          "korean_combined": 137
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 1479
+        }
+      },
+      "Morrow": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Muskingum": {
+        "2020": {
+          "korean_combined": 67
+        }
+      },
+      "Ottawa": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Pickaway": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Portage": {
+        "2020": {
+          "korean_combined": 346
+        }
+      },
+      "Preble": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Richland": {
+        "2020": {
+          "korean_combined": 192
+        }
+      },
+      "Ross": {
+        "2020": {
+          "korean_combined": 93
+        }
+      },
+      "Sandusky": {
+        "2020": {
+          "korean_combined": 72
+        }
+      },
+      "Scioto": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Seneca": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Shelby": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Stark": {
+        "2020": {
+          "korean_combined": 559
+        }
+      },
+      "Summit": {
+        "2020": {
+          "korean_combined": 1206
+        }
+      },
+      "Trumbull": {
+        "2020": {
+          "korean_combined": 225
+        }
+      },
+      "Tuscarawas": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 259
+        }
+      },
+      "Van Wert": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 950
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Wayne": {
+        "2020": {
+          "korean_combined": 142
+        }
+      },
+      "Williams": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Wood": {
+        "2020": {
+          "korean_combined": 370
+        }
+      },
+      "Wyandot": {
+        "2020": {
+          "korean_combined": 28
+        }
+      }
+    },
+    "OK": {
+      "Beckham": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Bryan": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Canadian": {
+        "2020": {
+          "korean_combined": 398
+        }
+      },
+      "Carter": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "Cherokee": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Cleveland": {
+        "2020": {
+          "korean_combined": 1594
+        }
+      },
+      "Comanche": {
+        "2020": {
+          "korean_combined": 1735
+        }
+      },
+      "Creek": {
+        "2020": {
+          "korean_combined": 64
+        }
+      },
+      "Custer": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Garfield": {
+        "2020": {
+          "korean_combined": 225
+        }
+      },
+      "Garvin": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Grady": {
+        "2020": {
+          "korean_combined": 91
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Kay": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Le Flore": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Logan": {
+        "2020": {
+          "korean_combined": 97
+        }
+      },
+      "McClain": {
+        "2020": {
+          "korean_combined": 76
+        }
+      },
+      "Mayes": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Muskogee": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "Noble": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Oklahoma": {
+        "2020": {
+          "korean_combined": 2703
+        }
+      },
+      "Okmulgee": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Osage": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Ottawa": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Payne": {
+        "2020": {
+          "korean_combined": 336
+        }
+      },
+      "Pittsburg": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Pontotoc": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Pottawatomie": {
+        "2020": {
+          "korean_combined": 76
+        }
+      },
+      "Rogers": {
+        "2020": {
+          "korean_combined": 128
+        }
+      },
+      "Sequoyah": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Stephens": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Tulsa": {
+        "2020": {
+          "korean_combined": 2048
+        }
+      },
+      "Wagoner": {
+        "2020": {
+          "korean_combined": 145
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 80
+        }
+      },
+      "Woodward": {
+        "2020": {
+          "korean_combined": 26
+        }
+      }
+    },
+    "OR": {
+      "Baker": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Benton": {
+        "2020": {
+          "korean_combined": 864
+        }
+      },
+      "Clackamas": {
+        "2020": {
+          "korean_combined": 3575
+        }
+      },
+      "Clatsop": {
+        "2020": {
+          "korean_combined": 95
+        }
+      },
+      "Columbia": {
+        "2020": {
+          "korean_combined": 137
+        }
+      },
+      "Coos": {
+        "2020": {
+          "korean_combined": 182
+        }
+      },
+      "Crook": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Curry": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Deschutes": {
+        "2020": {
+          "korean_combined": 635
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 246
+        }
+      },
+      "Hood River": {
+        "2020": {
+          "korean_combined": 59
+        }
+      },
+      "Jackson": {
+        "2020": {
+          "korean_combined": 579
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Josephine": {
+        "2020": {
+          "korean_combined": 167
+        }
+      },
+      "Klamath": {
+        "2020": {
+          "korean_combined": 125
+        }
+      },
+      "Lane": {
+        "2020": {
+          "korean_combined": 1898
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 122
+        }
+      },
+      "Linn": {
+        "2020": {
+          "korean_combined": 400
+        }
+      },
+      "Malheur": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 1052
+        }
+      },
+      "Multnomah": {
+        "2020": {
+          "korean_combined": 5664
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 281
+        }
+      },
+      "Tillamook": {
+        "2020": {
+          "korean_combined": 70
+        }
+      },
+      "Umatilla": {
+        "2020": {
+          "korean_combined": 111
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Wasco": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 9312
+        }
+      },
+      "Yamhill": {
+        "2020": {
+          "korean_combined": 327
+        }
+      }
+    },
+    "PA": {
+      "Adams": {
+        "2020": {
+          "korean_combined": 173
+        }
+      },
+      "Allegheny": {
+        "2020": {
+          "korean_combined": 4357
+        }
+      },
+      "Armstrong": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Beaver": {
+        "2020": {
+          "korean_combined": 199
+        }
+      },
+      "Berks": {
+        "2020": {
+          "korean_combined": 737
+        }
+      },
+      "Blair": {
+        "2020": {
+          "korean_combined": 165
+        }
+      },
+      "Bradford": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Bucks": {
+        "2020": {
+          "korean_combined": 3824
+        }
+      },
+      "Butler": {
+        "2020": {
+          "korean_combined": 409
+        }
+      },
+      "Cambria": {
+        "2020": {
+          "korean_combined": 154
+        }
+      },
+      "Carbon": {
+        "2020": {
+          "korean_combined": 72
+        }
+      },
+      "Centre": {
+        "2020": {
+          "korean_combined": 1324
+        }
+      },
+      "Chester": {
+        "2020": {
+          "korean_combined": 2675
+        }
+      },
+      "Clarion": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Clearfield": {
+        "2020": {
+          "korean_combined": 75
+        }
+      },
+      "Clinton": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Columbia": {
+        "2020": {
+          "korean_combined": 75
+        }
+      },
+      "Crawford": {
+        "2020": {
+          "korean_combined": 87
+        }
+      },
+      "Cumberland": {
+        "2020": {
+          "korean_combined": 1368
+        }
+      },
+      "Dauphin": {
+        "2020": {
+          "korean_combined": 734
+        }
+      },
+      "Delaware": {
+        "2020": {
+          "korean_combined": 3592
+        }
+      },
+      "Erie": {
+        "2020": {
+          "korean_combined": 410
+        }
+      },
+      "Fayette": {
+        "2020": {
+          "korean_combined": 96
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 316
+        }
+      },
+      "Fulton": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Huntingdon": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Indiana": {
+        "2020": {
+          "korean_combined": 76
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Lackawanna": {
+        "2020": {
+          "korean_combined": 320
+        }
+      },
+      "Lancaster": {
+        "2020": {
+          "korean_combined": 1085
+        }
+      },
+      "Lawrence": {
+        "2020": {
+          "korean_combined": 91
+        }
+      },
+      "Lebanon": {
+        "2020": {
+          "korean_combined": 227
+        }
+      },
+      "Lehigh": {
+        "2020": {
+          "korean_combined": 1114
+        }
+      },
+      "Luzerne": {
+        "2020": {
+          "korean_combined": 377
+        }
+      },
+      "Lycoming": {
+        "2020": {
+          "korean_combined": 204
+        }
+      },
+      "Mercer": {
+        "2020": {
+          "korean_combined": 170
+        }
+      },
+      "Mifflin": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 391
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 14804
+        }
+      },
+      "Montour": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Northampton": {
+        "2020": {
+          "korean_combined": 849
+        }
+      },
+      "Northumberland": {
+        "2020": {
+          "korean_combined": 90
+        }
+      },
+      "Perry": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Philadelphia": {
+        "2020": {
+          "korean_combined": 7351
+        }
+      },
+      "Pike": {
+        "2020": {
+          "korean_combined": 185
+        }
+      },
+      "Potter": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Schuylkill": {
+        "2020": {
+          "korean_combined": 141
+        }
+      },
+      "Snyder": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Somerset": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Susquehanna": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Tioga": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 123
+        }
+      },
+      "Venango": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 299
+        }
+      },
+      "Wayne": {
+        "2020": {
+          "korean_combined": 69
+        }
+      },
+      "Westmoreland": {
+        "2020": {
+          "korean_combined": 478
+        }
+      },
+      "Wyoming": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "York": {
+        "2020": {
+          "korean_combined": 1080
+        }
+      }
+    },
+    "RI": {
+      "Bristol": {
+        "2020": {
+          "korean_combined": 193
+        }
+      },
+      "Kent": {
+        "2020": {
+          "korean_combined": 368
+        }
+      },
+      "Newport": {
+        "2020": {
+          "korean_combined": 246
+        }
+      },
+      "Providence": {
+        "2020": {
+          "korean_combined": 1731
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 314
+        }
+      }
+    },
+    "SC": {
+      "Aiken": {
+        "2020": {
+          "korean_combined": 297
+        }
+      },
+      "Anderson": {
+        "2020": {
+          "korean_combined": 292
+        }
+      },
+      "Beaufort": {
+        "2020": {
+          "korean_combined": 280
+        }
+      },
+      "Berkeley": {
+        "2020": {
+          "korean_combined": 478
+        }
+      },
+      "Charleston": {
+        "2020": {
+          "korean_combined": 975
+        }
+      },
+      "Chester": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Chesterfield": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Darlington": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Dorchester": {
+        "2020": {
+          "korean_combined": 400
+        }
+      },
+      "Edgefield": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Fairfield": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Florence": {
+        "2020": {
+          "korean_combined": 174
+        }
+      },
+      "Georgetown": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Greenville": {
+        "2020": {
+          "korean_combined": 1333
+        }
+      },
+      "Greenwood": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Horry": {
+        "2020": {
+          "korean_combined": 569
+        }
+      },
+      "Jasper": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Kershaw": {
+        "2020": {
+          "korean_combined": 140
+        }
+      },
+      "Lancaster": {
+        "2020": {
+          "korean_combined": 222
+        }
+      },
+      "Laurens": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Lexington": {
+        "2020": {
+          "korean_combined": 763
+        }
+      },
+      "Newberry": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Oconee": {
+        "2020": {
+          "korean_combined": 94
+        }
+      },
+      "Orangeburg": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Pickens": {
+        "2020": {
+          "korean_combined": 218
+        }
+      },
+      "Richland": {
+        "2020": {
+          "korean_combined": 2122
+        }
+      },
+      "Spartanburg": {
+        "2020": {
+          "korean_combined": 435
+        }
+      },
+      "Sumter": {
+        "2020": {
+          "korean_combined": 281
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 27
+        }
+      },
+      "York": {
+        "2020": {
+          "korean_combined": 644
+        }
+      }
+    },
+    "SD": {
+      "Beadle": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Brookings": {
+        "2020": {
+          "korean_combined": 125
+        }
+      },
+      "Brown": {
+        "2020": {
+          "korean_combined": 81
+        }
+      },
+      "Clay": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Codington": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Davison": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Hughes": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Lawrence": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 137
+        }
+      },
+      "Meade": {
+        "2020": {
+          "korean_combined": 81
+        }
+      },
+      "Minnehaha": {
+        "2020": {
+          "korean_combined": 430
+        }
+      },
+      "Pennington": {
+        "2020": {
+          "korean_combined": 301
+        }
+      },
+      "Union": {
+        "2020": {
+          "korean_combined": 34
+        }
+      }
+    },
+    "TN": {
+      "Anderson": {
+        "2020": {
+          "korean_combined": 150
+        }
+      },
+      "Bedford": {
+        "2020": {
+          "korean_combined": 59
+        }
+      },
+      "Blount": {
+        "2020": {
+          "korean_combined": 170
+        }
+      },
+      "Bradley": {
+        "2020": {
+          "korean_combined": 199
+        }
+      },
+      "Carter": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Cheatham": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Claiborne": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Coffee": {
+        "2020": {
+          "korean_combined": 73
+        }
+      },
+      "Cumberland": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Davidson": {
+        "2020": {
+          "korean_combined": 2849
+        }
+      },
+      "Dickson": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Fayette": {
+        "2020": {
+          "korean_combined": 58
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 46
+        }
+      },
+      "Gibson": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Greene": {
+        "2020": {
+          "korean_combined": 49
+        }
+      },
+      "Grundy": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Hamblen": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Hamilton": {
+        "2020": {
+          "korean_combined": 1064
+        }
+      },
+      "Hawkins": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Henry": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Humphreys": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Knox": {
+        "2020": {
+          "korean_combined": 1655
+        }
+      },
+      "Lawrence": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Loudon": {
+        "2020": {
+          "korean_combined": 78
+        }
+      },
+      "McMinn": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 131
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Maury": {
+        "2020": {
+          "korean_combined": 100
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 2921
+        }
+      },
+      "Putnam": {
+        "2020": {
+          "korean_combined": 155
+        }
+      },
+      "Rhea": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Roane": {
+        "2020": {
+          "korean_combined": 61
+        }
+      },
+      "Robertson": {
+        "2020": {
+          "korean_combined": 148
+        }
+      },
+      "Rutherford": {
+        "2020": {
+          "korean_combined": 932
+        }
+      },
+      "Sevier": {
+        "2020": {
+          "korean_combined": 102
+        }
+      },
+      "Shelby": {
+        "2020": {
+          "korean_combined": 2227
+        }
+      },
+      "Stewart": {
+        "2020": {
+          "korean_combined": 55
+        }
+      },
+      "Sullivan": {
+        "2020": {
+          "korean_combined": 196
+        }
+      },
+      "Sumner": {
+        "2020": {
+          "korean_combined": 456
+        }
+      },
+      "Tipton": {
+        "2020": {
+          "korean_combined": 77
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 246
+        }
+      },
+      "Weakley": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "White": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Williamson": {
+        "2020": {
+          "korean_combined": 1538
+        }
+      },
+      "Wilson": {
+        "2020": {
+          "korean_combined": 370
+        }
+      }
+    },
+    "TX": {
+      "Angelina": {
+        "2020": {
+          "korean_combined": 59
+        }
+      },
+      "Atascosa": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Austin": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Bastrop": {
+        "2020": {
+          "korean_combined": 119
+        }
+      },
+      "Bell": {
+        "2020": {
+          "korean_combined": 5042
+        }
+      },
+      "Bexar": {
+        "2020": {
+          "korean_combined": 8295
+        }
+      },
+      "Bowie": {
+        "2020": {
+          "korean_combined": 196
+        }
+      },
+      "Brazoria": {
+        "2020": {
+          "korean_combined": 896
+        }
+      },
+      "Brazos": {
+        "2020": {
+          "korean_combined": 1594
+        }
+      },
+      "Burnet": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Caldwell": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Calhoun": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Cameron": {
+        "2020": {
+          "korean_combined": 175
+        }
+      },
+      "Chambers": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Cherokee": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Collin": {
+        "2020": {
+          "korean_combined": 11610
+        }
+      },
+      "Comal": {
+        "2020": {
+          "korean_combined": 419
+        }
+      },
+      "Cooke": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Coryell": {
+        "2020": {
+          "korean_combined": 834
+        }
+      },
+      "Dallas": {
+        "2020": {
+          "korean_combined": 11975
+        }
+      },
+      "Denton": {
+        "2020": {
+          "korean_combined": 14089
+        }
+      },
+      "Ector": {
+        "2020": {
+          "korean_combined": 120
+        }
+      },
+      "Ellis": {
+        "2020": {
+          "korean_combined": 282
+        }
+      },
+      "El Paso": {
+        "2020": {
+          "korean_combined": 3273
+        }
+      },
+      "Erath": {
+        "2020": {
+          "korean_combined": 48
+        }
+      },
+      "Fannin": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Fort Bend": {
+        "2020": {
+          "korean_combined": 4369
+        }
+      },
+      "Galveston": {
+        "2020": {
+          "korean_combined": 812
+        }
+      },
+      "Grayson": {
+        "2020": {
+          "korean_combined": 182
+        }
+      },
+      "Gregg": {
+        "2020": {
+          "korean_combined": 191
+        }
+      },
+      "Guadalupe": {
+        "2020": {
+          "korean_combined": 731
+        }
+      },
+      "Hardin": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Harris": {
+        "2020": {
+          "korean_combined": 16898
+        }
+      },
+      "Harrison": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "Hays": {
+        "2020": {
+          "korean_combined": 895
+        }
+      },
+      "Henderson": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Hidalgo": {
+        "2020": {
+          "korean_combined": 732
+        }
+      },
+      "Hill": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Hood": {
+        "2020": {
+          "korean_combined": 86
+        }
+      },
+      "Howard": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Hunt": {
+        "2020": {
+          "korean_combined": 109
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 208
+        }
+      },
+      "Johnson": {
+        "2020": {
+          "korean_combined": 328
+        }
+      },
+      "Kaufman": {
+        "2020": {
+          "korean_combined": 177
+        }
+      },
+      "Kendall": {
+        "2020": {
+          "korean_combined": 90
+        }
+      },
+      "Kerr": {
+        "2020": {
+          "korean_combined": 41
+        }
+      },
+      "Lamar": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Lampasas": {
+        "2020": {
+          "korean_combined": 177
+        }
+      },
+      "Liberty": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Lubbock": {
+        "2020": {
+          "korean_combined": 751
+        }
+      },
+      "McLennan": {
+        "2020": {
+          "korean_combined": 609
+        }
+      },
+      "Medina": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Midland": {
+        "2020": {
+          "korean_combined": 221
+        }
+      },
+      "Montague": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 1509
+        }
+      },
+      "Nacogdoches": {
+        "2020": {
+          "korean_combined": 80
+        }
+      },
+      "Navarro": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Nueces": {
+        "2020": {
+          "korean_combined": 740
+        }
+      },
+      "Orange": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Parker": {
+        "2020": {
+          "korean_combined": 275
+        }
+      },
+      "Potter": {
+        "2020": {
+          "korean_combined": 86
+        }
+      },
+      "Randall": {
+        "2020": {
+          "korean_combined": 150
+        }
+      },
+      "Rockwall": {
+        "2020": {
+          "korean_combined": 516
+        }
+      },
+      "Runnels": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "San Patricio": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Smith": {
+        "2020": {
+          "korean_combined": 352
+        }
+      },
+      "Tarrant": {
+        "2020": {
+          "korean_combined": 8187
+        }
+      },
+      "Taylor": {
+        "2020": {
+          "korean_combined": 366
+        }
+      },
+      "Titus": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Tom Green": {
+        "2020": {
+          "korean_combined": 362
+        }
+      },
+      "Travis": {
+        "2020": {
+          "korean_combined": 9205
+        }
+      },
+      "Upshur": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Val Verde": {
+        "2020": {
+          "korean_combined": 97
+        }
+      },
+      "Van Zandt": {
+        "2020": {
+          "korean_combined": 70
+        }
+      },
+      "Victoria": {
+        "2020": {
+          "korean_combined": 69
+        }
+      },
+      "Walker": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Waller": {
+        "2020": {
+          "korean_combined": 93
+        }
+      },
+      "Webb": {
+        "2020": {
+          "korean_combined": 195
+        }
+      },
+      "Wichita": {
+        "2020": {
+          "korean_combined": 411
+        }
+      },
+      "Williamson": {
+        "2020": {
+          "korean_combined": 5762
+        }
+      },
+      "Wilson": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Wise": {
+        "2020": {
+          "korean_combined": 95
+        }
+      }
+    },
+    "UT": {
+      "Box Elder": {
+        "2020": {
+          "korean_combined": 91
+        }
+      },
+      "Cache": {
+        "2020": {
+          "korean_combined": 265
+        }
+      },
+      "Davis": {
+        "2020": {
+          "korean_combined": 1554
+        }
+      },
+      "Grand": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Iron": {
+        "2020": {
+          "korean_combined": 95
+        }
+      },
+      "Morgan": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Salt Lake": {
+        "2020": {
+          "korean_combined": 5051
+        }
+      },
+      "Summit": {
+        "2020": {
+          "korean_combined": 144
+        }
+      },
+      "Tooele": {
+        "2020": {
+          "korean_combined": 87
+        }
+      },
+      "Uintah": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Utah": {
+        "2020": {
+          "korean_combined": 2489
+        }
+      },
+      "Wasatch": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 313
+        }
+      },
+      "Weber": {
+        "2020": {
+          "korean_combined": 654
+        }
+      }
+    },
+    "VT": {
+      "Addison": {
+        "2020": {
+          "korean_combined": 70
+        }
+      },
+      "Bennington": {
+        "2020": {
+          "korean_combined": 57
+        }
+      },
+      "Caledonia": {
+        "2020": {
+          "korean_combined": 56
+        }
+      },
+      "Chittenden": {
+        "2020": {
+          "korean_combined": 688
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 73
+        }
+      },
+      "Lamoille": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Orange": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Orleans": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Rutland": {
+        "2020": {
+          "korean_combined": 111
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 164
+        }
+      },
+      "Windham": {
+        "2020": {
+          "korean_combined": 88
+        }
+      },
+      "Windsor": {
+        "2020": {
+          "korean_combined": 103
+        }
+      }
+    },
+    "VA": {
+      "Accomack": {
+        "2020": {
+          "korean_combined": 54
+        }
+      },
+      "Albemarle": {
+        "2020": {
+          "korean_combined": 750
+        }
+      },
+      "Amherst": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Appomattox": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Arlington": {
+        "2020": {
+          "korean_combined": 3581
+        }
+      },
+      "Augusta": {
+        "2020": {
+          "korean_combined": 99
+        }
+      },
+      "Bedford": {
+        "2020": {
+          "korean_combined": 162
+        }
+      },
+      "Botetourt": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Campbell": {
+        "2020": {
+          "korean_combined": 140
+        }
+      },
+      "Caroline": {
+        "2020": {
+          "korean_combined": 61
+        }
+      },
+      "Carroll": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Chesterfield": {
+        "2020": {
+          "korean_combined": 2338
+        }
+      },
+      "Clarke": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Culpeper": {
+        "2020": {
+          "korean_combined": 160
+        }
+      },
+      "Dinwiddie": {
+        "2020": {
+          "korean_combined": 61
+        }
+      },
+      "Fairfax": {
+        "2020": {
+          "korean_combined": 48486
+        }
+      },
+      "Fauquier": {
+        "2020": {
+          "korean_combined": 365
+        }
+      },
+      "Fluvanna": {
+        "2020": {
+          "korean_combined": 52
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Frederick": {
+        "2020": {
+          "korean_combined": 318
+        }
+      },
+      "Gloucester": {
+        "2020": {
+          "korean_combined": 106
+        }
+      },
+      "Goochland": {
+        "2020": {
+          "korean_combined": 85
+        }
+      },
+      "Greene": {
+        "2020": {
+          "korean_combined": 96
+        }
+      },
+      "Hanover": {
+        "2020": {
+          "korean_combined": 283
+        }
+      },
+      "Henrico": {
+        "2020": {
+          "korean_combined": 1840
+        }
+      },
+      "Henry": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Isle of Wight": {
+        "2020": {
+          "korean_combined": 100
+        }
+      },
+      "James City": {
+        "2020": {
+          "korean_combined": 530
+        }
+      },
+      "King George": {
+        "2020": {
+          "korean_combined": 95
+        }
+      },
+      "King William": {
+        "2020": {
+          "korean_combined": 31
+        }
+      },
+      "Loudoun": {
+        "2020": {
+          "korean_combined": 8693
+        }
+      },
+      "Louisa": {
+        "2020": {
+          "korean_combined": 44
+        }
+      },
+      "Madison": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Mecklenburg": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Montgomery": {
+        "2020": {
+          "korean_combined": 989
+        }
+      },
+      "New Kent": {
+        "2020": {
+          "korean_combined": 68
+        }
+      },
+      "Orange": {
+        "2020": {
+          "korean_combined": 77
+        }
+      },
+      "Page": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Pittsylvania": {
+        "2020": {
+          "korean_combined": 38
+        }
+      },
+      "Powhatan": {
+        "2020": {
+          "korean_combined": 47
+        }
+      },
+      "Prince Edward": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Prince George": {
+        "2020": {
+          "korean_combined": 279
+        }
+      },
+      "Prince William": {
+        "2020": {
+          "korean_combined": 7424
+        }
+      },
+      "Roanoke": {
+        "2020": {
+          "korean_combined": 249
+        }
+      },
+      "Rockbridge": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Rockingham": {
+        "2020": {
+          "korean_combined": 111
+        }
+      },
+      "Shenandoah": {
+        "2020": {
+          "korean_combined": 98
+        }
+      },
+      "Spotsylvania": {
+        "2020": {
+          "korean_combined": 798
+        }
+      },
+      "Stafford": {
+        "2020": {
+          "korean_combined": 1233
+        }
+      },
+      "Tazewell": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Warren": {
+        "2020": {
+          "korean_combined": 125
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Westmoreland": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "York": {
+        "2020": {
+          "korean_combined": 1368
+        }
+      },
+      "Alexandria city": {
+        "2020": {
+          "korean_combined": 1625
+        }
+      },
+      "Charlottesville city": {
+        "2020": {
+          "korean_combined": 517
+        }
+      },
+      "Chesapeake city": {
+        "2020": {
+          "korean_combined": 995
+        }
+      },
+      "Colonial Heights city": {
+        "2020": {
+          "korean_combined": 150
+        }
+      },
+      "Danville city": {
+        "2020": {
+          "korean_combined": 39
+        }
+      },
+      "Fairfax city": {
+        "2020": {
+          "korean_combined": 934
+        }
+      },
+      "Falls Church city": {
+        "2020": {
+          "korean_combined": 286
+        }
+      },
+      "Franklin city": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Fredericksburg city": {
+        "2020": {
+          "korean_combined": 146
+        }
+      },
+      "Hampton city": {
+        "2020": {
+          "korean_combined": 561
+        }
+      },
+      "Harrisonburg city": {
+        "2020": {
+          "korean_combined": 316
+        }
+      },
+      "Hopewell city": {
+        "2020": {
+          "korean_combined": 108
+        }
+      },
+      "Lexington city": {
+        "2020": {
+          "korean_combined": 42
+        }
+      },
+      "Lynchburg city": {
+        "2020": {
+          "korean_combined": 366
+        }
+      },
+      "Manassas city": {
+        "2020": {
+          "korean_combined": 282
+        }
+      },
+      "Manassas Park city": {
+        "2020": {
+          "korean_combined": 254
+        }
+      },
+      "Newport News city": {
+        "2020": {
+          "korean_combined": 1698
+        }
+      },
+      "Norfolk city": {
+        "2020": {
+          "korean_combined": 630
+        }
+      },
+      "Petersburg city": {
+        "2020": {
+          "korean_combined": 88
+        }
+      },
+      "Poquoson city": {
+        "2020": {
+          "korean_combined": 82
+        }
+      },
+      "Portsmouth city": {
+        "2020": {
+          "korean_combined": 128
+        }
+      },
+      "Radford city": {
+        "2020": {
+          "korean_combined": 35
+        }
+      },
+      "Richmond city": {
+        "2020": {
+          "korean_combined": 1267
+        }
+      },
+      "Roanoke city": {
+        "2020": {
+          "korean_combined": 207
+        }
+      },
+      "Salem city": {
+        "2020": {
+          "korean_combined": 34
+        }
+      },
+      "Staunton city": {
+        "2020": {
+          "korean_combined": 60
+        }
+      },
+      "Suffolk city": {
+        "2020": {
+          "korean_combined": 277
+        }
+      },
+      "Virginia Beach city": {
+        "2020": {
+          "korean_combined": 2124
+        }
+      },
+      "Waynesboro city": {
+        "2020": {
+          "korean_combined": 37
+        }
+      },
+      "Williamsburg city": {
+        "2020": {
+          "korean_combined": 64
+        }
+      },
+      "Winchester city": {
+        "2020": {
+          "korean_combined": 80
+        }
+      }
+    },
+    "WA": {
+      "Adams": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Asotin": {
+        "2020": {
+          "korean_combined": 51
+        }
+      },
+      "Benton": {
+        "2020": {
+          "korean_combined": 919
+        }
+      },
+      "Chelan": {
+        "2020": {
+          "korean_combined": 153
+        }
+      },
+      "Clallam": {
+        "2020": {
+          "korean_combined": 228
+        }
+      },
+      "Clark": {
+        "2020": {
+          "korean_combined": 3694
+        }
+      },
+      "Cowlitz": {
+        "2020": {
+          "korean_combined": 265
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Franklin": {
+        "2020": {
+          "korean_combined": 140
+        }
+      },
+      "Grant": {
+        "2020": {
+          "korean_combined": 186
+        }
+      },
+      "Grays Harbor": {
+        "2020": {
+          "korean_combined": 287
+        }
+      },
+      "Island": {
+        "2020": {
+          "korean_combined": 388
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 107
+        }
+      },
+      "King": {
+        "2020": {
+          "korean_combined": 45082
+        }
+      },
+      "Kitsap": {
+        "2020": {
+          "korean_combined": 1849
+        }
+      },
+      "Kittitas": {
+        "2020": {
+          "korean_combined": 267
+        }
+      },
+      "Klickitat": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Lewis": {
+        "2020": {
+          "korean_combined": 203
+        }
+      },
+      "Mason": {
+        "2020": {
+          "korean_combined": 228
+        }
+      },
+      "Okanogan": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Pacific": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Pierce": {
+        "2020": {
+          "korean_combined": 19759
+        }
+      },
+      "San Juan": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Skagit": {
+        "2020": {
+          "korean_combined": 452
+        }
+      },
+      "Skamania": {
+        "2020": {
+          "korean_combined": 26
+        }
+      },
+      "Snohomish": {
+        "2020": {
+          "korean_combined": 16899
+        }
+      },
+      "Spokane": {
+        "2020": {
+          "korean_combined": 2345
+        }
+      },
+      "Stevens": {
+        "2020": {
+          "korean_combined": 87
+        }
+      },
+      "Thurston": {
+        "2020": {
+          "korean_combined": 4941
+        }
+      },
+      "Walla Walla": {
+        "2020": {
+          "korean_combined": 193
+        }
+      },
+      "Whatcom": {
+        "2020": {
+          "korean_combined": 1204
+        }
+      },
+      "Whitman": {
+        "2020": {
+          "korean_combined": 453
+        }
+      },
+      "Yakima": {
+        "2020": {
+          "korean_combined": 580
+        }
+      }
+    },
+    "WV": {
+      "Berkeley": {
+        "2020": {
+          "korean_combined": 310
+        }
+      },
+      "Cabell": {
+        "2020": {
+          "korean_combined": 167
+        }
+      },
+      "Greenbrier": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Hampshire": {
+        "2020": {
+          "korean_combined": 32
+        }
+      },
+      "Harrison": {
+        "2020": {
+          "korean_combined": 75
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 157
+        }
+      },
+      "Kanawha": {
+        "2020": {
+          "korean_combined": 200
+        }
+      },
+      "Marion": {
+        "2020": {
+          "korean_combined": 40
+        }
+      },
+      "Mason": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Mercer": {
+        "2020": {
+          "korean_combined": 45
+        }
+      },
+      "Mineral": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Monongalia": {
+        "2020": {
+          "korean_combined": 368
+        }
+      },
+      "Ohio": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Putnam": {
+        "2020": {
+          "korean_combined": 83
+        }
+      },
+      "Raleigh": {
+        "2020": {
+          "korean_combined": 109
+        }
+      },
+      "Wood": {
+        "2020": {
+          "korean_combined": 109
+        }
+      }
+    },
+    "WI": {
+      "Barron": {
+        "2020": {
+          "korean_combined": 67
+        }
+      },
+      "Bayfield": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Brown": {
+        "2020": {
+          "korean_combined": 421
+        }
+      },
+      "Burnett": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Calumet": {
+        "2020": {
+          "korean_combined": 98
+        }
+      },
+      "Chippewa": {
+        "2020": {
+          "korean_combined": 86
+        }
+      },
+      "Columbia": {
+        "2020": {
+          "korean_combined": 74
+        }
+      },
+      "Crawford": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Dane": {
+        "2020": {
+          "korean_combined": 3435
+        }
+      },
+      "Dodge": {
+        "2020": {
+          "korean_combined": 93
+        }
+      },
+      "Douglas": {
+        "2020": {
+          "korean_combined": 77
+        }
+      },
+      "Dunn": {
+        "2020": {
+          "korean_combined": 99
+        }
+      },
+      "Eau Claire": {
+        "2020": {
+          "korean_combined": 325
+        }
+      },
+      "Fond du Lac": {
+        "2020": {
+          "korean_combined": 146
+        }
+      },
+      "Grant": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Green": {
+        "2020": {
+          "korean_combined": 29
+        }
+      },
+      "Iowa": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Jefferson": {
+        "2020": {
+          "korean_combined": 111
+        }
+      },
+      "Juneau": {
+        "2020": {
+          "korean_combined": 25
+        }
+      },
+      "Kenosha": {
+        "2020": {
+          "korean_combined": 387
+        }
+      },
+      "La Crosse": {
+        "2020": {
+          "korean_combined": 323
+        }
+      },
+      "Lincoln": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Manitowoc": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Marathon": {
+        "2020": {
+          "korean_combined": 236
+        }
+      },
+      "Marinette": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Milwaukee": {
+        "2020": {
+          "korean_combined": 2286
+        }
+      },
+      "Monroe": {
+        "2020": {
+          "korean_combined": 117
+        }
+      },
+      "Oconto": {
+        "2020": {
+          "korean_combined": 33
+        }
+      },
+      "Oneida": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Outagamie": {
+        "2020": {
+          "korean_combined": 375
+        }
+      },
+      "Ozaukee": {
+        "2020": {
+          "korean_combined": 309
+        }
+      },
+      "Pierce": {
+        "2020": {
+          "korean_combined": 71
+        }
+      },
+      "Polk": {
+        "2020": {
+          "korean_combined": 53
+        }
+      },
+      "Portage": {
+        "2020": {
+          "korean_combined": 127
+        }
+      },
+      "Racine": {
+        "2020": {
+          "korean_combined": 381
+        }
+      },
+      "Rock": {
+        "2020": {
+          "korean_combined": 325
+        }
+      },
+      "St. Croix": {
+        "2020": {
+          "korean_combined": 250
+        }
+      },
+      "Sauk": {
+        "2020": {
+          "korean_combined": 66
+        }
+      },
+      "Sawyer": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Shawano": {
+        "2020": {
+          "korean_combined": 23
+        }
+      },
+      "Sheboygan": {
+        "2020": {
+          "korean_combined": 153
+        }
+      },
+      "Taylor": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Trempealeau": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Vernon": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "Vilas": {
+        "2020": {
+          "korean_combined": 22
+        }
+      },
+      "Walworth": {
+        "2020": {
+          "korean_combined": 129
+        }
+      },
+      "Washington": {
+        "2020": {
+          "korean_combined": 198
+        }
+      },
+      "Waukesha": {
+        "2020": {
+          "korean_combined": 1379
+        }
+      },
+      "Waupaca": {
+        "2020": {
+          "korean_combined": 50
+        }
+      },
+      "Winnebago": {
+        "2020": {
+          "korean_combined": 295
+        }
+      },
+      "Wood": {
+        "2020": {
+          "korean_combined": 104
+        }
+      }
+    },
+    "WY": {
+      "Albany": {
+        "2020": {
+          "korean_combined": 128
+        }
+      },
+      "Campbell": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Fremont": {
+        "2020": {
+          "korean_combined": 30
+        }
+      },
+      "Laramie": {
+        "2020": {
+          "korean_combined": 393
+        }
+      },
+      "Natrona": {
+        "2020": {
+          "korean_combined": 89
+        }
+      },
+      "Park": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Sheridan": {
+        "2020": {
+          "korean_combined": 43
+        }
+      },
+      "Sweetwater": {
+        "2020": {
+          "korean_combined": 36
+        }
+      },
+      "Teton": {
+        "2020": {
+          "korean_combined": 63
+        }
+      },
+      "Uinta": {
+        "2020": {
+          "korean_combined": 37
+        }
+      }
+    },
+    "PR": {
+      "Guaynabo Municipio": {
+        "2020": {
+          "korean_combined": 28
+        }
+      },
+      "Humacao Municipio": {
+        "2020": {
+          "korean_combined": 24
+        }
+      },
+      "San Juan Municipio": {
+        "2020": {
+          "korean_combined": 70
+        }
+      }
+    }
+  }
+}

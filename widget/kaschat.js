@@ -17,18 +17,17 @@
     '';
 
   const WELCOME =
-    "Hi! I can help you explore the Korean American Story Legacy Project archive — hundreds of oral-history interviews with Korean Americans. Ask about a topic, an era, a person, or a place, and I'll point you to the relevant interviews.";
+    "Hi! I can help you explore the Korean American Story Legacy Project — hundreds of oral-history interviews plus census data from 1910-2020. Ask about a topic, an era, a person, or demographic trends, and I'll help you find what you're looking for.";
 
   const SUGGESTIONS = [
     'Stories from the Korean War',
     'Immigrating to America',
     'Growing up Korean American',
+    'Korean American population trends',
     'Korean adoptee experiences',
-    'Korean American business owners',
   ];
 
   let isSending = false;
-  let lastTurn = null; // { userContent, assistantContent } — enables short-follow-up continuity.
 
   /* ---------- icons ---------- */
   const chatIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
@@ -242,16 +241,10 @@
     const typing = addTypingIndicator();
 
     try {
-      const history = lastTurn
-        ? [
-            { role: 'user', content: lastTurn.userContent },
-            { role: 'assistant', content: lastTurn.assistantContent },
-          ]
-        : [];
       const resp = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history }),
+        body: JSON.stringify({ message: text }),
       });
       typing.remove();
 
@@ -263,7 +256,6 @@
 
       const data = await resp.json();
       addAssistantMessage(data.answer, data.citations);
-      lastTurn = { userContent: text, assistantContent: data.answer };
     } catch (e) {
       typing.remove();
       addError('Could not reach the server. Is it running?');
