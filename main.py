@@ -62,9 +62,10 @@ Guidelines:
 - Be warm but professional — no effusive phrases like "Great question!" or "I love that!"
 - Keep responses SHORT: 2-4 sentences max. Brevity is essential.
 - Cite interviews as [1], [2], etc. Don't describe every citation — just mention 2-3 highlights and let visitors explore.
-- If interviews don't match well, briefly suggest related topics or ask what they're looking for.
+- If interviews don't match well, briefly suggest related topics.
 - For greetings, respond in one short sentence and offer to help.
 - When census data is provided, use those exact numbers. Mention the census year when citing statistics.
+- NEVER end with a question. No "What interests you?", "Would you like to know more?", etc. Each response is standalone with no memory of previous messages.
 
 Tone: A knowledgeable museum guide — warm, professional, concise."""
 
@@ -131,6 +132,8 @@ CENSUS_PATTERNS = [
     r'\b(korean)\b.*\b(population|how many|number|census)\b',
     r'\b(19[0-9]{2}|20[0-2][0-9])\b.*\b(korean|population)\b',
     r'\b(korean)\b.*\b(19[0-9]{2}|20[0-2][0-9])\b',
+    r'\b(korean)\b.*\b(population)\b.*\b(changed|over time|trend|growth)\b',
+    r'\bwhich states\b.*\b(most|largest)\b.*\bkorean\b',
 ]
 
 # Patterns for meta questions about census data availability
@@ -169,25 +172,31 @@ def is_census_query(query: str) -> bool:
     return any(re.search(p, query_lower) for p in CENSUS_PATTERNS)
 
 
-def parse_year_from_query(query: str) -> str | None:
-    """Extract a year or decade from query."""
+def parse_years_from_query(query: str) -> list[str]:
+    """Extract all years from query, returning list of census decade years."""
     query_lower = query.lower()
+    years = []
 
     # Handle decades like "1990s" -> 1990
-    decade_match = re.search(r'\b(19[0-9]0|20[0-2]0)s\b', query_lower)
-    if decade_match:
-        return decade_match.group(1)
+    decade_matches = re.findall(r'\b(19[0-9]0|20[0-2]0)s\b', query_lower)
+    years.extend(decade_matches)
 
     # Handle specific years
-    year_match = re.search(r'\b(19[0-9]{2}|20[0-2][0-9])\b', query_lower)
-    if year_match:
-        year = year_match.group(1)
+    year_matches = re.findall(r'\b(19[0-9]{2}|20[0-2][0-9])\b', query_lower)
+    for year in year_matches:
         # Round to nearest census year (decades)
         year_int = int(year)
-        census_year = (year_int // 10) * 10
-        return str(census_year)
+        census_year = str((year_int // 10) * 10)
+        if census_year not in years:
+            years.append(census_year)
 
-    return None
+    return sorted(set(years))
+
+
+def parse_year_from_query(query: str) -> str | None:
+    """Extract a single year from query (first one found)."""
+    years = parse_years_from_query(query)
+    return years[0] if years else None
 
 
 def parse_location_from_query(query: str) -> tuple[str | None, str | None]:
@@ -201,10 +210,14 @@ def parse_location_from_query(query: str) -> tuple[str | None, str | None]:
             state_abbrev = abbrev
             break
 
-    # Also check for abbreviations
+    # Also check for abbreviations (but exclude common English words)
+    ABBREV_EXCLUSIONS = {"in", "or", "ok", "me", "hi", "oh"}  # IN, OR, OK, ME, HI, OH
     if not state_abbrev:
         for abbrev in STATE_NAMES.values():
-            if re.search(rf'\b{abbrev.lower()}\b', query_lower):
+            abbrev_lower = abbrev.lower()
+            if abbrev_lower in ABBREV_EXCLUSIONS:
+                continue  # Skip ambiguous abbreviations
+            if re.search(rf'\b{abbrev_lower}\b', query_lower):
                 state_abbrev = abbrev
                 break
 
@@ -240,8 +253,14 @@ def lookup_census(query: str) -> str | None:
     if not census_data:
         return None
 
-    year = parse_year_from_query(query)
+    years_found = parse_years_from_query(query)
+    year = years_found[0] if len(years_found) == 1 else None
     state_abbrev, county = parse_location_from_query(query)
+    query_lower = query.lower()
+
+    # Check if this is a comparison or trend query
+    is_comparison = len(years_found) >= 2
+    is_trend_query = is_comparison or any(kw in query_lower for kw in ["over time", "changed", "trend", "growth", "history", "between"])
 
     results = []
 
@@ -273,18 +292,62 @@ def lookup_census(query: str) -> str | None:
                     if pop:
                         results.append(f"According to the {latest} census, there were {pop:,} Korean Americans in {state_abbrev}.")
 
-    # If asking about national data
+    # If asking about national data or top states
     elif state_abbrev == "US" or not state_abbrev:
+        query_lower = query.lower()
+
+        # Check if asking about top states
+        if re.search(r'\b(which|what|top)\b.*\bstates?\b.*\b(most|largest|highest)\b', query_lower) or \
+           re.search(r'\b(most|largest)\b.*\bkorean\b.*\bstates?\b', query_lower):
+            state_data = census_data.get("state", {})
+            # Get 2020 data for all states and sort
+            state_pops = []
+            for st, years in state_data.items():
+                if "2020" in years:
+                    pop = years["2020"].get("korean_alone", 0)
+                    if pop:
+                        state_pops.append((st, pop))
+            state_pops.sort(key=lambda x: -x[1])
+            top_5 = state_pops[:5]
+            if top_5:
+                top_str = ", ".join([f"{st} ({pop:,})" for st, pop in top_5])
+                results.append(f"Top 5 states by Korean American population (2020): {top_str}.")
+            return " ".join(results) if results else None
+
         national = census_data.get("national", {})
-        if year and year in national:
+
+        if is_comparison and len(years_found) >= 2:
+            # Compare two specific years
+            y1, y2 = years_found[0], years_found[-1]
+            pop1 = national.get(y1, {}).get("korean_alone")
+            pop2 = national.get(y2, {}).get("korean_alone")
+            if pop1 and pop2:
+                change = pop2 - pop1
+                pct_change = (change / pop1) * 100 if pop1 > 0 else 0
+                results.append(f"Korean American population: {pop1:,} in {y1} → {pop2:,} in {y2} (a change of {change:+,}, or {pct_change:+.1f}%).")
+            elif pop1:
+                results.append(f"According to the {y1} census, there were {pop1:,} Korean Americans in the United States.")
+            elif pop2:
+                results.append(f"According to the {y2} census, there were {pop2:,} Korean Americans in the United States.")
+        elif is_trend_query and national:
+            # Return trend data with multiple years
+            all_years = sorted(national.keys())
+            trend_parts = []
+            for yr in all_years:
+                pop = national[yr].get("korean_alone")
+                if pop:
+                    trend_parts.append(f"{pop:,} in {yr}")
+            if trend_parts:
+                results.append(f"Korean American population over time: {', '.join(trend_parts)}.")
+        elif year and year in national:
             pop = national[year].get("korean_alone")
             if pop:
                 results.append(f"According to the {year} census, there were {pop:,} Korean Americans in the United States.")
         elif not year and national:
             # Show most recent
-            years = sorted(national.keys(), reverse=True)
-            if years:
-                latest = years[0]
+            all_years = sorted(national.keys(), reverse=True)
+            if all_years:
+                latest = all_years[0]
                 pop = national[latest].get("korean_alone")
                 if pop:
                     results.append(f"According to the {latest} census, there were {pop:,} Korean Americans in the United States.")
@@ -419,18 +482,26 @@ app.add_middleware(
 def chat(req: ChatRequest):
     # Check for meta census query first (asking about what data is available)
     census_context = None
+    census_only = False  # If True, skip interview retrieval
+
     if is_meta_census_query(req.message):
         census_context = CENSUS_SUMMARY
+        census_only = True
     elif is_census_query(req.message):
         census_context = lookup_census(req.message)
+        # If we got census data, this is a census-only query
+        if census_context:
+            census_only = True
 
-    hits = retrieve(req.message)
+    # Only retrieve interviews if this isn't a census-only query
+    hits = [] if census_only else retrieve(req.message)
 
-    # Build context with census data if available
+    # Build context
     context_parts = []
     if census_context:
         context_parts.append(f"Census Data:\n{census_context}")
-    context_parts.append(f"Retrieved interviews:\n\n{build_context(hits)}")
+    if hits:
+        context_parts.append(f"Retrieved interviews:\n\n{build_context(hits)}")
 
     user_turn = (
         "\n\n".join(context_parts) + "\n\n"
@@ -455,6 +526,7 @@ def chat(req: ChatRequest):
 
 
 app.mount("/widget", StaticFiles(directory=ROOT / "widget"), name="widget")
+app.mount("/demo", StaticFiles(directory=ROOT / "demo"), name="demo")
 
 
 @app.get("/")

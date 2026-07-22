@@ -335,6 +335,194 @@
   border-radius: 8px;
 }
 
+/* ---- Quick Explore ---- */
+.kaschat-quick-explore {
+  background: var(--kaschat-white);
+  border-top: 1px solid var(--kaschat-border);
+  flex-shrink: 0;
+}
+
+.kaschat-quick-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.15s;
+}
+.kaschat-quick-toggle:hover {
+  background: var(--kaschat-bg);
+}
+.kaschat-quick-label {
+  font-size: 12px;
+  color: var(--kaschat-muted);
+  font-weight: 500;
+}
+.kaschat-quick-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--kaschat-muted);
+  transition: transform 0.2s;
+}
+.kaschat-quick-explore.expanded .kaschat-quick-icon {
+  transform: rotate(180deg);
+}
+
+.kaschat-quick-content {
+  display: none;
+  padding: 0 16px 14px;
+}
+.kaschat-quick-explore.expanded .kaschat-quick-content {
+  display: block;
+}
+
+.kaschat-quick-group {
+  margin-bottom: 12px;
+}
+.kaschat-quick-group:last-child {
+  margin-bottom: 0;
+}
+.kaschat-quick-group-label {
+  font-size: 11px;
+  color: var(--kaschat-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.kaschat-quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.kaschat-quick-btn {
+  padding: 7px 14px;
+  font-size: 13px;
+  border: 1px solid var(--kaschat-border);
+  border-radius: 6px;
+  background: var(--kaschat-white);
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--kaschat-text);
+  font-weight: 450;
+  font-family: inherit;
+}
+.kaschat-quick-btn:hover {
+  background: var(--kaschat-dark);
+  color: var(--kaschat-white);
+  border-color: var(--kaschat-dark);
+}
+.kaschat-quick-btn.census {
+  border-color: var(--kaschat-light);
+  color: var(--kaschat-dark);
+}
+.kaschat-quick-btn.census:hover {
+  background: var(--kaschat-light);
+  color: var(--kaschat-white);
+  border-color: var(--kaschat-light);
+}
+
+/* ---- Selector Popups ---- */
+.kaschat-selector {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 12px;
+  right: 12px;
+  background: var(--kaschat-white);
+  border: 1px solid var(--kaschat-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(37, 89, 110, 0.12);
+  padding: 12px;
+  margin-bottom: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 10;
+}
+.kaschat-selector.show {
+  display: block;
+}
+.kaschat-selector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.kaschat-selector-title {
+  font-size: 12px;
+  color: var(--kaschat-muted);
+  font-weight: 500;
+}
+.kaschat-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--kaschat-muted);
+  background: var(--kaschat-bg);
+  border: 1px solid var(--kaschat-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.kaschat-back-btn:hover {
+  background: var(--kaschat-border);
+  color: var(--kaschat-text);
+}
+.kaschat-back-btn svg {
+  width: 12px;
+  height: 12px;
+}
+.kaschat-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.kaschat-selector-grid.two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+.kaschat-selector-btn {
+  padding: 8px 10px;
+  font-size: 12px;
+  border: 1px solid var(--kaschat-border);
+  border-radius: 4px;
+  background: var(--kaschat-white);
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--kaschat-text);
+  text-align: center;
+  font-family: inherit;
+}
+.kaschat-selector-btn:hover {
+  background: var(--kaschat-light);
+  color: var(--kaschat-white);
+  border-color: var(--kaschat-light);
+}
+.kaschat-selector-btn.trend {
+  text-align: left;
+  padding: 10px 12px;
+}
+.kaschat-selector-btn.trend small {
+  display: block;
+  font-size: 10px;
+  color: var(--kaschat-muted);
+  margin-top: 2px;
+}
+.kaschat-selector-btn.trend:hover small {
+  color: rgba(255,255,255,0.8);
+}
+
+.kaschat-form-wrapper {
+  position: relative;
+}
+
 @media (max-width: 480px) {
   .kaschat-panel {
     right: 8px;
