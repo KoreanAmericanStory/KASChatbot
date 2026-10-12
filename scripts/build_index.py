@@ -371,6 +371,18 @@ def fetch_all_videos():
         print(f"Using cached YouTube list: {YT_CACHE}")
         return json.loads(YT_CACHE.read_text())
 
+    try:
+        return _fetch_videos_from_youtube()
+    except Exception as e:
+        backup = DATA / "youtube_videos_saved.json"
+        if backup.exists():
+            print(f"  WARNING: couldn't fetch the YouTube list ({str(e)[:150]})")
+            print(f"  Using the saved list instead ({backup.name}). Videos published after it was saved won't get links.")
+            return json.loads(backup.read_text())
+        raise
+
+
+def _fetch_videos_from_youtube():
     print(f"Fetching videos from @{YT_HANDLE}...")
     yt = build("youtube", "v3", developerKey=YT_KEY)
     ch = yt.channels().list(part="contentDetails", forHandle=YT_HANDLE).execute()
