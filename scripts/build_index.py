@@ -407,9 +407,52 @@ def _fetch_videos_from_youtube():
         if not page_token:
             break
 
+    # --- Mark YouTube Shorts so they are never linked -------------------------------
+    # 1) The channel's own Shorts playlist ("UUSH" + channel id) lists exactly its Shorts.
+    shorts = set()
+    shorts_list_ok = False
+    try:
+        shorts_pl = "UUSH" + uploads[2:]
+        token = None
+        while True:
+            resp = yt.playlistItems().list(
+                playlistId=shorts_pl, part="snippet", maxResults=50, pageToken=token,
+            ).execute()
+            shorts.update(i["snippet"]["resourceId"]["videoId"] for i in resp["items"])
+            token = resp.get("nextPageToken")
+            if not token:
+                break
+        shorts_list_ok = True
+    except Exception as e:
+        print(f"  Note: couldn't read the channel's Shorts list ({str(e)[:100]}); using video length instead")
+    # 2) Video length for every upload (also a backup if the Shorts list isn't available)
+    ids = [v["id"] for v in videos]
+    durations = {}
+    for i in range(0, len(ids), 50):
+        resp = yt.videos().list(part="contentDetails", id=",".join(ids[i:i + 50])).execute()
+        for it in resp["items"]:
+            durations[it["id"]] = iso_duration_seconds(it["contentDetails"].get("duration", ""))
+    for v in videos:
+        v["duration_seconds"] = durations.get(v["id"])
+        d = v["duration_seconds"]
+        # Shorts are vertical clips up to 3 minutes. Anything 60s or under is always treated as a
+        # Short; 61-180s counts only if the Shorts list couldn't be read.
+        v["is_short"] = (v["id"] in shorts) or (d is not None and d <= 60) or \
+                        (not shorts_list_ok and d is not None and d <= 180)
+
     YT_CACHE.write_text(json.dumps(videos, indent=2))
-    print(f"Fetched {len(videos)} videos, cached to {YT_CACHE}")
+    n_short = sum(v["is_short"] for v in videos)
+    print(f"Fetched {len(videos)} videos ({n_short} are Shorts and will never be linked), cached to {YT_CACHE}")
     return videos
+
+
+def iso_duration_seconds(s: str):
+    """'PT1H2M3S' -> 3723 seconds."""
+    m = re.fullmatch(r"P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", s or "")
+    if not m:
+        return None
+    d, h, mi, se = (int(x) if x else 0 for x in m.groups())
+    return ((d * 24 + h) * 60 + mi) * 60 + se
 
 
 def load_records():
@@ -455,6 +498,11 @@ def match_youtube(records, videos):
        (allowing small spelling differences). Ties prefer videos from the same series.
        If nothing clearly matches, the record gets no link rather than a wrong one.
     """
+    shorts = {v["id"] for v in videos if v.get("is_short")}
+    durations = {v["id"]: v.get("duration_seconds") for v in videos}
+    if not any("is_short" in v for v in videos):
+        print("  WARNING: this YouTube list has no Shorts information - re-fetch it so Shorts can be excluded")
+    videos = [v for v in videos if not v.get("is_short")]   # never link a Short
     vids = []
     for v in videos:
         norm = normalize_title(v["title"])
@@ -478,11 +526,19 @@ def match_youtube(records, videos):
         if r.get("youtube_override", "").lower() == "none":
             continue  # "none" in the YouTube URL column = deliberately no video link
         if r.get("youtube_override"):
-            m = YT_ID.search(r["youtube_override"])
-            if m:
-                r["youtube_video_id"] = m.group(1)
-                r["youtube_url"] = f"https://www.youtube.com/watch?v={m.group(1)}"
+            # one or more links separated by " | " - Shorts are skipped; the longest regular video wins
+            ids = [m.group(1) for m in YT_ID.finditer(r["youtube_override"])]
+            shorts.update(re.findall(r"/shorts/([\w-]{11})", r["youtube_override"]))  # a /shorts/ link is a Short
+            ok = [i for i in ids if i not in shorts]
+            # several regular videos listed (e.g. full episode + clip): use the longest one
+            pick = max(ok, key=lambda i: (durations.get(i) or 0, -ok.index(i))) if ok else None
+            if pick:
+                r["youtube_video_id"] = pick
+                r["youtube_url"] = f"https://www.youtube.com/watch?v={pick}"
                 overridden += 1
+                continue
+            if ids:
+                print(f"  Note: every link in the YouTube URL column for '{r['title']}' is a Short - not linked")
                 continue
         name = r["core"]
         tokens = name.split()
