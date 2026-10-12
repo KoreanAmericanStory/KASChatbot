@@ -560,8 +560,8 @@ def match_youtube(records, videos):
                 r["hidden"] = "its video in the YouTube URL column is unlisted/private (or not on the channel)"
                 continue
             if ids:
-                print(f"  Note: every link in the YouTube URL column for '{r['title']}' is a Short - not linked")
-                continue
+                print(f"  Note: the YouTube URL column for '{r['title']}' only has Shorts - searching for a regular video instead")
+                # fall through to automatic matching below
         name = r["core"]
         tokens = name.split()
         if not tokens:
