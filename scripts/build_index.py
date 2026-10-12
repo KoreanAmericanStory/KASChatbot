@@ -506,19 +506,22 @@ def match_youtube(records, videos):
                 best, best_score = v, score
         via_description = False
         if not best and len(name) >= 5:
-            # Fallback: the video's description names the person. Only videos whose TITLE marks
-            # them as the same series are considered (e.g. "| Through The Fog"), so a Through the
-            # Fog row can only link to a Through the Fog video.
+            # Most KAS video titles no longer include the guest's name, so every row is also
+            # checked against video DESCRIPTIONS. A name in the title still wins; otherwise the
+            # video whose description names the person most often and earliest is used.
+            # Only same-series videos (by title label) or videos with no series label qualify,
+            # so e.g. a Through the Fog row can never link to a ROAR video.
             pat = re.compile(r"(^| )" + re.escape(name) + r"( |$)")
             for v, vtokens, vflat, vseries in vids:
-                if vseries != r["series_group"] or not v.get("description"):
+                if (vseries is not None and vseries != r["series_group"]) or not v.get("description"):
                     continue
                 dnorm = normalize_title(v["description"])
                 hits = len(pat.findall(dnorm)) or (1 if name.replace(" ", "") in dnorm.split() else 0)
                 if not hits:
                     continue
                 first = dnorm.find(name) if name in dnorm else len(dnorm)
-                score = hits * 10 + max(0, 300 - first) / 30   # named often and early = the guest, not a host/credit
+                # named often and early = the guest, not a host or a credit line
+                score = hits * 10 + max(0, 300 - first) / 30 + (5 if vseries == r["series_group"] else 0)
                 if score > best_score:
                     best, best_score = v, score
             via_description = best is not None
