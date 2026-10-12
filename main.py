@@ -41,7 +41,7 @@ for p in (RECORDS_PATH, CHUNKS_PATH, CHUNK_EMB_PATH):
 
 records = json.loads(RECORDS_PATH.read_text(encoding="utf-8"))
 chunks = json.loads(CHUNKS_PATH.read_text(encoding="utf-8"))
-chunk_embeddings = np.load(CHUNK_EMB_PATH)
+chunk_embeddings = np.load(CHUNK_EMB_PATH).astype(np.float32)  # index is stored as float16
 norm_embeddings = chunk_embeddings / np.linalg.norm(chunk_embeddings, axis=1, keepdims=True)
 
 # Load census data if available

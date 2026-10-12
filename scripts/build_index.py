@@ -285,6 +285,14 @@ def parse_transcripts(transcript_path: Path) -> dict[str, list[dict]]:
     return interviews
 
 
+def primary_record(owners: list[dict]) -> dict:
+    """Pick ONE row to hold a transcript, so it is stored once instead of once per
+    Full/Edited row (that duplication doubled the index size). Prefers a row with a
+    YouTube link, then the Edited version (usually the public video)."""
+    return sorted(owners, key=lambda r: (not r.get("youtube_video_id"),
+                                         "(edited)" not in r["title"].lower(), r["id"]))[0]
+
+
 def match_transcripts_to_records(records: list[dict], transcripts: list[dict]) -> dict[int, list[dict]]:
     """Attach each transcript to the interview record(s) it belongs to.
 
@@ -317,8 +325,7 @@ def match_transcripts_to_records(records: list[dict], transcripts: list[dict]) -
         owners = by_file.get(t["file"].lower())
         if owners:
             explicit += 1
-            for r in owners:
-                matched.setdefault(r["id"], []).extend(t["chunks"])
+            matched.setdefault(primary_record(owners)["id"], []).extend(t["chunks"])
         else:
             remaining.append(t)
     listed = {f for f in by_file}
@@ -340,9 +347,8 @@ def match_transcripts_to_records(records: list[dict], transcripts: list[dict]) -
         winners = [r for sc, r in scored if sc == best]
         # Only attach to records that share one name (Full/Edited/Part rows of one interview)
         core = winners[0]["core"]
-        for r in winners:
-            if r["core"] == core:
-                matched.setdefault(r["id"], []).extend(t["chunks"])
+        owners = [r for r in winners if r["core"] == core]
+        matched.setdefault(primary_record(owners)["id"], []).extend(t["chunks"])
 
     if unmatched:
         print(f"  Warning: {len(unmatched)} transcript(s) have no matching row in the CSV (they will not be searchable):")
@@ -638,7 +644,9 @@ def main():
 
     (DATA / "records.json").write_text(json.dumps(records, indent=2, ensure_ascii=False))
     (DATA / "chunks.json").write_text(json.dumps(chunks, ensure_ascii=False))
-    np.save(DATA / "chunk_embeddings.npy", embeddings)
+    # float16 halves the file size (keeps it under GitHub's 25 MB web-upload limit);
+    # main.py converts back to float32 when loading. Search quality is unaffected.
+    np.save(DATA / "chunk_embeddings.npy", embeddings.astype(np.float16))
     print(f"\nDone. {len(records)} records, {len(chunks)} chunks, embeddings shape {embeddings.shape}")
 
 
