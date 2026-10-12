@@ -27,9 +27,9 @@ from rapidfuzz import fuzz, process
 
 ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data"
-CSV_PATH = ROOT / "AI Chat Bot - KAS Legacy Project Metadata - LP Metadata_10212025.csv"
+CSV_PATH = ROOT / "AI Chat Bot - KAS Legacy Project Metadata - LP Metadata_10122026.csv"
 YT_CACHE = DATA / "youtube_videos.json"
-TRANSCRIPT_PATH = DATA / "06082026_Master KAS Transcripts.txt"
+TRANSCRIPT_PATH = DATA / "10122026_Master KAS Transcripts.txt"
 
 EMBED_BATCH = 128
 
@@ -102,6 +102,66 @@ def extract_title_from_filename(filename: str) -> str:
     return name.strip()
 
 
+# ---------------------------------------------------------------------------
+# Matching helpers (Oct 2026). The original matcher used fuzz.WRatio >= 75, which
+# treats any shared word ("Kim", "Lee", "Family") as a match, so many transcripts
+# and YouTube links were attached to the wrong interview. Matching is now done on
+# the person's name only, within the same series, and must be a close match.
+# ---------------------------------------------------------------------------
+SERIES_RULES = [  # (series group, regex matched against a filename or Series value)
+    ("kpod", r"^kpod|k-?pod"),
+    ("nya", r"not your average"),
+    ("roar", r"roar"),
+    ("gala", r"gala|trailblazer"),
+    ("qj", r"queer joy"),
+    ("sfa", r"six feet apart"),
+    ("perilla", r"perilla"),
+    ("ttf", r"^ttf|through the fog"),
+    ("naya", r"^naya|\bnaya\b"),
+    ("lp", r"legacy|letters? to my hometown|^lp_|^ltmh"),
+]
+
+SERIES_WORDS = re.compile(
+    r"\b(legacy project|letters? to my hometown( phase \d+)?|not your average|k ?pod|kpod|ep \d+|"
+    r"roar story slam( all stars| chicago| dc| la)?|kasgala\d*|gala|six feet apart|day in the life|"
+    r"perilla diaries|queer joy( in conversation)?|through the fog|ttf|naya|korean american story|"
+    r"lp|ltmh|full|edited|edit|short|trailer|part \d+|eng|kor|video)\b"
+)
+
+
+def series_group(text: str) -> str:
+    t = (text or "").strip().lower()
+    for group, pat in SERIES_RULES:
+        if re.search(pat, t):
+            return group
+    return "lp"  # blank Series values in the original CSV are Legacy Project
+
+
+def series_of_filename(filename: str) -> str:
+    return series_group(filename)
+
+
+def name_core(title: str) -> str:
+    """Reduce a title to just the person/topic name for matching."""
+    s = normalize_title(title)
+    s = SERIES_WORDS.sub(" ", s)
+    s = re.sub(r"\b\d+\b", " ", s)          # dates, episode numbers, years
+    s = re.sub(r"\b(dr|rev|reverend|pastor|mr|mrs|ms|ft|aka|the|mp4|srt|txt)\b", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def names_match(a: str, b: str) -> float:
+    """Score 0-100: how confidently two name cores refer to the same person."""
+    if not a or not b:
+        return 0
+    if a == b or a.replace(" ", "") == b.replace(" ", ""):
+        return 100
+    return max(fuzz.token_sort_ratio(a, b), fuzz.ratio(a.replace(" ", ""), b.replace(" ", "")))
+
+
+NAME_CUTOFF = 88
+
+
 def parse_transcripts(transcript_path: Path) -> dict[str, list[dict]]:
     """Parse master transcript file (SRT format) into segments by interview.
 
@@ -114,13 +174,14 @@ def parse_transcripts(transcript_path: Path) -> dict[str, list[dict]]:
     00:00:08,339 --> 00:00:12,006
     Next line of text...
 
-    Returns: {normalized_title: [{"start_seconds": int, "text": str}, ...]}
+    Returns: list of {"file", "title", "series", "core", "chunks": [{"start_seconds", "text"}, ...]}
+    (one entry per transcript file; nothing is overwritten when two files share a name)
     """
     if not transcript_path.exists():
-        return {}
+        return []
 
     content = transcript_path.read_text(encoding="utf-8")
-    interviews = {}
+    interviews = []
 
     # Split by interview headers: === FILENAME.txt ===
     header_pattern = re.compile(r"^===\s*(.+?)\s*===$", re.MULTILINE)
@@ -129,7 +190,7 @@ def parse_transcripts(transcript_path: Path) -> dict[str, list[dict]]:
     headers = list(header_pattern.finditer(content))
     if not headers:
         print("  No interview headers found in transcript file")
-        return {}
+        return []
 
     # SRT timestamp pattern: 00:00:05,404 --> 00:00:07,071
     srt_ts_pattern = re.compile(r"(\d{2}:\d{2}:\d{2},\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2},\d{3})")
@@ -213,46 +274,80 @@ def parse_transcripts(transcript_path: Path) -> dict[str, list[dict]]:
                 "text": " ".join(current_texts),
             })
 
-        title_key = normalize_title(title)
-        interviews[title_key] = chunks
+        interviews.append({
+            "file": filename,
+            "title": title,
+            "series": series_of_filename(filename),
+            "core": name_core(title),
+            "chunks": chunks,
+        })
 
     return interviews
 
 
-def match_transcripts_to_records(records: list[dict], transcripts: dict[str, list[dict]]) -> dict[str, list[dict]]:
-    """Fuzzy-match transcript titles to CSV record titles.
+def match_transcripts_to_records(records: list[dict], transcripts: list[dict]) -> dict[int, list[dict]]:
+    """Attach each transcript to the interview record(s) it belongs to.
 
-    Returns: {normalized_record_title: transcript_chunks}
+    A transcript matches a record only when both are in the same series and the
+    person's name matches closely (NAME_CUTOFF). It attaches to every record with
+    that same name in that series (e.g. the Full and Edited rows). If two transcripts
+    belong to the same record (e.g. a 2015 and a 2023 interview of the same person),
+    their chunks are combined rather than one overwriting the other.
+
+    Returns: {record_id: transcript_chunks}
     """
     if not transcripts:
         return {}
 
-    record_titles = [normalize_title(r["title"]) for r in records]
-    matched = {}
-    unmatched_transcripts = []
+    by_series: dict[str, list[dict]] = {}
+    for r in records:
+        if not r.get("transcript_files"):
+            by_series.setdefault(r["series_group"], []).append(r)
 
-    for transcript_title, chunks in transcripts.items():
-        # Try exact match first
-        if transcript_title in record_titles:
-            matched[transcript_title] = chunks
-            continue
-
-        # Fuzzy match
-        hit = process.extractOne(
-            transcript_title,
-            record_titles,
-            scorer=fuzz.WRatio,
-            score_cutoff=75,
-        )
-        if hit:
-            matched_title, _, _ = hit
-            matched[matched_title] = chunks
+    # 1. Explicit assignments from the "Transcript File" column
+    by_file: dict[str, list[dict]] = {}
+    for r in records:
+        for f in r.get("transcript_files", []):
+            by_file.setdefault(f.lower(), []).append(r)
+    matched: dict[int, list[dict]] = {}
+    unmatched = []
+    explicit = 0
+    remaining = []
+    for t in transcripts:
+        owners = by_file.get(t["file"].lower())
+        if owners:
+            explicit += 1
+            for r in owners:
+                matched.setdefault(r["id"], []).extend(t["chunks"])
         else:
-            unmatched_transcripts.append(transcript_title)
+            remaining.append(t)
+    listed = {f for f in by_file}
+    missing = listed - {t["file"].lower() for t in transcripts}
+    if missing:
+        print(f"  Warning: {len(missing)} file(s) named in the Transcript File column are not in the transcript file:")
+        for f in sorted(missing):
+            print(f"    - {f}")
+    print(f"  {explicit} transcript(s) attached via the Transcript File column")
 
-    if unmatched_transcripts:
-        print(f"  Warning: {len(unmatched_transcripts)} transcript(s) could not be matched to records")
+    # 2. Automatic matching for anything not assigned explicitly
+    for t in remaining:
+        candidates = by_series.get(t["series"], [])
+        scored = [(names_match(t["core"], r["core"]), r) for r in candidates]
+        best = max((sc for sc, _ in scored), default=0)
+        if best < NAME_CUTOFF:
+            unmatched.append(t["file"])
+            continue
+        winners = [r for sc, r in scored if sc == best]
+        # Only attach to records that share one name (Full/Edited/Part rows of one interview)
+        core = winners[0]["core"]
+        for r in winners:
+            if r["core"] == core:
+                matched.setdefault(r["id"], []).extend(t["chunks"])
 
+    if unmatched:
+        print(f"  Warning: {len(unmatched)} transcript(s) have no matching row in the CSV (they will not be searchable):")
+        for f in unmatched:
+            print(f"    - {f}")
     return matched
 
 
@@ -306,40 +401,94 @@ def load_records():
             title = (row.get("Title") or "").strip()
             if not title:
                 continue
+            series = (row.get("Series") or "").strip()
             records.append({
                 "id": len(records),
                 "title": title,
                 "description": (row.get("Description") or "").strip(),
-                "series": (row.get("Series") or "").strip(),
+                "series": series,
+                "series_group": series_group(series),
+                "core": name_core(title),
                 "contributor": (row.get("Contributor") or "").strip(),
                 "creator": (row.get("Creator") or "").strip(),
                 "date_recorded": (row.get("Date Recorded") or "").strip(),
                 "keywords": (row.get("Keywords") or "").strip(),
                 "interviewee": extract_interviewee(row.get("Contributor") or ""),
+                # Optional column: paste a YouTube link here to override automatic matching
+                "youtube_override": (row.get("YouTube URL") or "").strip(),
+                # Optional column: transcript file name(s) from the master transcript file,
+                # separated by " | ". When filled, these transcripts attach to this row directly.
+                "transcript_files": [x.strip() for x in (row.get("Transcript File") or "").split("|") if x.strip()],
             })
     print(f"Loaded {len(records)} records")
     return records
 
 
+YT_ID = re.compile(r"(?:v=|youtu\.be/|/shorts/|/embed/)([\w-]{11})")
+
+
 def match_youtube(records, videos):
-    yt_titles_norm = [normalize_title(v["title"]) for v in videos]
-    matched = 0
+    """Link each record to its YouTube video.
+
+    1. If the CSV row has a "YouTube URL", that link is used as-is.
+    2. Otherwise a video is linked only if its title contains the person's name
+       (allowing small spelling differences). Ties prefer videos from the same series.
+       If nothing clearly matches, the record gets no link rather than a wrong one.
+    """
+    vids = []
+    for v in videos:
+        norm = normalize_title(v["title"])
+        vids.append((v, set(norm.split()), norm.replace(" ", ""), series_group(v["title"]) if
+                     any(re.search(p, v["title"].lower()) for _, p in SERIES_RULES) else None))
+
+    matched = overridden = 0
     for r in records:
-        hit = process.extractOne(
-            normalize_title(r["title"]),
-            yt_titles_norm,
-            scorer=fuzz.WRatio,
-            score_cutoff=72,
-        )
-        if hit:
-            _, _, idx = hit
-            r["youtube_video_id"] = videos[idx]["id"]
-            r["youtube_url"] = f"https://www.youtube.com/watch?v={videos[idx]['id']}"
+        r["youtube_video_id"] = None
+        r["youtube_url"] = None
+        if r.get("youtube_override"):
+            m = YT_ID.search(r["youtube_override"])
+            if m:
+                r["youtube_video_id"] = m.group(1)
+                r["youtube_url"] = f"https://www.youtube.com/watch?v={m.group(1)}"
+                overridden += 1
+                continue
+        name = r["core"]
+        tokens = name.split()
+        if not tokens:
+            continue
+        best, best_score = None, 0
+        for v, vtokens, vflat, vseries in vids:
+            vnorm = normalize_title(v["title"])
+            vwords = vnorm.split()
+            if re.search(r"(^| )" + re.escape(name) + r"( |$)", vnorm) or name.replace(" ", "") in vwords:
+                score = 100   # the full name appears as a phrase in the video title
+            else:
+                # tolerate a small typo (e.g. Ashely/Ashley, Jungo/Jungdo), but the name must still
+                # appear as consecutive words, so "Samuel Lee" never matches "Samuel Sang Gook Lee"
+                n = len(tokens)
+                score = 0
+                if n >= 2:
+                    for i in range(len(vwords) - n + 1):
+                        window = vwords[i:i + n]
+                        # every word must match; short words (Jun/Jung, Son/One) must match exactly
+                        if all(a == w or (len(a) >= 4 and len(w) >= 4 and a[0] == w[0] and fuzz.ratio(a, w) >= 80)
+                               for a, w in zip(tokens, window)):
+                            score = 90
+                            break
+            if not score:
+                continue
+            if vseries is not None and vseries != r["series_group"]:
+                continue  # never link a video from a different series (e.g. a ROAR video to a Through the Fog row)
+            if vseries == r["series_group"]:
+                score += 5
+            if score > best_score:
+                best, best_score = v, score
+        if best:
+            r["youtube_video_id"] = best["id"]
+            r["youtube_url"] = f"https://www.youtube.com/watch?v={best['id']}"
             matched += 1
-        else:
-            r["youtube_video_id"] = None
-            r["youtube_url"] = None
-    print(f"Matched {matched}/{len(records)} records to YouTube videos")
+    print(f"Matched {matched + overridden}/{len(records)} records to YouTube videos "
+          f"({overridden} from the YouTube URL column)")
 
 
 def build_description_chunk(record: dict) -> str:
@@ -354,7 +503,7 @@ def build_description_chunk(record: dict) -> str:
     return "\n".join(parts)
 
 
-def build_chunks(records: list[dict], transcripts: dict[str, list[dict]]):
+def build_chunks(records: list[dict], transcripts: dict[int, list[dict]]):
     """Build searchable chunks from records, using transcripts when available.
 
     Records with transcripts get multiple chunks (one per ~60-90 second segment).
@@ -365,12 +514,10 @@ def build_chunks(records: list[dict], transcripts: dict[str, list[dict]]):
     transcript_chunks_created = 0
 
     for r in records:
-        title_key = normalize_title(r["title"])
-
-        if title_key in transcripts:
+        if r["id"] in transcripts:
             transcript_matches += 1
             # Create multiple chunks from transcript segments
-            for segment in transcripts[title_key]:
+            for segment in transcripts[r["id"]]:
                 # Include title and interviewee in each chunk for context
                 header_parts = [r["title"]]
                 if r.get("interviewee"):
@@ -479,9 +626,9 @@ def main():
     print(f"Looking for transcripts at {TRANSCRIPT_PATH}...")
     raw_transcripts = parse_transcripts(TRANSCRIPT_PATH)
     if raw_transcripts:
-        print(f"  Found {len(raw_transcripts)} interview(s) in transcript file")
+        print(f"  Found {len(raw_transcripts)} transcript(s) in transcript file")
         transcripts = match_transcripts_to_records(records, raw_transcripts)
-        print(f"  Matched {len(transcripts)} transcript(s) to records")
+        print(f"  {len(transcripts)} record(s) now have transcript text")
     else:
         print("  No transcripts found (file missing or empty)")
         transcripts = {}
