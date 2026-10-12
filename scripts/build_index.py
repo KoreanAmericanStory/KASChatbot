@@ -428,11 +428,15 @@ def _fetch_videos_from_youtube():
     # 2) Video length for every upload (also a backup if the Shorts list isn't available)
     ids = [v["id"] for v in videos]
     durations = {}
+    privacy = {}
     for i in range(0, len(ids), 50):
-        resp = yt.videos().list(part="contentDetails", id=",".join(ids[i:i + 50])).execute()
+        resp = yt.videos().list(part="contentDetails,status", id=",".join(ids[i:i + 50])).execute()
         for it in resp["items"]:
             durations[it["id"]] = iso_duration_seconds(it["contentDetails"].get("duration", ""))
+            privacy[it["id"]] = it.get("status", {}).get("privacyStatus", "")
     for v in videos:
+        # unlisted / private videos must never be shown in chat results
+        v["privacy"] = privacy.get(v["id"], "unknown")
         v["duration_seconds"] = durations.get(v["id"])
         d = v["duration_seconds"]
         # Shorts are vertical clips up to 3 minutes. Anything 60s or under is always treated as a
@@ -442,7 +446,9 @@ def _fetch_videos_from_youtube():
 
     YT_CACHE.write_text(json.dumps(videos, indent=2))
     n_short = sum(v["is_short"] for v in videos)
-    print(f"Fetched {len(videos)} videos ({n_short} are Shorts and will never be linked), cached to {YT_CACHE}")
+    n_hidden = sum(v["privacy"] != "public" for v in videos)
+    print(f"Fetched {len(videos)} videos ({n_short} Shorts and {n_hidden} unlisted/private videos "
+          f"will never be linked), cached to {YT_CACHE}")
     return videos
 
 
@@ -498,11 +504,13 @@ def match_youtube(records, videos):
        (allowing small spelling differences). Ties prefer videos from the same series.
        If nothing clearly matches, the record gets no link rather than a wrong one.
     """
-    shorts = {v["id"] for v in videos if v.get("is_short")}
+    # Never link a Short, or a video that isn't public (unlisted/private)
+    shorts = {v["id"] for v in videos if v.get("is_short") or v.get("privacy", "public") != "public"}
     durations = {v["id"]: v.get("duration_seconds") for v in videos}
     if not any("is_short" in v for v in videos):
-        print("  WARNING: this YouTube list has no Shorts information - re-fetch it so Shorts can be excluded")
-    videos = [v for v in videos if not v.get("is_short")]   # never link a Short
+        print("  WARNING: this YouTube list has no Shorts/visibility info - re-fetch it so they can be excluded")
+    videos = [v for v in videos if v["id"] not in shorts]
+    public_ids = {v["id"] for v in videos}
     vids = []
     for v in videos:
         norm = normalize_title(v["title"])
@@ -529,7 +537,9 @@ def match_youtube(records, videos):
             # one or more links separated by " | " - Shorts are skipped; the longest regular video wins
             ids = [m.group(1) for m in YT_ID.finditer(r["youtube_override"])]
             shorts.update(re.findall(r"/shorts/([\w-]{11})", r["youtube_override"]))  # a /shorts/ link is a Short
-            ok = [i for i in ids if i not in shorts]
+            # only public, regular videos from the channel's list (an ID that isn't in the list is
+            # most likely unlisted or private, so it's skipped too)
+            ok = [i for i in ids if i not in shorts and i in public_ids]
             # several regular videos listed (e.g. full episode + clip): use the longest one
             pick = max(ok, key=lambda i: (durations.get(i) or 0, -ok.index(i))) if ok else None
             if pick:
@@ -538,7 +548,7 @@ def match_youtube(records, videos):
                 overridden += 1
                 continue
             if ids:
-                print(f"  Note: every link in the YouTube URL column for '{r['title']}' is a Short - not linked")
+                print(f"  Note: every link in the YouTube URL column for '{r['title']}' is a Short or not public - not linked")
                 continue
         name = r["core"]
         tokens = name.split()
