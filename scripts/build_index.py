@@ -400,6 +400,8 @@ def _fetch_videos_from_youtube():
             videos.append({
                 "id": item["snippet"]["resourceId"]["videoId"],
                 "title": item["snippet"]["title"],
+                # descriptions usually name the guest even when the title doesn't
+                "description": item["snippet"].get("description", ""),
             })
         page_token = resp.get("nextPageToken")
         if not page_token:
@@ -460,6 +462,7 @@ def match_youtube(records, videos):
                      any(re.search(p, v["title"].lower()) for _, p in SERIES_RULES) else None))
 
     matched = overridden = 0
+    desc_links = []
     for r in records:
         r["youtube_video_id"] = None
         r["youtube_url"] = None
@@ -501,12 +504,36 @@ def match_youtube(records, videos):
                 score += 5
             if score > best_score:
                 best, best_score = v, score
+        via_description = False
+        if not best and len(name) >= 5:
+            # Fallback: the video's description names the person. Only videos whose TITLE marks
+            # them as the same series are considered (e.g. "| Through The Fog"), so a Through the
+            # Fog row can only link to a Through the Fog video.
+            pat = re.compile(r"(^| )" + re.escape(name) + r"( |$)")
+            for v, vtokens, vflat, vseries in vids:
+                if vseries != r["series_group"] or not v.get("description"):
+                    continue
+                dnorm = normalize_title(v["description"])
+                hits = len(pat.findall(dnorm)) or (1 if name.replace(" ", "") in dnorm.split() else 0)
+                if not hits:
+                    continue
+                first = dnorm.find(name) if name in dnorm else len(dnorm)
+                score = hits * 10 + max(0, 300 - first) / 30   # named often and early = the guest, not a host/credit
+                if score > best_score:
+                    best, best_score = v, score
+            via_description = best is not None
         if best:
             r["youtube_video_id"] = best["id"]
             r["youtube_url"] = f"https://www.youtube.com/watch?v={best['id']}"
             matched += 1
+            if via_description:
+                desc_links.append((r["title"], best["title"]))
     print(f"Matched {matched + overridden}/{len(records)} records to YouTube videos "
-          f"({overridden} from the YouTube URL column)")
+          f"({overridden} from the YouTube URL column, {len(desc_links)} via video descriptions)")
+    if desc_links:
+        print("  Linked via the video description - please spot-check these:")
+        for row, vid in sorted(set(desc_links)):
+            print(f"    {row}  ->  {vid}")
 
 
 def build_description_chunk(record: dict) -> str:
