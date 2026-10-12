@@ -463,9 +463,20 @@ def match_youtube(records, videos):
 
     matched = overridden = 0
     desc_links = []
+    desc_norm = [normalize_title(v.get("description", "")) for v in videos]
+    _cache = {}
+
+    def desc_mentions(name):
+        if name not in _cache:
+            pat = re.compile(r"(^| )" + re.escape(name) + r"( |$)")
+            _cache[name] = sum(1 for d in desc_norm if d and pat.search(d))
+        return _cache[name]
+
     for r in records:
         r["youtube_video_id"] = None
         r["youtube_url"] = None
+        if r.get("youtube_override", "").lower() == "none":
+            continue  # "none" in the YouTube URL column = deliberately no video link
         if r.get("youtube_override"):
             m = YT_ID.search(r["youtube_override"])
             if m:
@@ -505,7 +516,8 @@ def match_youtube(records, videos):
             if score > best_score:
                 best, best_score = v, score
         via_description = False
-        if not best and len(name) >= 5:
+        # Names found in many descriptions are crew credits (editors, producers), not guests
+        if not best and len(name) >= 5 and desc_mentions(name) <= 8:
             # Most KAS video titles no longer include the guest's name, so every row is also
             # checked against video DESCRIPTIONS. A name in the title still wins; otherwise the
             # video whose description names the person most often and earliest is used.
