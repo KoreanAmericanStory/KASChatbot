@@ -505,12 +505,16 @@ def match_youtube(records, videos):
        If nothing clearly matches, the record gets no link rather than a wrong one.
     """
     # Never link a Short, or a video that isn't public (unlisted/private)
-    shorts = {v["id"] for v in videos if v.get("is_short") or v.get("privacy", "public") != "public"}
+    # Shorts are never linked. Unlisted/private videos are still MATCHED, so that an interview whose
+    # video isn't public can be hidden from the chatbot entirely (see "hidden" below).
+    shorts = {v["id"] for v in videos if v.get("is_short")}
+    nonpublic = {v["id"] for v in videos if v.get("privacy", "public") != "public"}
     durations = {v["id"]: v.get("duration_seconds") for v in videos}
+    all_ids = {v["id"] for v in videos}
     if not any("is_short" in v for v in videos):
         print("  WARNING: this YouTube list has no Shorts/visibility info - re-fetch it so they can be excluded")
     videos = [v for v in videos if v["id"] not in shorts]
-    public_ids = {v["id"] for v in videos}
+    public_ids = {v["id"] for v in videos} - nonpublic
     vids = []
     for v in videos:
         norm = normalize_title(v["title"])
@@ -533,6 +537,9 @@ def match_youtube(records, videos):
         r["youtube_url"] = None
         if r.get("youtube_override", "").lower() == "none":
             continue  # "none" in the YouTube URL column = deliberately no video link
+        if r.get("youtube_override", "").lower() == "hide":
+            r["hidden"] = "marked 'hide' in the YouTube URL column"
+            continue
         if r.get("youtube_override"):
             # one or more links separated by " | " - Shorts are skipped; the longest regular video wins
             ids = [m.group(1) for m in YT_ID.finditer(r["youtube_override"])]
@@ -547,8 +554,13 @@ def match_youtube(records, videos):
                 r["youtube_url"] = f"https://www.youtube.com/watch?v={pick}"
                 overridden += 1
                 continue
+            regular = [i for i in ids if i not in shorts]
+            if regular:
+                # its only (non-Short) videos are unlisted/private or not on the channel: hide the interview
+                r["hidden"] = "its video in the YouTube URL column is unlisted/private (or not on the channel)"
+                continue
             if ids:
-                print(f"  Note: every link in the YouTube URL column for '{r['title']}' is a Short or not public - not linked")
+                print(f"  Note: every link in the YouTube URL column for '{r['title']}' is a Short - not linked")
                 continue
         name = r["core"]
         tokens = name.split()
@@ -579,6 +591,8 @@ def match_youtube(records, videos):
                 continue  # never link a video from a different series (e.g. a ROAR video to a Through the Fog row)
             if vseries == r["series_group"]:
                 score += 5
+            if v["id"] in nonpublic:
+                score -= 50   # a public video of the same person always wins over an unlisted one
             if score > best_score:
                 best, best_score = v, score
         via_description = False
@@ -600,9 +614,14 @@ def match_youtube(records, videos):
                 first = dnorm.find(name) if name in dnorm else len(dnorm)
                 # named often and early = the guest, not a host or a credit line
                 score = hits * 10 + max(0, 300 - first) / 30 + (5 if vseries == r["series_group"] else 0)
+                if v["id"] in nonpublic:
+                    score *= 0.5   # prefer a public video; an unlisted-only match still hides the row
                 if score > best_score:
                     best, best_score = v, score
             via_description = best is not None
+        if best and best["id"] in nonpublic:
+            r["hidden"] = f"its video is {best.get('privacy', 'not public')}: {best['title'][:60]}"
+            continue
         if best:
             r["youtube_video_id"] = best["id"]
             r["youtube_url"] = f"https://www.youtube.com/watch?v={best['id']}"
@@ -748,11 +767,23 @@ def main():
     records = load_records()
     match_youtube(records, videos)
 
+    # Interviews whose video is unlisted/private are left out of the chatbot completely
+    hidden = [r for r in records if r.get("hidden")]
+    hidden_files = {f.lower() for r in hidden for f in r.get("transcript_files", [])}
+    if hidden:
+        print(f"Leaving out {len(hidden)} row(s) whose video is not public:")
+        for r in hidden:
+            print(f"    {r['title']}  ({r['hidden']})")
+    records = [r for r in records if not r.get("hidden")]
+    for i, r in enumerate(records):
+        r["id"] = i
+
     # Parse transcripts and match to records
     print(f"Looking for transcripts at {TRANSCRIPT_PATH}...")
     raw_transcripts = parse_transcripts(TRANSCRIPT_PATH)
     if raw_transcripts:
         print(f"  Found {len(raw_transcripts)} transcript(s) in transcript file")
+        raw_transcripts = [t for t in raw_transcripts if t["file"].lower() not in hidden_files]
         transcripts = match_transcripts_to_records(records, raw_transcripts)
         print(f"  {len(transcripts)} record(s) now have transcript text")
     else:
