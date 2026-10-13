@@ -13,7 +13,7 @@ import json
 import re
 from pathlib import Path
 
-import pandas as pd
+import pandas as pd  # reading MULTI_FILE also needs: pip install xlrd
 
 ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data"
@@ -21,6 +21,9 @@ CENSUS_DIR = ROOT / "Census Data"
 
 # Primary data source with state-level historical data
 MAIN_FILE = CENSUS_DIR / "Summary Spreadsheets of KA Population" / "Summary of KA Population 1910-2020" / "Korean-American Population 1910 - 2020 Koreans and All.xlsx"
+
+# Korean alone vs. multiracial Korean, by state, 2000-2020 (HJ's workbook; old .xls format despite the .xlsx name)
+MULTI_FILE = CENSUS_DIR / "Multi Racial Korean American Population 2000-2020.xlsx"
 
 # 2020 Census with county-level data
 COUNTY_FILE_2020 = CENSUS_DIR / "2020 Census" / "2020 DHCA Korean Alone or In Combination.xlsx"
@@ -202,6 +205,31 @@ def load_county_data_2020() -> dict:
     return county_data
 
 
+def load_multiracial(state_data: dict) -> None:
+    """Add korean_only / multiracial counts for 2000, 2010, 2020 to state_data (in place)."""
+    if not MULTI_FILE.exists():
+        print(f"  (no multiracial file at {MULTI_FILE.name}; skipping)")
+        return
+    try:
+        df = pd.read_excel(MULTI_FILE, header=None, engine="xlrd")
+    except Exception:
+        df = pd.read_excel(MULTI_FILE, header=None)
+    added = 0
+    for _, row in df.iterrows():
+        st = normalize_state(str(row[0]))
+        if not st or st not in state_data:
+            continue
+        for year, col in (("2000", 1), ("2010", 5), ("2020", 9)):
+            total, only, multi = safe_int(row[col]), safe_int(row[col + 1]), safe_int(row[col + 2])
+            if total and only is not None and multi is not None and year in state_data[st]:
+                if state_data[st][year].get("korean_alone") != total:
+                    print(f"  WARNING {st} {year}: multiracial file total {total} != main file {state_data[st][year].get('korean_alone')}")
+                state_data[st][year]["korean_only"] = only
+                state_data[st][year]["multiracial"] = multi
+                added += 1
+    print(f"  Added Korean-only / multiracial breakdown for {added} state-years")
+
+
 def compute_national_totals(state_data: dict) -> dict:
     """Compute national totals from state data."""
     national = {}
@@ -228,7 +256,14 @@ def main():
     # Load data from various sources
     state_data = load_state_historical_data()
     county_data = load_county_data_2020()
+    load_multiracial(state_data)
     national_data = compute_national_totals(state_data)
+    for year in ("2000", "2010", "2020"):
+        only = sum(v.get(year, {}).get("korean_only", 0) for v in state_data.values())
+        multi = sum(v.get(year, {}).get("multiracial", 0) for v in state_data.values())
+        if only and year in national_data:
+            national_data[year]["korean_only"] = only
+            national_data[year]["multiracial"] = multi
     # Official 2020 Census national count (Korean alone or in any combination). The sum of
     # state cells differs by a few people; the source PDF's TOTAL row (1,974,407) is a sheet error.
     national_data["2020"] = {"korean_alone": 1989519}

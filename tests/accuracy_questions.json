@@ -460,5 +460,51 @@
   "cited_any": [
    "Michelle Zauner"
   ]
+ },
+ {
+  "id": "census-multi-us",
+  "q": "What percentage of Korean Americans are multiracial?",
+  "any_words": [
+   "24.2",
+   "24%"
+  ]
+ },
+ {
+  "id": "census-multi-hi",
+  "q": "How many Korean Americans in Hawaii are mixed race?",
+  "numbers": [
+   "29298"
+  ]
+ },
+ {
+  "id": "census-multi-top",
+  "q": "Which state has the highest share of mixed-race Korean Americans?",
+  "words": [
+   "Wyoming"
+  ]
+ },
+ {
+  "id": "census-region-south",
+  "q": "How many Korean Americans live in the South?",
+  "numbers": [
+   "517129"
+  ]
+ },
+ {
+  "id": "census-region-top",
+  "q": "Which region of the US has the most Korean Americans?",
+  "words": [
+   "West"
+  ],
+  "numbers": [
+   "861799"
+  ]
+ },
+ {
+  "id": "census-only-ca-2010",
+  "q": "How many Korean-only (not mixed) Korean Americans were in California in 2010?",
+  "numbers": [
+   "451892"
+  ]
  }
 ]

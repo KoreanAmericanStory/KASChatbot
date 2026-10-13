@@ -73,7 +73,7 @@ You have tools. Use them; never answer factual questions from your own general k
 Answering rules:
 - Read results closely and answer the visitor's exact question, respecting qualifiers (e.g. "didn't", "as a child", "before the war", "in Chicago", "second-generation", "adoptees", "women").
 - Only cite interviews that genuinely fit. Cite them as [n] using the numbers in the search results. If nothing fits well, say so in one sentence and name the closest matches.
-- Report census figures exactly as given, with the census year and place. If a source note affects the answer (e.g. 1950 counts Hawaii only, 1930 leaves out Hawaii, 2000-2020 include mixed-heritage Korean Americans, no 1960 data), mention it briefly. If the data doesn't cover something (a year, a city, income, age...), say so plainly instead of estimating. Never take population numbers from interviews.
+- Report census figures exactly as given, with the census year and place. If a source note affects the answer (e.g. 1950 counts Hawaii only, 1930 leaves out Hawaii, 2000-2020 totals include mixed-heritage Korean Americans, no 1960 data), mention it briefly. If the data doesn't cover something (a year, a city, income, age...), say so plainly instead of estimating. Never take population numbers from interviews.
 - Never invent details about a person; base every statement on tool results.
 - Be warm but professional; no effusive phrases like "Great question!".
 - Keep it SHORT: 2-4 sentences. For several census figures, a compact list is fine. Don't describe every citation; highlight 2-3.
@@ -361,7 +361,9 @@ TOOLS = [
     {
         "name": "census_lookup",
         "description": "Exact Korean American population figures from the U.S. Census for places and years, with pre-calculated "
-                       "changes/percentages and source caveats. Places: 'United States', any state, D.C., or (2020 only) a county "
+                       "changes/percentages and source caveats. For 2000, 2010 and 2020 it also gives the Korean-alone vs. multiracial "
+                       "(mixed-heritage) breakdown. Places: 'United States', any state, D.C., a Census region or division "
+                       "('South', 'Midwest', 'New England', 'Pacific'), 'East Coast', 'Pacific Northwest', or (2020 only) a county "
                        "like 'Bergen County, NJ' or a major city/area like 'New York City', 'Queens', 'Los Angeles', 'Chicago', 'Bay Area'. "
                        "Omit years to get every year available.",
         "input_schema": {
@@ -375,14 +377,15 @@ TOOLS = [
     },
     {
         "name": "census_rank",
-        "description": "Rank states (any census year) or counties (2020 only) by Korean American population, or rank states by growth "
-                       "between two census years (by='growth' for numeric, by='growth_percent' for percent).",
+        "description": "Rank states (any census year), Census regions/divisions, or counties (2020 only) by Korean American population; "
+                       "rank states by growth between two census years (by='growth' numeric, by='growth_percent' percent); or rank "
+                       "states by multiracial Korean Americans in 2000/2010/2020 (by='multiracial' count, by='multiracial_percent' share).",
         "input_schema": {
             "type": "object",
             "properties": {
-                "level": {"type": "string", "enum": ["state", "county"]},
+                "level": {"type": "string", "enum": ["state", "county", "region", "division"]},
                 "year": {"type": "string", "description": "Census year, default 2020 (end year for growth)."},
-                "by": {"type": "string", "enum": ["population", "growth", "growth_percent"]},
+                "by": {"type": "string", "enum": ["population", "growth", "growth_percent", "multiracial", "multiracial_percent"]},
                 "start_year": {"type": "string", "description": "Start year for growth rankings."},
                 "top_n": {"type": "integer", "description": "How many to list (default 10)."},
                 "ascending": {"type": "boolean", "description": "True to list the smallest first."},

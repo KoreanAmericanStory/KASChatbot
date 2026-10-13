@@ -18,6 +18,74 @@ STATES = {st: {y: v["korean_alone"] for y, v in yrs.items() if v.get("korean_alo
 COUNTIES = {st: {name: v["2020"]["korean_combined"] for name, v in cs.items() if v.get("2020", {}).get("korean_combined")}
             for st, cs in _raw.get("county", {}).items()}
 NOTES = _raw.get("notes", {"general": "", "by_year": {}})
+
+# Korean alone vs. multiracial Korean (2000, 2010, 2020): {place: {year: (korean_only, multiracial)}}
+BREAKDOWN = {st: {y: (v["korean_only"], v["multiracial"]) for y, v in yrs.items() if "korean_only" in v}
+             for st, yrs in _raw.get("state", {}).items()}
+BREAKDOWN["US"] = {y: (v["korean_only"], v["multiracial"]) for y, v in _raw.get("national", {}).items() if "korean_only" in v}
+
+# U.S. Census Bureau regions and divisions; figures are sums of the states.
+DIVISIONS = {
+    "New England": ["CT", "ME", "MA", "NH", "RI", "VT"],
+    "Middle Atlantic": ["NJ", "NY", "PA"],
+    "East North Central": ["IL", "IN", "MI", "OH", "WI"],
+    "West North Central": ["IA", "KS", "MN", "MO", "NE", "ND", "SD"],
+    "South Atlantic": ["DE", "DC", "FL", "GA", "MD", "NC", "SC", "VA", "WV"],
+    "East South Central": ["AL", "KY", "MS", "TN"],
+    "West South Central": ["AR", "LA", "OK", "TX"],
+    "Mountain": ["AZ", "CO", "ID", "MT", "NV", "NM", "UT", "WY"],
+    "Pacific": ["AK", "CA", "HI", "OR", "WA"],
+}
+REGIONS = {
+    "Northeast": DIVISIONS["New England"] + DIVISIONS["Middle Atlantic"],
+    "Midwest": DIVISIONS["East North Central"] + DIVISIONS["West North Central"],
+    "South": DIVISIONS["South Atlantic"] + DIVISIONS["East South Central"] + DIVISIONS["West South Central"],
+    "West": DIVISIONS["Mountain"] + DIVISIONS["Pacific"],
+}
+REGION_ALIASES = {k.lower(): k for k in list(REGIONS) + list(DIVISIONS)}
+REGION_ALIASES.update({"the south": "South", "southern states": "South", "the west": "West", "west coast": "Pacific",
+                       "the midwest": "Midwest", "the northeast": "Northeast", "east coast": "EAST_COAST",
+                       "mid-atlantic": "Middle Atlantic", "mid atlantic": "Middle Atlantic",
+                       "southeast": "South Atlantic", "the southeast": "South Atlantic", "pacific northwest": "PNW",
+                       "southwest": "SOUTHWEST", "the southwest": "SOUTHWEST", "deep south": "DEEP_SOUTH"})
+CUSTOM_AREAS = {
+    "EAST_COAST": ("the East Coast states (ME to FL)", ["ME", "NH", "MA", "RI", "CT", "NY", "NJ", "PA", "DE", "MD", "DC", "VA", "NC", "SC", "GA", "FL"]),
+    "PNW": ("the Pacific Northwest (WA, OR, ID)", ["WA", "OR", "ID"]),
+    "SOUTHWEST": ("the Southwest (AZ, NM, NV, TX)", ["AZ", "NM", "NV", "TX"]),
+    "DEEP_SOUTH": ("the Deep South (AL, GA, LA, MS, SC)", ["AL", "GA", "LA", "MS", "SC"]),
+}
+
+
+def area_series(states: list[str]) -> dict:
+    """Sum state figures; only years where every state with any data has a figure are kept honest via notes."""
+    out = {}
+    for y in ALL_YEARS:
+        vals = [STATES[st][y] for st in states if y in STATES.get(st, {})]
+        if vals:
+            out[y] = sum(vals)
+    return out
+
+
+def _breakdown_lines(label: str, key, years: list[str]) -> list[str]:
+    """'of whom X Korean alone, Y multiracial (Z%)' for 2000/2010/2020."""
+    if isinstance(key, list):
+        data = {}
+        for y in ("2000", "2010", "2020"):
+            parts = [BREAKDOWN[st][y] for st in key if y in BREAKDOWN.get(st, {})]
+            if parts:
+                data[y] = (sum(p[0] for p in parts), sum(p[1] for p in parts))
+    else:
+        data = BREAKDOWN.get(key, {})
+    lines = []
+    for y in ("2000", "2010", "2020"):
+        if y in data and (not years or y in years):
+            only, multi = data[y]
+            lines.append(f"{label} {y} breakdown: {_fmt(only)} Korean alone + {_fmt(multi)} multiracial Korean "
+                         f"({multi / (only + multi) * 100:.1f}% multiracial)")
+    if lines:
+        lines.append("(Breakdown figures are sums of state counts; the 2020 national total from states is 3 people "
+                     "higher than the official 1,989,519.)" if key == "US" and (not years or "2020" in years) else "")
+    return [l for l in lines if l]
 ALL_YEARS = ["1910", "1920", "1930", "1940", "1950", "1960", "1970", "1980", "1990", "2000", "2010", "2020"]
 
 STATE_NAMES = {
@@ -109,6 +177,15 @@ def resolve_place(name: str):
     if s in CITY_TO_COUNTIES:
         st, names, label = CITY_TO_COUNTIES[s]
         return ("counties", (st, names), label)
+    rs = re.sub(r"\s+(region|division|states)$", "", s)
+    if rs in REGION_ALIASES:
+        key = REGION_ALIASES[rs]
+        if key in CUSTOM_AREAS:
+            label, states = CUSTOM_AREAS[key]
+        else:
+            states = REGIONS.get(key) or DIVISIONS[key]
+            label = f"the {key} ({'Census region' if key in REGIONS else 'Census division'}: {', '.join(states)})"
+        return ("area", states, label)
 
     # "X County, ST" / "X County, State" / "X, ST" / "X County"
     state_hint = None
@@ -192,8 +269,14 @@ def census_lookup(places: list[str], years: list[str] | None = None) -> str:
             continue
         if kind == "national":
             l, have = _series_text("United States", NATIONAL, years)
+            l += _breakdown_lines("United States", "US", years)
         elif kind == "state":
             l, have = _series_text(label, STATES.get(key, {}), years)
+            l += _breakdown_lines(label, key, years)
+        elif kind == "area":
+            l, have = _series_text(label, area_series(key), years)
+            l += _breakdown_lines(label, key, years)
+            l.append("Area figures are sums of the state figures." + (" The 1950 figure only reflects states with data (Hawaii)." if "1950" in have else ""))
         else:
             st, names = key
             found = {n: COUNTIES.get(st, {}).get(n) for n in names}
@@ -236,6 +319,24 @@ def census_rank(level: str = "state", year: str = "2020", by: str = "population"
 
     year = (_norm_years([year]) or ["2020"])[0]
     by = (by or "population").lower()
+    if by in ("multiracial", "multiracial_percent", "mixed", "mixed_percent"):
+        year = year if year in ("2000", "2010", "2020") else "2020"
+        rows = [(st, *BREAKDOWN[st][year]) for st in BREAKDOWN if st != "US" and year in BREAKDOWN[st]]
+        if by.endswith("percent"):
+            rows.sort(key=lambda r: r[2] / (r[1] + r[2]), reverse=not ascending)
+            head = f"States ranked by share of Korean Americans who are multiracial, {year}:"
+        else:
+            rows.sort(key=lambda r: r[2], reverse=not ascending)
+            head = f"States ranked by number of multiracial Korean Americans, {year}:"
+        body = [f"{i}. {ABBR_TO_NAME.get(st, st)}: {_fmt(m)} multiracial of {_fmt(o + m)} ({m / (o + m) * 100:.1f}%)"
+                for i, (st, o, m) in enumerate(rows[:top_n], 1)]
+        return "\n".join([head] + body + ["", "Source notes: " + NOTES.get("general", "")] + _year_notes([year]))
+    if level.startswith("region") or level.startswith("division"):
+        groups = REGIONS if level.startswith("region") else DIVISIONS
+        rows = sorted(((g, area_series(sts).get(year, 0)) for g, sts in groups.items()), key=lambda r: r[1], reverse=not ascending)
+        head = f"Census {'regions' if groups is REGIONS else 'divisions'} ranked by Korean American population, {year}:"
+        body = [f"{i}. {g}: {_fmt(v)}" for i, (g, v) in enumerate(rows[:top_n], 1)]
+        return "\n".join([head] + body + ["", "Source notes: " + NOTES.get("general", "")] + _year_notes([year]))
     if by in ("growth", "change", "growth_number", "growth_percent", "percent", "percent_growth"):
         use_pct = "percent" in by
         start = (_norm_years([start_year]) or ["2010"])[0]
@@ -263,5 +364,7 @@ def census_rank(level: str = "state", year: str = "2020", by: str = "population"
 CENSUS_OVERVIEW = (
     "Census data available: Korean American population for the U.S. and every state for 1910, 1920, 1930, 1940, "
     "1950 (Hawaii only), 1970, 1980, 1990, 2000, 2010 and 2020 (no 1960), and for about 1,600 counties in 2020 only. "
+    "For 2000, 2010 and 2020 there is also a breakdown of Korean alone vs. multiracial (mixed-heritage) Korean Americans "
+    "for the U.S. and each state. Regions (Northeast, Midwest, South, West) and Census divisions are sums of states. "
     "No data on total population, income, age, language or other characteristics."
 )
