@@ -118,7 +118,10 @@ SERIES_RULES = [  # (series group, regex matched against a filename or Series va
     ("perilla", r"perilla"),
     ("ttf", r"^ttf|through the fog"),
     ("naya", r"^naya|\bnaya\b"),
-    ("lp", r"legacy|letters? to my hometown|^lp_|^ltmh"),
+    # Letters to My Hometown is its own series: a person's Legacy Project interview and their
+    # family's Letters to My Hometown video are separate pieces and must never be mixed up.
+    ("ltmh", r"letters? (to|from) my hometown|^ltmh"),
+    ("lp", r"legacy|^lp_"),
 ]
 
 SERIES_WORDS = re.compile(
