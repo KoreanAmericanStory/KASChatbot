@@ -19,10 +19,21 @@ HERE = Path(__file__).parent
 URL = (sys.argv[1] if len(sys.argv) > 1 else "https://kas-chatbot-gamma.vercel.app").rstrip("/")
 QUESTIONS = json.loads((HERE / "accuracy_questions.json").read_text(encoding="utf-8"))
 
+# Vercel test (preview) links are private. A "Protection Bypass for Automation" secret lets this script in.
+# It is read from "VERCEL PASS - paste here.txt" next to the tests folder (never committed).
+BYPASS = ""
+_pass_file = HERE.parent / "VERCEL PASS - paste here.txt"
+if _pass_file.exists():
+    for line in _pass_file.read_text(encoding="utf-8").splitlines():
+        if line.strip().upper().startswith("VERCEL_BYPASS="):
+            BYPASS = line.split("=", 1)[1].strip().strip('"')
+
 
 def ask(q):
-    req = urllib.request.Request(f"{URL}/api/chat", data=json.dumps({"message": q}).encode(),
-                                 headers={"Content-Type": "application/json"})
+    headers = {"Content-Type": "application/json"}
+    if BYPASS and "kas-chatbot-gamma" not in URL:
+        headers["x-vercel-protection-bypass"] = BYPASS
+    req = urllib.request.Request(f"{URL}/api/chat", data=json.dumps({"message": q}).encode(), headers=headers)
     t = time.time()
     for attempt in range(3):
         try:
@@ -73,12 +84,18 @@ def check(t, out):
 
 
 def main():
+    if "kas-chatbot-gamma" not in URL and not BYPASS:
+        print('This is a private test link. Paste the Vercel pass into "VERCEL PASS - paste here.txt" first '
+              '(see the instructions inside that file), save it, and run this again.')
+        sys.exit(1)
     print(f"Testing {URL} with {len(QUESTIONS)} questions (about 2-4 minutes)...\n")
     with ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(lambda t: (t, *ask(t["q"])), QUESTIONS))
     lines, failed = [], 0
     for t, out, secs in results:
         problems = check(t, out)
+        if "401" in out.get("answer", "") or "403" in out.get("answer", ""):
+            problems = ["Vercel blocked the test - check the pass in 'VERCEL PASS - paste here.txt'"]
         failed += bool(problems)
         status = "PASS" if not problems else "FAIL"
         lines.append(f"[{status}] {t['q']}  ({secs:.1f}s)")

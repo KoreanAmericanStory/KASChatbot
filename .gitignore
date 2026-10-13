@@ -6,3 +6,6 @@ __pycache__/
 venv/
 .DS_Store
 .vercel
+
+# local secret for the accuracy test
+VERCEL PASS - paste here.txt
