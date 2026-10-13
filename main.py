@@ -76,7 +76,8 @@ Guidelines:
 - Base every statement on the provided transcripts and descriptions. Never invent details about a person.
 - If interviews don't match well, briefly suggest related topics.
 - For greetings, respond in one short sentence and offer to help.
-- When census data is provided, use those exact numbers. Mention the census year when citing statistics.
+- When census data is provided, use those exact numbers. Mention the census year and the place when citing statistics.
+- Population numbers must come ONLY from the census data provided. Never estimate or infer population figures from interviews.
 - NEVER end with a question. No "What interests you?", "Would you like to know more?", etc. Each response is standalone with no memory of previous messages.
 
 Tone: A knowledgeable museum guide — warm, professional, concise."""
@@ -191,13 +192,18 @@ STATE_NAMES = {
 }
 
 CENSUS_PATTERNS = [
-    r'\b(population|how many|census|number of)\b.*\b(korean)\b',
-    r'\b(korean)\b.*\b(population|how many|number|census)\b',
-    r'\b(19[0-9]{2}|20[0-2][0-9])\b.*\b(korean|population)\b',
-    r'\b(korean)\b.*\b(19[0-9]{2}|20[0-2][0-9])\b',
-    r'\b(korean)\b.*\b(population)\b.*\b(changed|over time|trend|growth)\b',
-    r'\bwhich states\b.*\b(most|largest)\b.*\bkorean\b',
+    # "how many Koreans…", "Korean population in…", "census", "number of Korean Americans…"
+    r'\b(population|how many|census|number of|demographic)\b.*\bkoreans?\b',
+    r'\bkoreans?\b.*\b(population|how many|number|census|demographic)\b',
+    r'\bkoreans?\b.*\b(population)\b.*\b(changed|over time|trend|growth)\b',
+    r'\bwhich states?\b.*\b(most|largest)\b.*\bkoreans?\b',
+    r'\b(most|largest)\b.*\bkoreans?\b.*\bstates?\b',
 ]
+
+# A bare "Korean(s) … <year>" only counts as a census question when it names a place
+# and isn't about stories/experiences (e.g. "the Korean War in 1950" must go to interviews).
+CENSUS_YEAR_PATTERN = r'\bkoreans?\b.*\b(19[0-9]{2}|20[0-2][0-9])\b|\b(19[0-9]{2}|20[0-2][0-9])\b.*\bkoreans?\b'
+STORY_WORDS = r'\b(war|stor(y|ies)|interviews?|experiences?|memor(y|ies)|fled|flee|escape|family|families|life|lives|grow(ing)? up|childhood|video|talk|said|says|tell)\b'
 
 # Patterns for meta questions about census data availability
 META_CENSUS_PATTERNS = [
@@ -232,7 +238,14 @@ def is_census_query(query: str) -> bool:
     if not census_data:
         return False
     query_lower = query.lower()
-    return any(re.search(p, query_lower) for p in CENSUS_PATTERNS)
+    if re.search(r'\bhow many\b.*\b(interviews?|videos?|stories|episodes?)\b', query_lower):
+        return False  # about the archive itself, not population
+    if any(re.search(p, query_lower) for p in CENSUS_PATTERNS):
+        return True
+    if re.search(CENSUS_YEAR_PATTERN, query_lower) and not re.search(STORY_WORDS, query_lower):
+        state, _ = parse_location_from_query(query)
+        return state is not None
+    return False
 
 
 def parse_years_from_query(query: str) -> list[str]:
@@ -289,8 +302,8 @@ def parse_location_from_query(query: str) -> tuple[str | None, str | None]:
     city_mappings = [
         (r"\blos angeles\b", "CA", "Los Angeles"),
         (r"\bl\.?a\.?\b", "CA", "Los Angeles"),  # LA or L.A.
-        (r"\bnew york city\b", "NY", "New York"),
-        (r"\bnyc\b", "NY", "New York"),
+        (r"\bnew york city\b", "NY", "NYC"),
+        (r"\bnyc\b", "NY", "NYC"),
         (r"\bchicago\b", "IL", "Cook"),
         (r"\bsan francisco\b", "CA", "San Francisco"),
         (r"\bseattle\b", "WA", "King"),
@@ -327,33 +340,53 @@ def lookup_census(query: str) -> str | None:
 
     results = []
 
-    # If asking about a specific county
+    # If asking about a specific county (county figures exist for 2020 only)
     if county and state_abbrev and state_abbrev != "US":
-        county_data = census_data.get("county", {}).get(state_abbrev, {}).get(county, {})
-        if county_data:
+        if county == "NYC":
+            boroughs = ["New York", "Kings", "Queens", "Bronx", "Richmond"]
+            ny = census_data.get("county", {}).get("NY", {})
+            total = sum((ny.get(b, {}).get("2020", {}).get("korean_combined") or 0) for b in boroughs)
+            if total:
+                results.append(f"In 2020, there were {total:,} Korean Americans in New York City (all five boroughs combined; "
+                               f"Korean alone or in combination).")
+            if year and year != "2020":
+                results.append(f"City/county-level figures are only available for 2020, not {year}.")
+        else:
+            county_data = census_data.get("county", {}).get(state_abbrev, {}).get(county, {})
             for yr, data in county_data.items():
                 if year and yr != year:
                     continue
                 pop = data.get("korean_combined") or data.get("korean_alone")
                 if pop:
                     results.append(f"In {yr}, there were {pop:,} Korean Americans in {county} County, {state_abbrev}.")
+            if year and year != "2020":
+                results.append(f"County-level figures are only available for 2020, not {year}.")
 
     # If asking about a state
     elif state_abbrev and state_abbrev != "US":
         state_info = census_data.get("state", {}).get(state_abbrev, {})
+        available = sorted(state_info.keys())
+        def pop_in(yr):
+            return state_info.get(yr, {}).get("korean_alone")
         if state_info:
-            if year and year in state_info:
-                pop = state_info[year].get("korean_alone")
-                if pop:
-                    results.append(f"According to the {year} census, there were {pop:,} Korean Americans in {state_abbrev}.")
-            elif not year:
-                # Show most recent data
-                years = sorted(state_info.keys(), reverse=True)
-                if years:
-                    latest = years[0]
-                    pop = state_info[latest].get("korean_alone")
-                    if pop:
-                        results.append(f"According to the {latest} census, there were {pop:,} Korean Americans in {state_abbrev}.")
+            if is_comparison:
+                parts = [f"{pop_in(y):,} in {y}" for y in years_found if pop_in(y)]
+                if parts:
+                    results.append(f"Korean Americans in {state_abbrev}: " + ", ".join(parts) + ".")
+            elif is_trend_query:
+                parts = [f"{pop_in(y):,} in {y}" for y in available if pop_in(y)]
+                results.append(f"Korean American population in {state_abbrev} over time: " + ", ".join(parts) + ".")
+            elif year:
+                if pop_in(year):
+                    results.append(f"According to the {year} census, there were {pop_in(year):,} Korean Americans in {state_abbrev}.")
+            else:
+                latest = available[-1]
+                if pop_in(latest):
+                    results.append(f"According to the {latest} census, there were {pop_in(latest):,} Korean Americans in {state_abbrev}.")
+            missing = [y for y in years_found if not pop_in(y)]
+            if missing:
+                results.append(f"The archive's census table has no {state_abbrev} figure for {', '.join(missing)}; "
+                               f"available years for {state_abbrev}: {', '.join(available)}.")
 
     # If asking about national data or top states
     elif state_abbrev == "US" or not state_abbrev:
@@ -406,6 +439,9 @@ def lookup_census(query: str) -> str | None:
             pop = national[year].get("korean_alone")
             if pop:
                 results.append(f"According to the {year} census, there were {pop:,} Korean Americans in the United States.")
+        elif year:
+            results.append(f"The archive's census table has no national figure for {year}; "
+                           f"available years: {', '.join(sorted(national.keys()))}.")
         elif not year and national:
             # Show most recent
             all_years = sorted(national.keys(), reverse=True)
@@ -599,6 +635,10 @@ def chat(req: ChatRequest):
         # If we got census data, this is a census-only query
         if census_context:
             census_only = True
+        else:
+            census_context = ("No matching figure was found in the archive's census table for this question. "
+                              "Census figures are available by decade (1910-2020) for the U.S. and each state, "
+                              "and by county for 2020. Ask the visitor to name a state or decade.")
 
     # Only retrieve interviews if this isn't a census-only query
     hits = [] if census_only else retrieve(req.message)
