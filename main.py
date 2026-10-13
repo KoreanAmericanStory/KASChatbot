@@ -78,6 +78,8 @@ Answering rules:
 - Be warm but professional; no effusive phrases like "Great question!".
 - Keep it SHORT: 2-4 sentences. For several census figures, a compact list is fine. Don't describe every citation; highlight 2-3.
 - For greetings, reply in one short sentence and offer to help (no tools needed).
+- When a visitor names a person, interview, episode or topic, search and give a short overview right away. Never reply by asking what they want to know about it.
+- Every interview you mention must carry its [n] citation.
 - Don't end with an offer or question ("Would you like to know more?"). The only exception: if a place is ambiguous (e.g. "Montgomery County"), ask which one.
 
 Tone: A knowledgeable museum guide — warm, professional, concise.
@@ -392,6 +394,12 @@ TOOLS = [
 
 MAX_TOOL_ROUNDS = 4
 
+# Small talk is the only thing answered without looking anything up.
+SMALL_TALK_RE = re.compile(
+    r"^\s*(hi|hello|hey|yo|hiya|greetings|thanks|thank you|thx|ok|okay|cool|great|nice|bye|goodbye|"
+    r"good (morning|afternoon|evening)|who are you|what are you|what can you do|how does this work|help)"
+    r"[\s!.?,]*(there|again|so much|a lot)?[\s!.?]*$", re.I)
+
 
 class ToolSession:
     """Runs tool calls for one question and keeps every interview shown, so citations line up."""
@@ -448,12 +456,18 @@ def chat(req: ChatRequest):
     try:
         for round_no in range(MAX_TOOL_ROUNDS + 1):
             final_round = round_no == MAX_TOOL_ROUNDS
+            if final_round:
+                choice = {"type": "none"}
+            elif round_no == 0 and not SMALL_TALK_RE.match(req.message):
+                choice = {"type": "any"}  # always look things up before answering a real question
+            else:
+                choice = {"type": "auto"}
             resp = claude.messages.create(
                 model=MODEL,
                 max_tokens=700,
                 system=SYSTEM_PROMPT,
                 tools=TOOLS,
-                tool_choice={"type": "none"} if final_round else {"type": "auto"},
+                tool_choice=choice,
                 messages=messages,
             )
             if resp.stop_reason != "tool_use":
@@ -471,8 +485,22 @@ def chat(req: ChatRequest):
 
     if not answer:
         answer = "Sorry, I couldn't put together an answer to that. Please try rephrasing your question."
-    cited = cited_indices(answer)
+    cited = cited_indices(answer) | named_but_uncited(answer, session.hits)
     return {"answer": answer, "citations": citation_payload(session.hits, cited)}
+
+
+def named_but_uncited(answer: str, hits: list[dict]) -> set[int]:
+    """Safety net: if the answer names an interviewee but forgot the [n], still show that video card."""
+    low = answer.lower()
+    extra = set()
+    for n, h in enumerate(hits, 1):
+        r = h["record"]
+        names = {(r.get("interviewee") or "").strip(), display_title(r["title"]).split("|")[0].split(" - ")[-1].strip()}
+        for name in names:
+            if len(name) >= 6 and name.lower() in low:
+                extra.add(n)
+                break
+    return extra
 
 
 app.mount("/widget", StaticFiles(directory=ROOT / "widget"), name="widget")

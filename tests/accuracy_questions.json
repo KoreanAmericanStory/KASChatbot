@@ -399,7 +399,12 @@
    "Kayla Kim Votapek",
    "Matthew Pellegrino",
    "Corey",
-   "Cory Lemke"
+   "Cory Lemke",
+   "Michael Mullen",
+   "Michael McDonald",
+   "Taneka Jennings",
+   "Kara Bos",
+   "Joseph Oh"
   ]
  },
  {
@@ -442,5 +447,19 @@
   "id": "greeting",
   "q": "hi",
   "max_citations": 0
+ },
+ {
+  "id": "story-person-bare",
+  "q": "Kwon Sook Young",
+  "cited_any": [
+   "Kwon Sook Young"
+  ]
+ },
+ {
+  "id": "story-named-no-cite",
+  "q": "What did Michelle Zauner talk about?",
+  "cited_any": [
+   "Michelle Zauner"
+  ]
  }
 ]
