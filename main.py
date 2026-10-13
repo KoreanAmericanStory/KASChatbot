@@ -73,6 +73,7 @@ You have tools. Use them; never answer factual questions from your own general k
 Answering rules:
 - Read results closely and answer the visitor's exact question, respecting qualifiers (e.g. "didn't", "as a child", "before the war", "in Chicago", "second-generation", "adoptees", "women").
 - Only cite interviews that genuinely fit. Cite them as [n] using the numbers in the search results. If nothing fits well, say so in one sentence and name the closest matches.
+- Give totals by default. Only mention the Korean-alone vs. multiracial split when the visitor asks about it.
 - Report census figures exactly as given, with the census year and place. If a source note affects the answer (e.g. 1950 counts Hawaii only, 1930 leaves out Hawaii, 2000-2020 totals include mixed-heritage Korean Americans, no 1960 data), mention it briefly. If the data doesn't cover something (a year, a city, income, age...), say so plainly instead of estimating. Never take population numbers from interviews.
 - Never invent details about a person; base every statement on tool results.
 - Be warm but professional; no effusive phrases like "Great question!".
@@ -361,8 +362,9 @@ TOOLS = [
     {
         "name": "census_lookup",
         "description": "Exact Korean American population figures from the U.S. Census for places and years, with pre-calculated "
-                       "changes/percentages and source caveats. For 2000, 2010 and 2020 it also gives the Korean-alone vs. multiracial "
-                       "(mixed-heritage) breakdown. Places: 'United States', any state, D.C., a Census region or division "
+                       "changes/percentages and source caveats. Totals for 2000-2020 already include multiracial Korean Americans. "
+                       "Set breakdown=true ONLY when the visitor asks about multiracial/mixed-heritage vs. Korean-only numbers; it then "
+                       "adds that split for 2000, 2010 and 2020. Places: 'United States', any state, D.C., a Census region or division "
                        "('South', 'Midwest', 'New England', 'Pacific'), 'East Coast', 'Pacific Northwest', or (2020 only) a county "
                        "like 'Bergen County, NJ' or a major city/area like 'New York City', 'Queens', 'Los Angeles', 'Chicago', 'Bay Area'. "
                        "Omit years to get every year available.",
@@ -371,6 +373,7 @@ TOOLS = [
             "properties": {
                 "places": {"type": "array", "items": {"type": "string"}, "description": "One or more places."},
                 "years": {"type": "array", "items": {"type": "string"}, "description": "Census years (decades 1910-2020). Optional."},
+                "breakdown": {"type": "boolean", "description": "True only if the visitor asks about multiracial / mixed-heritage / Korean-only counts."},
             },
             "required": ["places"],
         },
@@ -417,7 +420,7 @@ class ToolSession:
             if name == "search_interviews":
                 return self.search(str(args.get("query", "")).strip())
             if name == "census_lookup":
-                return census.census_lookup(args.get("places") or ["United States"], args.get("years"))
+                return census.census_lookup(args.get("places") or ["United States"], args.get("years"), bool(args.get("breakdown")))
             if name == "census_rank":
                 return census.census_rank(**{k: v for k, v in args.items()
                                              if k in ("level", "year", "by", "start_year", "top_n", "ascending", "state")})

@@ -506,5 +506,16 @@
   "numbers": [
    "451892"
   ]
+ },
+ {
+  "id": "census-no-default-split",
+  "q": "How many Korean Americans live in Hawaii?",
+  "numbers": [
+   "52696"
+  ],
+  "forbid_numbers": [
+   "29298",
+   "23398"
+  ]
  }
 ]

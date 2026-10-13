@@ -259,7 +259,7 @@ def _series_text(label, series: dict, years: list[str]):
     return lines, have
 
 
-def census_lookup(places: list[str], years: list[str] | None = None) -> str:
+def census_lookup(places: list[str], years: list[str] | None = None, breakdown: bool = False) -> str:
     years = _norm_years(years)
     lines, used_years = [], set()
     for p in places or ["United States"]:
@@ -269,13 +269,13 @@ def census_lookup(places: list[str], years: list[str] | None = None) -> str:
             continue
         if kind == "national":
             l, have = _series_text("United States", NATIONAL, years)
-            l += _breakdown_lines("United States", "US", years)
+            l += _breakdown_lines("United States", "US", years) if breakdown else []
         elif kind == "state":
             l, have = _series_text(label, STATES.get(key, {}), years)
-            l += _breakdown_lines(label, key, years)
+            l += _breakdown_lines(label, key, years) if breakdown else []
         elif kind == "area":
             l, have = _series_text(label, area_series(key), years)
-            l += _breakdown_lines(label, key, years)
+            l += _breakdown_lines(label, key, years) if breakdown else []
             l.append("Area figures are sums of the state figures." + (" The 1950 figure only reflects states with data (Hawaii)." if "1950" in have else ""))
         else:
             st, names = key
