@@ -9,8 +9,10 @@ Deployed on Vercel via its Python runtime (auto-detects `app`).
 """
 
 import json
+import math
 import os
 import re
+from collections import Counter
 from pathlib import Path
 
 import anthropic
@@ -53,8 +55,15 @@ voyage = voyageai.Client(api_key=os.environ["VOYAGE_API_KEY"])
 claude = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 MODEL = "claude-haiku-4-5"
-TOP_K = 6
-OVER_K = 40
+TOP_K = 6                      # interviews shown to the answer model
+VECTOR_K = 60                  # candidate passages from meaning-based search
+KEYWORD_K = 60                 # candidate passages from exact-word search
+RERANK_MODEL = "rerank-2.5"    # Voyage re-ranker: reads question + passage together
+RERANK_DOC_CHARS = 2000
+FULL_TRANSCRIPT_INTERVIEWS = 3     # top N interviews are read in full
+FULL_TRANSCRIPT_MAX_CHARS = 24000  # ~6k tokens; longer transcripts are windowed around the best moment
+EXCERPTS_PER_INTERVIEW = 2         # the rest get their best few moments
+EXCERPT_CHARS = 1500
 
 SYSTEM_PROMPT = """You are a guide to the Korean American Story (KAS) Legacy Project — a video archive of oral-history interviews with Korean Americans, plus census data on Korean American demographics.
 
@@ -62,6 +71,9 @@ Guidelines:
 - Be warm but professional — no effusive phrases like "Great question!" or "I love that!"
 - Keep responses SHORT: 2-4 sentences max. Brevity is essential.
 - Cite interviews as [1], [2], etc. Don't describe every citation — just mention 2-3 highlights and let visitors explore.
+- You may receive whole transcripts. Read them closely and answer the visitor's exact question, paying attention to qualifiers (e.g. "didn't", "before the war", "in Chicago", "second-generation", "adoptees", "women").
+- Only cite interviews that genuinely fit the question. If none fit well, say so in one sentence and name the closest matches.
+- Base every statement on the provided transcripts and descriptions. Never invent details about a person.
 - If interviews don't match well, briefly suggest related topics.
 - For greetings, respond in one short sentence and offer to help.
 - When census data is provided, use those exact numbers. Mention the census year when citing statistics.
@@ -106,6 +118,57 @@ for i, c in enumerate(chunks):
     if rid not in CHUNK_INDICES_BY_RID:
         CHUNK_INDICES_BY_RID[rid] = []
     CHUNK_INDICES_BY_RID[rid].append(i)
+
+
+def chunk_body(chunk: dict) -> str:
+    """Transcript/description text without the "Title / Interviewee" header."""
+    text = chunk["text"]
+    return text.split("\n\n", 1)[1] if "\n\n" in text else text
+
+
+# --- Exact-word (BM25) index: catches names, places and terms meaning-based search can miss ---
+
+TOKEN_RE = re.compile(r"[a-z0-9\uac00-\ud7a3]+")
+STOPWORDS = set("""a an and are as at be but by did do does for from had has have he her his how i in is it its
+me my of on or our she so that the their them they this to was we were what when where which who whom why
+with you your about any anyone are there tell show find interview interviews story stories someone people
+talk talks talked talking video videos""".split())
+
+
+def tokenize(text: str) -> list[str]:
+    return [t for t in TOKEN_RE.findall(text.lower()) if len(t) > 1 and t not in STOPWORDS]
+
+
+def _build_keyword_index():
+    k1, b = 1.5, 0.75
+    tfs = [Counter(tokenize(c["text"])) for c in chunks]
+    lengths = np.array([sum(tf.values()) for tf in tfs], dtype=np.float32)
+    avg = float(lengths.mean()) if len(lengths) else 1.0
+    postings: dict[str, list[tuple[int, int]]] = {}
+    for i, tf in enumerate(tfs):
+        for term, n in tf.items():
+            postings.setdefault(term, []).append((i, n))
+    n_docs = len(chunks)
+    index = {}
+    for term, plist in postings.items():
+        idx = np.fromiter((i for i, _ in plist), dtype=np.int32, count=len(plist))
+        tf = np.fromiter((n for _, n in plist), dtype=np.float32, count=len(plist))
+        idf = math.log(1 + (n_docs - len(plist) + 0.5) / (len(plist) + 0.5))
+        weight = idf * tf * (k1 + 1) / (tf + k1 * (1 - b + b * lengths[idx] / avg))
+        index[term] = (idx, weight.astype(np.float32))
+    return index
+
+
+KEYWORD_INDEX = _build_keyword_index()
+
+
+def keyword_scores(query: str) -> np.ndarray:
+    scores = np.zeros(len(chunks), dtype=np.float32)
+    for term in set(tokenize(query)):
+        if term in KEYWORD_INDEX:
+            idx, weight = KEYWORD_INDEX[term]
+            np.add.at(scores, idx, weight)
+    return scores
 
 
 # --- Census data lookup ---
@@ -356,49 +419,69 @@ def lookup_census(query: str) -> str | None:
 
 
 def retrieve(query: str, k: int = TOP_K):
-    """Chunk-level retrieval, deduped to one card per interview (Edited preferred).
+    """Find the interviews that best answer the question.
 
-    With transcripts, each interview may have multiple chunks. We keep the best
-    (highest-scoring) chunk per interview for context, while still deduping
-    across Full/Edited versions.
+    1. Gather candidate passages two ways: by meaning (Voyage embeddings) and by exact words (BM25).
+    2. Re-rank all candidates with Voyage's re-ranker, which reads the question and each passage
+       together and so understands qualifiers and negations much better than similarity alone.
+    3. Group passages by interview (Full/Edited cuts count as one) and keep the top k interviews,
+       remembering each interview's best-matching moments.
     """
     result = voyage.embed([query], model="voyage-3-large", input_type="query")
     q = np.array(result.embeddings[0], dtype=np.float32)
     q /= np.linalg.norm(q)
-    scores = norm_embeddings @ q
-    top_idx = np.argsort(-scores)[:OVER_K]
+    vec = norm_embeddings @ q
+    kw = keyword_scores(query)
 
-    # Track best chunk index and score per base title
-    best_chunk_by_base: dict[str, tuple[int, float]] = {}
-    for idx in top_idx:
-        idx = int(idx)
-        chunk = chunks[idx]
-        bt = base_title(records[chunk["record_id"]]["title"])
-        score = float(scores[idx])
-        if bt not in best_chunk_by_base or score > best_chunk_by_base[bt][1]:
-            best_chunk_by_base[bt] = (idx, score)
+    cand = list(np.argsort(-vec)[:VECTOR_K])
+    if kw.max() > 0:
+        for i in np.argsort(-kw)[:KEYWORD_K]:
+            if kw[i] > 0:
+                cand.append(i)
+    cand = list(dict.fromkeys(int(i) for i in cand))
 
-    # Rank by score and take top k
-    ranked = sorted(best_chunk_by_base.items(), key=lambda kv: -kv[1][1])[:k]
+    try:
+        rr = voyage.rerank(
+            query=query,
+            documents=[chunks[i]["text"][:RERANK_DOC_CHARS] for i in cand],
+            model=RERANK_MODEL,
+            truncation=True,
+        )
+        scored = [(cand[r.index], float(r.relevance_score)) for r in rr.results]
+    except Exception as e:  # never let the re-ranker take the chatbot down
+        print(f"rerank failed, falling back to vector order: {e}")
+        scored = [(i, float(vec[i])) for i in cand]
+    scored.sort(key=lambda x: -x[1])
 
-    out = []
-    for bt, (best_chunk_idx, _) in ranked:
-        # Use preferred record (Edited version if available)
-        rid = PREFERRED_RID_BY_BASE[bt]
-        best_chunk = chunks[best_chunk_idx]
+    by_base: dict[str, list[tuple[int, float]]] = {}
+    order: list[str] = []
+    for idx, score in scored:
+        bt = base_title(records[chunks[idx]["record_id"]]["title"])
+        if bt not in by_base:
+            by_base[bt] = []
+            order.append(bt)
+        by_base[bt].append((idx, score))
 
-        # If the best chunk belongs to a different version (Full vs Edited),
-        # find the equivalent chunk in the preferred record, or use the best one
-        if best_chunk["record_id"] != rid:
-            # Try to find a chunk at similar timestamp in preferred record
-            preferred_chunks = CHUNK_INDICES_BY_RID.get(rid, [])
-            if preferred_chunks:
-                # Use first chunk of preferred record as fallback
-                best_chunk = chunks[preferred_chunks[0]]
-            # else: keep the best_chunk from the other version
-
-        out.append((records[rid], best_chunk))
-    return out
+    hits = []
+    for bt in order[:k]:
+        passages = [i for i, _ in by_base[bt]]
+        best = chunks[passages[0]]
+        own = records[best["record_id"]]
+        preferred = records[PREFERRED_RID_BY_BASE[bt]]
+        # Link the video that the matching transcript actually belongs to, so timestamps are right.
+        if own.get("youtube_video_id") or not preferred.get("youtube_video_id"):
+            link_record, timestamps_ok = own, True
+        else:
+            link_record, timestamps_ok = preferred, False
+        hits.append({
+            "record": link_record,
+            "transcript_rid": best["record_id"],
+            "best_chunk": best,
+            "passages": passages,
+            "timestamps_ok": timestamps_ok,
+            "has_transcript": bool(best["has_transcript"]),
+        })
+    return hits
 
 
 def format_timestamp(seconds: int) -> str:
@@ -411,29 +494,52 @@ def format_timestamp(seconds: int) -> str:
     return f"{m}:{s:02d}"
 
 
+def full_transcript(rid: int, best_idx: int) -> str:
+    """The whole transcript with timestamps; if very long, a window centred on the best moment."""
+    idxs = CHUNK_INDICES_BY_RID.get(rid, [])
+    pieces = [f"[{format_timestamp(chunks[i]['start_seconds'])}] {chunk_body(chunks[i])}" for i in idxs]
+    if sum(len(p) for p in pieces) <= FULL_TRANSCRIPT_MAX_CHARS:
+        return "\n".join(pieces)
+    centre = idxs.index(best_idx) if best_idx in idxs else 0
+    lo = hi = centre
+    total = len(pieces[centre])
+    while True:
+        grew = False
+        if lo > 0 and total + len(pieces[lo - 1]) <= FULL_TRANSCRIPT_MAX_CHARS:
+            lo -= 1; total += len(pieces[lo]); grew = True
+        if hi < len(pieces) - 1 and total + len(pieces[hi + 1]) <= FULL_TRANSCRIPT_MAX_CHARS:
+            hi += 1; total += len(pieces[hi]); grew = True
+        if not grew:
+            break
+    text = "\n".join(pieces[lo:hi + 1])
+    if lo > 0:
+        text = "[…earlier part of the interview omitted…]\n" + text
+    if hi < len(pieces) - 1:
+        text += "\n[…later part of the interview omitted…]"
+    return text
+
+
 def build_context(hits):
-    lines = []
-    for i, (record, chunk) in enumerate(hits, 1):
-        meta = []
+    blocks = []
+    for n, h in enumerate(hits, 1):
+        record = h["record"]
+        lines = [f"[{n}] {display_title(record['title'])}"]
         if record.get("interviewee"):
-            meta.append(f"Interviewee: {record['interviewee']}")
+            lines.append(f"Interviewee: {record['interviewee']}")
         if record.get("date_recorded"):
-            meta.append(f"Recorded: {record['date_recorded']}")
-        header = f"[{i}] {display_title(record['title'])}"
-        if chunk["has_transcript"]:
-            # Show transcript excerpt with timestamp
-            timestamp = format_timestamp(chunk["start_seconds"])
-            # Extract just the transcript text (skip the header we added)
-            text = chunk["text"]
-            # The chunk text format is: "Title\nInterviewee: ...\n\nactual transcript"
-            # Extract the actual transcript part after the double newline
-            if "\n\n" in text:
-                text = text.split("\n\n", 1)[1]
-            body = f"[{timestamp}] \"{text[:600]}\""
-        else:
-            body = f"Description: {record['description'][:400]}"
-        lines.append(header + "\n" + "\n".join(meta) + "\n" + body)
-    return "\n\n".join(lines)
+            lines.append(f"Recorded: {record['date_recorded']}")
+        if record.get("description"):
+            lines.append(f"Description: {record['description'][:700]}")
+        if h["has_transcript"]:
+            if n <= FULL_TRANSCRIPT_INTERVIEWS:
+                lines.append("Full transcript:\n" + full_transcript(h["transcript_rid"], h["passages"][0]))
+            else:
+                lines.append("Most relevant moments:")
+                for i in h["passages"][:EXCERPTS_PER_INTERVIEW]:
+                    c = chunks[i]
+                    lines.append(f"[{format_timestamp(c['start_seconds'])}] \"{chunk_body(c)[:EXCERPT_CHARS]}\"")
+        blocks.append("\n".join(lines))
+    return "\n\n".join(blocks)
 
 
 CITE_RE = re.compile(r"\[(\d+)\]")
@@ -445,20 +551,21 @@ def cited_indices(answer: str) -> set[int]:
 
 def citation_payload(hits, cited: set[int]):
     out = []
-    for i, (record, chunk) in enumerate(hits, 1):
-        if i not in cited:
+    for n, h in enumerate(hits, 1):
+        if n not in cited:
             continue
+        record, chunk = h["record"], h["best_chunk"]
         vid = record.get("youtube_video_id")
         url = record.get("youtube_url")
         thumbnail = None
         start = 0
         if vid:
             thumbnail = f"https://i.ytimg.com/vi/{vid}/mqdefault.jpg"
-            if chunk["has_transcript"] and chunk["start_seconds"] > 0:
+            if h["timestamps_ok"] and chunk["has_transcript"] and chunk["start_seconds"] > 0:
                 start = int(chunk["start_seconds"])
                 url = f"https://www.youtube.com/watch?v={vid}&t={start}s"
         out.append({
-            "index": i,
+            "index": n,
             "title": display_title(record["title"]),
             "interviewee": record.get("interviewee") or None,
             "date": record.get("date_recorded") or None,
