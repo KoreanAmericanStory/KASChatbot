@@ -25,6 +25,20 @@ MAIN_FILE = CENSUS_DIR / "Summary Spreadsheets of KA Population" / "Summary of K
 # 2020 Census with county-level data
 COUNTY_FILE_2020 = CENSUS_DIR / "2020 Census" / "2020 DHCA Korean Alone or In Combination.xlsx"
 
+# Caveats from the source spreadsheet's notes. The chatbot passes these along with any figure.
+CENSUS_NOTES = {
+    "general": "Figures from the U.S. Census as compiled by KoreanAmericanStory.org (with assistance from Ms. Irene Doko). 1910-1990 count people reported as Korean; 2000, 2010 and 2020 count Korean alone or in combination with another race (includes mixed-heritage Korean Americans). County figures exist for 2020 only. Alaska and Hawaii were territories before 1959; their records are included.",
+    "by_year": {
+        "1930": "No Hawaii data was recorded for 1930, so the 1930 national total (1,871) leaves out Hawaii, where most Korean Americans then lived. It is an undercount.",
+        "1950": "The 1950 Census did not break out Koreans on the mainland; only Hawaii recorded them. The 1950 national figure (7,030) is Hawaii only and is not a true national count.",
+        "1960": "The 1960 Census did not break out the Korean population, so there are no 1960 figures.",
+        "1970": "No Korean figure was recorded for Alaska in 1970.",
+        "2000": "Includes Korean alone or in combination with another race.",
+        "2010": "Includes Korean alone or in combination with another race.",
+        "2020": "Includes Korean alone or in combination with another race. National total 1,989,519 is the official 2020 Census count.",
+    },
+}
+
 # State name normalization
 STATE_ABBREV = {
     "alabama": "AL", "alaska": "AK", "arizona": "AZ", "arkansas": "AR",
@@ -215,10 +229,14 @@ def main():
     state_data = load_state_historical_data()
     county_data = load_county_data_2020()
     national_data = compute_national_totals(state_data)
+    # Official 2020 Census national count (Korean alone or in any combination). The sum of
+    # state cells differs by a few people; the source PDF's TOTAL row (1,974,407) is a sheet error.
+    national_data["2020"] = {"korean_alone": 1989519}
 
     # Build the final lookup structure
     census_lookup = {
         "national": national_data,
+        "notes": CENSUS_NOTES,
         "state": state_data,
         "county": county_data,
     }
