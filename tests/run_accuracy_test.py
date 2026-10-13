@@ -84,10 +84,6 @@ def check(t, out):
 
 
 def main():
-    if "kas-chatbot-gamma" not in URL and not BYPASS:
-        print('This is a private test link. Paste the Vercel pass into "VERCEL PASS - paste here.txt" first '
-              '(see the instructions inside that file), save it, and run this again.')
-        sys.exit(1)
     print(f"Testing {URL} with {len(QUESTIONS)} questions (about 2-4 minutes)...\n")
     with ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(lambda t: (t, *ask(t["q"])), QUESTIONS))
