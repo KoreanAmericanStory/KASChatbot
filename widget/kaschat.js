@@ -78,7 +78,6 @@
           <button class="kaschat-selector-btn" type="button" data-year="1990">1990</button>
           <button class="kaschat-selector-btn" type="button" data-year="1980">1980</button>
           <button class="kaschat-selector-btn" type="button" data-year="1970">1970</button>
-          <button class="kaschat-selector-btn" type="button" data-year="1960">1960</button>
           <button class="kaschat-selector-btn" type="button" data-year="1950">1950</button>
           <button class="kaschat-selector-btn" type="button" data-year="1940">1940</button>
           <button class="kaschat-selector-btn" type="button" data-year="1930">1930</button>
