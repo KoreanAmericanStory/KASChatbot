@@ -523,13 +523,53 @@
   position: relative;
 }
 
+/* ---- Phones: a compact bottom sheet instead of a full-screen panel ---- */
 @media (max-width: 480px) {
-  .kaschat-panel {
-    right: 8px;
-    bottom: 8px;
-    left: 8px;
-    width: auto;
-    height: calc(100vh - 16px);
-    border-radius: 12px;
+  .kaschat-launcher {
+    width: 50px;
+    height: 50px;
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
+  .kaschat-launcher svg { width: 22px; height: 22px; }
+
+  .kaschat-panel {
+    left: 10px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    width: auto;
+    max-width: none;
+    height: 72vh;              /* fallback for older browsers */
+    height: min(72dvh, 600px); /* dvh = the visible area, excluding the browser's address bar */
+    border-radius: 14px;
+  }
+
+  .kaschat-header { padding: 11px 14px; }
+  .kaschat-header-title { font-size: 15px; }
+  .kaschat-header-sub { font-size: 11px; }
+  .kaschat-close svg { width: 18px; height: 18px; }
+
+  .kaschat-messages { padding: 12px; gap: 10px; }
+  .kaschat-msg { max-width: 90%; padding: 9px 12px; font-size: 14px; line-height: 1.45; border-radius: 12px; }
+
+  .kaschat-citations { width: 100%; gap: 6px; }
+  .kaschat-citation { padding: 6px; gap: 8px; font-size: 12.5px; border-radius: 8px; }
+  .kaschat-citation-thumb,
+  .kaschat-citation-thumb-fallback { width: 80px; height: 45px; border-radius: 5px; }
+  .kaschat-citation-meta { font-size: 11px; }
+
+  .kaschat-suggestion { padding: 6px 10px; font-size: 12px; }
+  .kaschat-more { padding: 5px 10px; font-size: 11.5px; }
+
+  .kaschat-quick-toggle { padding: 8px 14px; }
+  .kaschat-quick-content { padding: 0 14px 10px; }
+  .kaschat-quick-btn { padding: 6px 11px; font-size: 12.5px; }
+  .kaschat-selector { max-height: 45vh; }
+  .kaschat-selector-btn { padding: 8px 6px; }
+
+  .kaschat-form { padding: 8px 10px; gap: 6px; }
+  /* 16px keeps iPhones from zooming the whole page in when the box is tapped */
+  .kaschat-input { font-size: 16px; padding: 8px 14px; }
+  .kaschat-send { width: 38px; height: 38px; }
+  .kaschat-send svg { width: 16px; height: 16px; }
 }
