@@ -92,7 +92,7 @@ class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=2000)
 
 
-VERSION_TAG_RE = re.compile(r"\s*\((full|edited|short|trailer)\)\s*", re.I)
+VERSION_TAG_RE = re.compile(r"\s*\((full|edited|edit|short|trailer)\)\s*", re.I)
 
 
 def base_title(title: str) -> str:
@@ -100,7 +100,7 @@ def base_title(title: str) -> str:
 
 
 def is_edited(title: str) -> bool:
-    return "(edited)" in title.lower()
+    return bool(re.search(r"\(edit(ed)?\)", title, re.I))
 
 
 def display_title(title: str) -> str:
@@ -111,11 +111,50 @@ def display_title(title: str) -> str:
 # Their embeddings land close together, so both versions used to surface as two
 # near-identical citations. Collapse them to one card per interview and prefer
 # the Edited cut for visitors.
-PREFERRED_RID_BY_BASE: dict[str, int] = {}
+# Group rows that are really one interview: Full/Edited cuts share a base title, and Part 1/Part 2/...
+# rows (or duplicate spreadsheet rows) that point to the same YouTube video are one video too.
+_parent = list(range(len(records)))
+
+
+def _find(i: int) -> int:
+    while _parent[i] != i:
+        _parent[i] = _parent[_parent[i]]
+        i = _parent[i]
+    return i
+
+
+def _union(a: int, b: int) -> None:
+    ra, rb = _find(a), _find(b)
+    if ra != rb:
+        _parent[rb] = ra
+
+
+_first_by: dict[str, int] = {}
 for r in records:
-    bt = base_title(r["title"])
-    if bt not in PREFERRED_RID_BY_BASE or is_edited(r["title"]):
-        PREFERRED_RID_BY_BASE[bt] = r["id"]
+    for key in ("t:" + base_title(r["title"]), "v:" + (r.get("youtube_video_id") or "")):
+        if key == "v:":
+            continue
+        if key in _first_by:
+            _union(_first_by[key], r["id"])
+        else:
+            _first_by[key] = r["id"]
+GROUP_OF = {r["id"]: _find(r["id"]) for r in records}
+
+
+def group_key(record: dict) -> int:
+    return GROUP_OF[record["id"]]
+
+
+def _preference(r: dict):
+    # Prefer the row with a video, then one that isn't a "Part N" row, then the Edited cut.
+    return (bool(r.get("youtube_video_id")), not re.search(r"\bpart \d", r["title"], re.I), is_edited(r["title"]))
+
+
+PREFERRED_RID_BY_GROUP: dict[int, int] = {}
+for r in records:
+    g = group_key(r)
+    if g not in PREFERRED_RID_BY_GROUP or _preference(r) > _preference(records[PREFERRED_RID_BY_GROUP[g]]):
+        PREFERRED_RID_BY_GROUP[g] = r["id"]
 
 # Build index of chunk indices by record ID (may have multiple chunks per record now)
 CHUNK_INDICES_BY_RID: dict[int, list[int]] = {}
@@ -218,7 +257,7 @@ def retrieve(query: str, k: int = TOP_K):
     by_base: dict[str, list[tuple[int, float]]] = {}
     order: list[str] = []
     for idx, score in scored:
-        bt = base_title(records[chunks[idx]["record_id"]]["title"])
+        bt = group_key(records[chunks[idx]["record_id"]])
         if bt not in by_base:
             by_base[bt] = []
             order.append(bt)
@@ -229,12 +268,14 @@ def retrieve(query: str, k: int = TOP_K):
         passages = [i for i, _ in by_base[bt]]
         best = chunks[passages[0]]
         own = records[best["record_id"]]
-        preferred = records[PREFERRED_RID_BY_BASE[bt]]
+        preferred = records[PREFERRED_RID_BY_GROUP[bt]]
         # Link the video that the matching transcript actually belongs to, so timestamps are right.
         if own.get("youtube_video_id") or not preferred.get("youtube_video_id"):
             link_record, timestamps_ok = own, True
         else:
             link_record, timestamps_ok = preferred, False
+        if best.get("timed") is False:
+            timestamps_ok = False  # transcript of the full recording; times don't match the edited video
         hits.append({
             "record": link_record,
             "transcript_rid": best["record_id"],
@@ -256,10 +297,15 @@ def format_timestamp(seconds: int) -> str:
     return f"{m}:{s:02d}"
 
 
+def ts_label(chunk: dict) -> str:
+    """'[12:34] ' for timed transcripts; nothing for full-recording transcripts whose times don't match the video."""
+    return "" if chunk.get("timed") is False else f"[{format_timestamp(chunk['start_seconds'])}] "
+
+
 def full_transcript(rid: int, best_idx: int) -> str:
     """The whole transcript with timestamps; if very long, a window centred on the best moment."""
     idxs = CHUNK_INDICES_BY_RID.get(rid, [])
-    pieces = [f"[{format_timestamp(chunks[i]['start_seconds'])}] {chunk_body(chunks[i])}" for i in idxs]
+    pieces = [f"{ts_label(chunks[i])}{chunk_body(chunks[i])}" for i in idxs]
     if sum(len(p) for p in pieces) <= FULL_TRANSCRIPT_MAX_CHARS:
         return "\n".join(pieces)
     centre = idxs.index(best_idx) if best_idx in idxs else 0
@@ -299,7 +345,7 @@ def build_context(hits, start: int = 1, full_n: int = FULL_TRANSCRIPT_INTERVIEWS
                 lines.append("Most relevant moments:")
                 for i in h["passages"][:EXCERPTS_PER_INTERVIEW]:
                     c = chunks[i]
-                    lines.append(f"[{format_timestamp(c['start_seconds'])}] \"{chunk_body(c)[:EXCERPT_CHARS]}\"")
+                    lines.append(f"{ts_label(c)}\"{chunk_body(c)[:EXCERPT_CHARS]}\"")
         blocks.append("\n".join(lines))
     return "\n\n".join(blocks)
 
@@ -438,14 +484,14 @@ class ToolSession:
         found = retrieve(query)
         new, repeats = [], []
         for h in found:
-            bt = base_title(h["record"]["title"])
+            bt = group_key(h["record"])
             if bt in self.seen:
                 repeats.append(f"[{self.seen[bt]}] {display_title(h['record']['title'])}")
                 continue
             new.append(h)
         start = len(self.hits) + 1
         for i, h in enumerate(new):
-            self.seen[base_title(h["record"]["title"])] = start + i
+            self.seen[group_key(h["record"])] = start + i
         self.hits.extend(new)
         full_n = FULL_TRANSCRIPT_INTERVIEWS if self.searches == 1 else 0
         text = build_context(new, start=start, full_n=full_n) if new else "No new interviews found."

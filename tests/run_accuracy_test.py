@@ -76,6 +76,9 @@ def check(t, out):
         bad = [x for x in titles if n.lower() in x.lower()]
         if bad:
             problems.append(f"should not link: {bad[0]}")
+    urls = [c.get("youtube_url") or "" for c in out.get("citations", [])]
+    if t.get("url_contains") and not any(u_part in u for u_part in t["url_contains"] for u in urls):
+        problems.append("expected a link to video " + ", ".join(t["url_contains"]))
     if "min_citations" in t and len(titles) < t["min_citations"]:
         problems.append(f"expected at least {t['min_citations']} video link(s)")
     if "max_citations" in t and len(titles) > t["max_citations"]:

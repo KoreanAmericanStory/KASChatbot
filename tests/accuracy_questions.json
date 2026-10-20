@@ -517,5 +517,67 @@
    "29298",
    "23398"
   ]
+ },
+ {
+  "id": "new-carol-kim",
+  "q": "Who was born in the same Honolulu hospital as a former president?",
+  "cited_any": [
+   "Carol Kim"
+  ]
+ },
+ {
+  "id": "new-yung-duk-kim",
+  "q": "Which interviewee was born in 1934 in a small fishing harbor in North Korea?",
+  "cited_any": [
+   "Yung Duk Kim"
+  ]
+ },
+ {
+  "id": "new-sammy-kim-link",
+  "q": "Sammy Kim's Legacy Project Queer Joy interview about caregiving",
+  "cited_any": [
+   "Sammy Kim"
+  ],
+  "url_contains": [
+   "RMbHBZFjnE0"
+  ]
+ },
+ {
+  "id": "new-son-family",
+  "q": "Diana Son's conversation with her three sons",
+  "cited_any": [
+   "Son Family"
+  ],
+  "url_contains": [
+   "w9n2InbnEo0"
+  ]
+ },
+ {
+  "id": "new-han-umc",
+  "q": "Queer Korean Americans reclaiming church at HA:N UMC",
+  "url_contains": [
+   "pDtUyYR7T6g"
+  ]
+ },
+ {
+  "id": "new-albert-flushing",
+  "q": "Albert Kim who grew up in Flushing, Queens",
+  "url_contains": [
+   "2DqaU-JgxZM"
+  ]
+ },
+ {
+  "id": "new-andy-marra-2024",
+  "q": "Andy Marra's 2024 Queer Joy interview about trans advocacy",
+  "url_contains": [
+   "rJW_WhN_2cU"
+  ]
+ },
+ {
+  "id": "new-vanilla-honey",
+  "q": "Vanilla Honey, the queer architect from Long Island",
+  "url_contains": [
+   "pp0spbC0KlQ"
+  ]
  }
 ]

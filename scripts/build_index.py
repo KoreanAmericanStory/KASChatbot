@@ -29,7 +29,7 @@ ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data"
 CSV_PATH = ROOT / "AI Chat Bot - KAS Legacy Project Metadata - LP Metadata_10122026.csv"
 YT_CACHE = DATA / "youtube_videos.json"
-TRANSCRIPT_PATH = DATA / "10122026_Master KAS Transcripts.txt"
+TRANSCRIPT_PATH = DATA / "10202026_Master KAS Transcripts.txt"
 
 EMBED_BATCH = 128
 
@@ -113,7 +113,9 @@ SERIES_RULES = [  # (series group, regex matched against a filename or Series va
     ("nya", r"not your average"),
     ("roar", r"roar"),
     ("gala", r"gala|trailblazer"),
-    ("qj", r"queer joy"),
+    # Only the "Queer Joy in Conversation" episodes are their own series. The individual
+    # "Legacy Project Queer Joy" interviews are Legacy Project videos and must match lp rows.
+    ("qj", r"queer joy in conversation|^queer joy_"),
     ("sfa", r"six feet apart"),
     ("perilla", r"perilla"),
     ("ttf", r"^ttf|through the fog"),
@@ -672,12 +674,15 @@ def build_chunks(records: list[dict], transcripts: dict[int, list[dict]]):
                     header_parts.append(f"Interviewee: {r['interviewee']}")
                 header = "\n".join(header_parts)
 
-                chunks.append({
+                chunk = {
                     "record_id": r["id"],
                     "start_seconds": segment["start_seconds"],
                     "text": f"{header}\n\n{segment['text']}",
                     "has_transcript": True,
-                })
+                }
+                if segment.get("timed") is False:
+                    chunk["timed"] = False  # full-recording transcript: times don't match the edited video
+                chunks.append(chunk)
                 transcript_chunks_created += 1
         else:
             # Fallback to description-only chunk
@@ -764,6 +769,27 @@ def embed_chunks(chunks):
     return np.array(embeddings, dtype=np.float32)
 
 
+def embed_reusing_previous(chunks):
+    """Only send new or changed passages to Voyage; reuse vectors from the previous build for the rest."""
+    old_chunks_path, old_emb_path = DATA / "chunks.json", DATA / "chunk_embeddings.npy"
+    known = {}
+    if old_chunks_path.exists() and old_emb_path.exists():
+        try:
+            old_chunks = json.loads(old_chunks_path.read_text(encoding="utf-8"))
+            old_emb = np.load(old_emb_path).astype(np.float32)
+            if len(old_chunks) == len(old_emb):
+                known = {c["text"]: old_emb[i] for i, c in enumerate(old_chunks)}
+        except Exception as e:
+            print(f"  (couldn't read the previous index, embedding everything: {e})")
+    todo = [c for c in chunks if c["text"] not in known]
+    print(f"Reusing {len(chunks) - len(todo)} passages from the previous build; embedding {len(todo)} new/changed passages")
+    if todo:
+        fresh = embed_chunks(todo)
+        for c, v in zip(todo, fresh):
+            known[c["text"]] = v
+    return np.array([known[c["text"]] for c in chunks], dtype=np.float32)
+
+
 def main():
     DATA.mkdir(exist_ok=True)
     videos = fetch_all_videos()
@@ -787,6 +813,12 @@ def main():
     if raw_transcripts:
         print(f"  Found {len(raw_transcripts)} transcript(s) in transcript file")
         raw_transcripts = [t for t in raw_transcripts if t["file"].lower() not in hidden_files]
+        # Transcripts of full, unedited recordings (from zzFull Videos) are named ZZFULL_...; their
+        # timestamps don't line up with the edited YouTube videos, so links go to the start of the video.
+        for t in raw_transcripts:
+            if t["file"].upper().startswith("ZZFULL_"):
+                for c in t["chunks"]:
+                    c["timed"] = False
         transcripts = match_transcripts_to_records(records, raw_transcripts)
         print(f"  {len(transcripts)} record(s) now have transcript text")
     else:
@@ -794,7 +826,7 @@ def main():
         transcripts = {}
 
     chunks = build_chunks(records, transcripts)
-    embeddings = embed_chunks(chunks)
+    embeddings = embed_reusing_previous(chunks)
 
     (DATA / "records.json").write_text(json.dumps(records, indent=2, ensure_ascii=False))
     (DATA / "chunks.json").write_text(json.dumps(chunks, ensure_ascii=False))
