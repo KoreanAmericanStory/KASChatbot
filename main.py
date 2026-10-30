@@ -533,7 +533,9 @@ def chat(req: ChatRequest):
                                     "content": session.run(block.name, block.input or {})})
             messages.append({"role": "user", "content": results})
     except anthropic.APIError as e:
-        raise HTTPException(status_code=502, detail=f"Claude API error: {e.message}")
+        # Log the real reason (visible in Vercel logs) but show visitors a friendly message.
+        print(f"Claude API error: {getattr(e, 'message', e)}", flush=True)
+        raise HTTPException(status_code=503, detail="The archive assistant is temporarily unavailable. Please try again later.")
 
     if not answer:
         answer = "Sorry, I couldn't put together an answer to that. Please try rephrasing your question."
