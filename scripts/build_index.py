@@ -29,7 +29,7 @@ ROOT = Path(__file__).parent.parent
 DATA = ROOT / "data"
 CSV_PATH = ROOT / "AI Chat Bot - KAS Legacy Project Metadata - LP Metadata_10122026.csv"
 YT_CACHE = DATA / "youtube_videos.json"
-TRANSCRIPT_PATH = DATA / "10202026_Master KAS Transcripts.txt"
+TRANSCRIPT_PATH = DATA / "10292026_Master KAS Transcripts.txt"
 
 EMBED_BATCH = 128
 
